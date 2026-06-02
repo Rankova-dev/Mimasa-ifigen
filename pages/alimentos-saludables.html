@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alimentos saludables — Mimasa Ifigen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .cat-page-hero { background: var(--cream); padding: 2.5rem 0; border-bottom: 1px solid var(--border-light); }
+    .cat-page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 400; color: var(--text); }
+    .breadcrumb-nav { font-size: .75rem; color: var(--text-xlight); margin-bottom: .75rem; }
+    .breadcrumb-nav a { color: var(--text-xlight); text-decoration: none; }
+    .breadcrumb-nav a:hover { color: var(--garnet); }
+    .cat-layout { display: grid; grid-template-columns: 220px 1fr; gap: 2.5rem; align-items: start; padding: 3rem 0 5rem; }
+    .cat-sidebar { background: var(--cream); border-radius: 8px; padding: 1.5rem; position: sticky; top: calc(72px + 1.5rem); }
+    .cat-sidebar h4 { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--garnet); margin-bottom: 1rem; padding-bottom: .75rem; border-bottom: 1px solid var(--border-light); }
+    .cat-sidebar ul { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+    .cat-sidebar a { font-size: .875rem; color: var(--text-light); text-decoration: none; padding: .3rem 0; display: block; transition: color .24s; }
+    .cat-sidebar a:hover { color: var(--garnet); font-weight: 500; }
+    @media(max-width:768px){ .cat-layout{ grid-template-columns:1fr; } .cat-sidebar{ position:static; } }
+  </style>
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <div class="marquee-track" aria-hidden="true">
+      <span class="marquee-item">Gastos de envío gratuitos a partir de <strong>&nbsp;29€&nbsp;</strong> en toda la península <span class="marquee-dot"></span> Enviamos a todo el mundo <span class="marquee-dot"></span> Productos artesanales y orgánicos <span class="marquee-dot"></span> Atención al cliente&nbsp;<strong>+34 932 374 766</strong> <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Gastos de envío gratuitos a partir de <strong>&nbsp;29€&nbsp;</strong> en toda la península <span class="marquee-dot"></span> Enviamos a todo el mundo <span class="marquee-dot"></span> Productos artesanales y orgánicos <span class="marquee-dot"></span> Atención al cliente&nbsp;<strong>+34 932 374 766</strong> <span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../index.html" class="logo"><img src="https://mimasaifigen.com/img/mimasa-ifigen-logo-1619709035.jpg" alt="Mimasa Ifigen" /></a>
+      <nav class="main-nav"><ul>
+        <li class="has-dropdown"><a href="alimentos-saludables.html">Alimentos saludables</a>
+          <div class="mega-menu"><div class="mega-menu-inner container">
+            <div class="mega-col"><span class="mega-col-title">Soja</span><a href="https://mimasaifigen.com/es/87-misos">Misos</a><a href="https://mimasaifigen.com/es/76-proteinas-derivadas-de-la-soja">Proteínas de soja</a><a href="https://mimasaifigen.com/es/86-salsas-de-soja">Salsas de soja</a></div>
+            <div class="mega-col"><span class="mega-col-title">Mar</span><a href="https://mimasaifigen.com/es/52-algas-marinas">Algas marinas</a><a href="https://mimasaifigen.com/es/55-algas-europeas">Algas europeas</a><a href="https://mimasaifigen.com/es/54-algas-japonesas">Algas japonesas</a></div>
+            <div class="mega-col"><span class="mega-col-title">Más</span><a href="https://mimasaifigen.com/es/51-umeboshi">Umeboshi</a><a href="https://mimasaifigen.com/es/97-sesamo-y-elaborados">Sésamo</a><a href="https://mimasaifigen.com/es/58-bebidas">Bebidas</a><a href="https://mimasaifigen.com/es/60-cereales">Cereales</a></div>
+          </div></div>
+        </li>
+        <li><a href="salud-y-bienestar.html">Salud y bienestar</a></li>
+        <li><a href="utensilios.html">Utensilios</a></li>
+        <li><a href="packs.html">Packs</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul></nav>
+      <div class="header-utils">
+        <button class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></button>
+        <a href="https://mimasaifigen.com/es/mi-cuenta" class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+        <div class="lang-switcher"><button class="lang-current">ES</button><div class="lang-dropdown"><a href="https://mimasaifigen.com/en/">EN</a><a href="https://mimasaifigen.com/fr/">FR</a></div></div>
+        <a href="https://mimasaifigen.com/es/carrito" class="icon-btn cart-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="cat-page-hero">
+      <div class="container">
+        <nav class="breadcrumb-nav"><a href="../index.html">Inicio</a> › <span>Alimentos saludables</span></nav>
+        <h1>Alimentos saludables</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="cat-layout">
+        <aside class="cat-sidebar">
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="https://mimasaifigen.com/es/49-soja">Soja</a></li>
+            <li><a href="https://mimasaifigen.com/es/87-misos">Misos</a></li>
+            <li><a href="https://mimasaifigen.com/es/86-salsas-de-soja">Salsas de soja</a></li>
+            <li><a href="https://mimasaifigen.com/es/51-umeboshi">Umeboshi</a></li>
+            <li><a href="https://mimasaifigen.com/es/52-algas-marinas">Algas marinas</a></li>
+            <li><a href="https://mimasaifigen.com/es/55-algas-europeas">Algas europeas</a></li>
+            <li><a href="https://mimasaifigen.com/es/54-algas-japonesas">Algas japonesas</a></li>
+            <li><a href="https://mimasaifigen.com/es/97-sesamo-y-elaborados">Sésamo y elaborados</a></li>
+            <li><a href="https://mimasaifigen.com/es/58-bebidas">Bebidas</a></li>
+            <li><a href="https://mimasaifigen.com/es/56-raices-y-otras-plantas">Raíces y plantas</a></li>
+            <li><a href="https://mimasaifigen.com/es/60-cereales">Cereales</a></li>
+            <li><a href="https://mimasaifigen.com/es/104-proteinas-vegetales">Proteínas vegetales</a></li>
+            <li><a href="https://mimasaifigen.com/es/75-varios">Varios</a></li>
+          </ul>
+        </aside>
+
+        <div>
+          <div class="products-grid">
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/algas-europeas/220-alga-dulse-bio-50g.html" class="product-card-image-wrap">
+                <img src="https://mimasaifigen.com/800-home_default/alga-dulse-bio-50g.jpg" alt="Alga Dulse BIO 50g" loading="lazy" />
+                <div class="product-badges"><span class="badge badge-sale">-10%</span></div>
+                <button class="quick-view-btn">Vista rápida</button>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Algas europeas</span>
+                <h3><a href="https://mimasaifigen.com/es/algas-europeas/220-alga-dulse-bio-50g.html">Alga Dulse BIO 50g</a></h3>
+                <div class="product-price"><span class="price-current">5,92&nbsp;€</span><span class="price-old">6,58&nbsp;€</span></div>
+                <a href="https://mimasaifigen.com/es/algas-europeas/220-alga-dulse-bio-50g.html" class="btn btn-sm">Ver producto</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/misos/314-shiro-miso-300grs-no-pasteurizado.html" class="product-card-image-wrap">
+                <img src="https://mimasaifigen.com/691-home_default/shiro-miso-300grs-no-pasteurizado.jpg" alt="Shiro Miso 300g No Pasteurizado" loading="lazy" />
+                <div class="product-badges"><span class="badge badge-sale">-10%</span></div>
+                <button class="quick-view-btn">Vista rápida</button>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Misos</span>
+                <h3><a href="https://mimasaifigen.com/es/misos/314-shiro-miso-300grs-no-pasteurizado.html">Shiro Miso 300g No Pasteurizado</a></h3>
+                <div class="product-price"><span class="price-current">7,23&nbsp;€</span><span class="price-old">8,03&nbsp;€</span></div>
+                <a href="https://mimasaifigen.com/es/misos/314-shiro-miso-300grs-no-pasteurizado.html" class="btn btn-sm">Ver producto</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/raices-y-otras-plantas/309-kuzu.html" class="product-card-image-wrap">
+                <img src="https://mimasaifigen.com/773-home_default/kuzu.jpg" alt="Kuzu" loading="lazy" />
+                <div class="product-badges"><span class="badge badge-sale">-10%</span></div>
+                <button class="quick-view-btn">Vista rápida</button>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Raíces y otras plantas</span>
+                <h3><a href="https://mimasaifigen.com/es/raices-y-otras-plantas/309-kuzu.html">Kuzu</a></h3>
+                <div class="product-price"><span class="price-current">9,09&nbsp;€</span><span class="price-old">10,10&nbsp;€</span></div>
+                <a href="https://mimasaifigen.com/es/raices-y-otras-plantas/309-kuzu.html" class="btn btn-sm">Ver producto</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/umeboshi-en-tarrinas/297-umeboshi-con-shiso.html" class="product-card-image-wrap">
+                <img src="https://mimasaifigen.com/685-home_default/umeboshi-con-shiso.jpg" alt="Umeboshi con Shiso" loading="lazy" />
+                <div class="product-badges"><span class="badge badge-sale">-10%</span></div>
+                <button class="quick-view-btn">Vista rápida</button>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Umeboshi</span>
+                <h3><a href="https://mimasaifigen.com/es/umeboshi-en-tarrinas/297-umeboshi-con-shiso.html">Umeboshi con Shiso</a></h3>
+                <div class="product-price"><span class="price-current">7,94&nbsp;€</span><span class="price-old">8,82&nbsp;€</span></div>
+                <a href="https://mimasaifigen.com/es/umeboshi-en-tarrinas/297-umeboshi-con-shiso.html" class="btn btn-sm">Ver producto</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/umeboshi-en-tarrinas/247-pasta-umeboshi-250-grs.html" class="product-card-image-wrap">
+                <img src="https://mimasaifigen.com/684-home_default/pasta-umeboshi-250-grs.jpg" alt="Pasta Umeboshi 250g" loading="lazy" />
+                <div class="product-badges"><span class="badge badge-sale">-10%</span></div>
+                <button class="quick-view-btn">Vista rápida</button>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Umeboshi</span>
+                <h3><a href="https://mimasaifigen.com/es/umeboshi-en-tarrinas/247-pasta-umeboshi-250-grs.html">Pasta Umeboshi 250g</a></h3>
+                <div class="product-price"><span class="price-current">11,11&nbsp;€</span><span class="price-old">12,34&nbsp;€</span></div>
+                <a href="https://mimasaifigen.com/es/umeboshi-en-tarrinas/247-pasta-umeboshi-250-grs.html" class="btn btn-sm">Ver producto</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/salsas-de-soja/233-tamari-bio.html" class="product-card-image-wrap">
+                <img src="https://mimasaifigen.com/715-home_default/tamari-bio.jpg" alt="Tamari BIO" loading="lazy" />
+                <div class="product-badges"><span class="badge badge-sale">-20%</span></div>
+                <button class="quick-view-btn">Vista rápida</button>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Salsas de soja</span>
+                <h3><a href="https://mimasaifigen.com/es/salsas-de-soja/233-tamari-bio.html">Tamari BIO</a></h3>
+                <div class="product-price"><span class="price-current">4,32&nbsp;€</span><span class="price-old">5,40&nbsp;€</span></div>
+                <a href="https://mimasaifigen.com/es/salsas-de-soja/233-tamari-bio.html" class="btn btn-sm">Ver producto</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/algas-europeas/222-wakame-bio-50g.html" class="product-card-image-wrap">
+                <img src="https://mimasaifigen.com/802-home_default/wakame-bio-50g.jpg" alt="Wakame BIO 50g" loading="lazy" />
+                <div class="product-badges"><span class="badge badge-sale">-10%</span></div>
+                <button class="quick-view-btn">Vista rápida</button>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Algas europeas</span>
+                <h3><a href="https://mimasaifigen.com/es/algas-europeas/222-wakame-bio-50g.html">Wakame BIO 50g</a></h3>
+                <div class="product-price"><span class="price-current">6,72&nbsp;€</span><span class="price-old">7,47&nbsp;€</span></div>
+                <a href="https://mimasaifigen.com/es/algas-europeas/222-wakame-bio-50g.html" class="btn btn-sm">Ver producto</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/algas-europeas/221-espaguetti-de-mar-bio-50g.html" class="product-card-image-wrap">
+                <img src="https://mimasaifigen.com/801-home_default/espaguetti-de-mar-bio-50g.jpg" alt="Espaguetti de Mar BIO 50g" loading="lazy" />
+                <div class="product-badges"><span class="badge badge-sale">-10%</span></div>
+                <button class="quick-view-btn">Vista rápida</button>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Algas europeas</span>
+                <h3><a href="https://mimasaifigen.com/es/algas-europeas/221-espaguetti-de-mar-bio-50g.html">Espaguetti de Mar BIO 50g</a></h3>
+                <div class="product-price"><span class="price-current">4,65&nbsp;€</span><span class="price-old">5,17&nbsp;€</span></div>
+                <a href="https://mimasaifigen.com/es/algas-europeas/221-espaguetti-de-mar-bio-50g.html" class="btn btn-sm">Ver producto</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/algas-europeas/219-kombu-bio-50g.html" class="product-card-image-wrap">
+                <img src="https://mimasaifigen.com/799-home_default/kombu-bio-50g.jpg" alt="Kombu BIO 50g" loading="lazy" />
+                <div class="product-badges"><span class="badge badge-sale">-10%</span></div>
+                <button class="quick-view-btn">Vista rápida</button>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Algas europeas</span>
+                <h3><a href="https://mimasaifigen.com/es/algas-europeas/219-kombu-bio-50g.html">Kombu BIO 50g</a></h3>
+                <div class="product-price"><span class="price-current">6,37&nbsp;€</span><span class="price-old">7,08&nbsp;€</span></div>
+                <a href="https://mimasaifigen.com/es/algas-europeas/219-kombu-bio-50g.html" class="btn btn-sm">Ver producto</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/varios/197-azuki-bio-500g.html" class="product-card-image-wrap">
+                <img src="https://mimasaifigen.com/669-home_default/azuki-bio-500g.jpg" alt="Azuki BIO 500g" loading="lazy" />
+                <div class="product-badges"><span class="badge badge-sale">-10%</span></div>
+                <button class="quick-view-btn">Vista rápida</button>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Varios</span>
+                <h3><a href="https://mimasaifigen.com/es/varios/197-azuki-bio-500g.html">Azuki BIO 500g</a></h3>
+                <div class="product-price"><span class="price-current">4,89&nbsp;€</span><span class="price-old">5,43&nbsp;€</span></div>
+                <a href="https://mimasaifigen.com/es/varios/197-azuki-bio-500g.html" class="btn btn-sm">Ver producto</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/tes-e-infusiones/299-kukicha-eco-100-grs.html" class="product-card-image-wrap">
+                <img src="https://mimasaifigen.com/687-home_default/kukicha-eco-100-grs.jpg" alt="Kukicha Eco 100g" loading="lazy" />
+                <div class="product-badges"><span class="badge badge-sale">-10%</span></div>
+                <button class="quick-view-btn">Vista rápida</button>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Tés e infusiones</span>
+                <h3><a href="https://mimasaifigen.com/es/tes-e-infusiones/299-kukicha-eco-100-grs.html">Kukicha Eco 100g</a></h3>
+                <div class="product-price"><span class="price-current">5,50&nbsp;€</span><span class="price-old">6,12&nbsp;€</span></div>
+                <a href="https://mimasaifigen.com/es/tes-e-infusiones/299-kukicha-eco-100-grs.html" class="btn btn-sm">Ver producto</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <a href="https://mimasaifigen.com/es/12-alimentos-saludables" class="product-card-image-wrap" style="display:flex;align-items:center;justify-content:center;background:var(--cream-dark);">
+                <div style="text-align:center;padding:2rem;">
+                  <p style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--garnet);margin-bottom:.5rem;">Ver todos</p>
+                  <p style="font-size:.8rem;color:var(--text-light);">21 productos disponibles</p>
+                </div>
+              </a>
+              <div class="product-card-body">
+                <span class="product-category">Alimentos saludables</span>
+                <h3><a href="https://mimasaifigen.com/es/12-alimentos-saludables">Catálogo completo</a></h3>
+                <div class="product-price"><span class="price-current" style="font-size:1rem;">21 productos</span></div>
+                <a href="https://mimasaifigen.com/es/12-alimentos-saludables" class="btn btn-sm">Ver todos</a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-shipping-note"><p>Pedidos para Canarias, Ceuta, Melilla e internacional, <a href="https://mimasaifigen.com/info/envios">consultar condiciones de envío</a></p></div>
+      <div class="footer-grid">
+        <div class="footer-brand"><img src="https://mimasaifigen.com/img/logo.svg" alt="Mimasa Ifigen" class="footer-logo" /><p>Alimentos saludables y complementos alimenticios de origen natural.</p><div class="footer-badges"><img src="https://mimasaifigen.com/img/cms/afepadi-footer-mimasa--sm.png" alt="Afepadi" /></div></div>
+        <nav class="footer-nav"><h4>Categorías</h4><ul><li><a href="alimentos-saludables.html">Alimentos saludables</a></li><li><a href="salud-y-bienestar.html">Complementos alimenticios</a></li><li><a href="quienes-somos.html">Quiénes somos</a></li><li><a href="blog.html">Blog</a></li></ul></nav>
+        <nav class="footer-nav"><h4>Información</h4><ul><li><a href="https://mimasaifigen.com/info/6-politica-de-cookies">Política de cookies</a></li><li><a href="https://mimasaifigen.com/info/7-condiciones-generales-de-uso-y-contratacion">Condiciones generales</a></li><li><a href="https://mimasaifigen.com/info/9-fichas-tecnicas">Fichas técnicas</a></li></ul></nav>
+        <nav class="footer-nav"><h4>Tu cuenta</h4><ul><li><a href="https://mimasaifigen.com/mi-cuenta">Mi cuenta</a></li><li><a href="https://mimasaifigen.com/historial-compra">Mis pedidos</a></li></ul></nav>
+      </div>
+      <div class="footer-bottom"><p>© Mimasa Ifigen 2026</p><img src="https://mimasaifigen.com/img/cms/banner_logos_kit_digital_1.jpg" alt="Kit Digital" class="footer-kit-digital" /></div>
+    </div>
+  </footer>
+  <script src="../main.js"></script>
+</body>
+</html>

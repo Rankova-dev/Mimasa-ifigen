@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiénes somos — Mimasa Ifigen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .about-hero { background: var(--garnet-dark); color: var(--cream); padding: 5rem 0; text-align: center; }
+    .about-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; line-height: 1.1; margin-bottom: 1rem; }
+    .about-hero p { font-size: 1.1rem; color: rgba(247,244,238,.75); max-width: 560px; margin: 0 auto; }
+    .about-section { padding: 5rem 0; }
+    .about-section:nth-child(even) { background: var(--cream); }
+    .about-brand-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-brand-layout.reverse { direction: rtl; }
+    .about-brand-layout.reverse > * { direction: ltr; }
+    .about-brand-image { border-radius: 16px; overflow: hidden; }
+    .about-brand-image img { width: 100%; height: 360px; object-fit: cover; display: block; }
+    .about-brand-label { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--garnet); margin-bottom: 1rem; }
+    .about-brand-title { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 400; line-height: 1.2; color: var(--text); margin-bottom: 1.5rem; }
+    .about-brand-body p { color: var(--text-light); line-height: 1.8; margin-bottom: 1rem; }
+    .about-brand-body strong { color: var(--text); }
+    .about-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; padding: 3rem 0; }
+    .about-gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; }
+    .about-instagram { text-align: center; padding: 4rem 0; background: var(--cream); border-top: 1px solid var(--border-light); }
+    .about-instagram h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--text); margin-bottom: 1rem; }
+    .about-instagram p { color: var(--text-light); margin-bottom: 2rem; }
+    @media(max-width:768px) { .about-brand-layout, .about-brand-layout.reverse { grid-template-columns: 1fr; direction: ltr; } .about-gallery { grid-template-columns: repeat(2,1fr); } .about-hero h1 { font-size: 2.5rem; } }
+  </style>
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <div class="marquee-track" aria-hidden="true">
+      <span class="marquee-item">Gastos de envío gratuitos a partir de <strong>&nbsp;29€&nbsp;</strong> en toda la península <span class="marquee-dot"></span> Enviamos a todo el mundo <span class="marquee-dot"></span> Productos artesanales y orgánicos <span class="marquee-dot"></span> Atención al cliente&nbsp;<strong>+34 932 374 766</strong> <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Gastos de envío gratuitos a partir de <strong>&nbsp;29€&nbsp;</strong> en toda la península <span class="marquee-dot"></span> Enviamos a todo el mundo <span class="marquee-dot"></span> Productos artesanales y orgánicos <span class="marquee-dot"></span> Atención al cliente&nbsp;<strong>+34 932 374 766</strong> <span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../index.html" class="logo"><img src="https://mimasaifigen.com/img/mimasa-ifigen-logo-1619709035.jpg" alt="Mimasa Ifigen" /></a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="alimentos-saludables.html">Alimentos saludables</a></li>
+          <li><a href="salud-y-bienestar.html">Salud y bienestar</a></li>
+          <li><a href="utensilios.html">Utensilios</a></li>
+          <li><a href="packs.html">Packs</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="header-utils">
+        <button class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></button>
+        <a href="https://mimasaifigen.com/es/mi-cuenta" class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+        <div class="lang-switcher"><button class="lang-current">ES</button><div class="lang-dropdown"><a href="https://mimasaifigen.com/en/">EN</a><a href="https://mimasaifigen.com/fr/">FR</a></div></div>
+        <a href="https://mimasaifigen.com/es/carrito" class="icon-btn cart-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="about-hero">
+      <div class="container">
+        <h1>Quiénes somos</h1>
+        <p>Décadas de trayectoria llevando a tu mesa la sabiduría alimentaria de Oriente y la naturaleza más pura.</p>
+      </div>
+    </div>
+
+    <!-- MIMASA -->
+    <section class="about-section">
+      <div class="container">
+        <div class="about-brand-layout">
+          <div class="about-brand-image">
+            <img src="https://mimasaifigen.com/img/cms/quienes-somos-1.png" alt="Mimasa — empresa familiar" loading="lazy" />
+          </div>
+          <div class="about-brand-body">
+            <p class="about-brand-label">Una empresa familiar</p>
+            <h2 class="about-brand-title">En MIMASA llevamos décadas en el mercado de los alimentos ecológicos</h2>
+            <p>Somos una empresa familiar con una larga tradición en el mercado de los alimentos ecológicos. Comercializamos una amplia gama de <strong>productos elaborados de manera tradicional y artesanal en Japón</strong>: Tamari, Tamari Shoyu, Misos, algas marinas, Kuzu y muchos más.</p>
+            <p>A lo largo de nuestra historia siempre hemos apostado por la calidad, porque la salud es la razón de nuestro trabajo. La amplia gama de productos MIMASA ha constituido la base nutricional de personas durante miles de años, tanto en Oriente como en Occidente.</p>
+            <p>Se trata de aprovechar la sabiduría ancestral que la civilización contemporánea había arrinconado. Por eso ofrecemos <strong>productos originarios de Japón</strong>, donde se guardan celosamente por sus espléndidos efectos sobre el cuerpo humano.</p>
+            <a href="alimentos-saludables.html" class="btn btn-primary" style="margin-top:1rem;">Ver productos Mimasa</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IFIGEN -->
+    <section class="about-section">
+      <div class="container">
+        <div class="about-brand-layout reverse">
+          <div class="about-brand-image">
+            <img src="https://mimasaifigen.com/img/cms/quienes-somos-2.jpg" alt="Ifigen — complementos alimenticios" loading="lazy" />
+          </div>
+          <div class="about-brand-body">
+            <p class="about-brand-label">Complementos de vanguardia</p>
+            <h2 class="about-brand-title">IFIGEN ofrece complementos alimenticios de última generación</h2>
+            <p>Su gama de productos incluye oligoterapia con suplementos fabricados en uno de los más prestigiosos laboratorios suizos; fitoterapia que concentra los principios activos de las plantas; y ácidos grasos esenciales elaborados con técnicas innovadoras que preservan las características de sus moléculas.</p>
+            <p>La calidad de sus productos y la forma única de elaboración posicionan a <strong>IFIGEN como una de las marcas líderes del sector</strong> en complementos alimenticios naturales.</p>
+            <a href="salud-y-bienestar.html" class="btn btn-primary" style="margin-top:1rem;">Ver productos Ifigen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="about-section" style="padding-top:3rem; padding-bottom:3rem;">
+      <div class="container">
+        <div class="about-gallery">
+          <img src="https://mimasaifigen.com/img/cms/quienes-somos-1.png" alt="Mimasa" loading="lazy" />
+          <img src="https://mimasaifigen.com/img/cms/quienes-somos-2.jpg" alt="Elaboración artesanal" loading="lazy" />
+          <img src="https://mimasaifigen.com/img/cms/quienes-somos-3.jpg" alt="Productos ecológicos" loading="lazy" />
+          <img src="https://mimasaifigen.com/img/cms/quienes-somos-4.png" alt="Ifigen" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="trust-section">
+      <div class="container">
+        <ul class="trust-list">
+          <li class="trust-item">
+            <div class="trust-icon"><img src="https://mimasaifigen.com/img/cms/gastos-envio-gratis.svg" alt="" /></div>
+            <div class="trust-text"><strong>Envío gratuito</strong><span>A partir de 29€ — entrega en 2/3 días laborables</span></div>
+          </li>
+          <li class="trust-item">
+            <div class="trust-icon"><img src="https://mimasaifigen.com/img/cms/envios-mundo.svg" alt="" /></div>
+            <div class="trust-text"><strong>Enviamos a todo el mundo</strong><span>No importa dónde estés, haz ya tu pedido</span></div>
+          </li>
+          <li class="trust-item">
+            <div class="trust-icon"><img src="https://mimasaifigen.com/img/cms/artesanal-organico.svg" alt="" /></div>
+            <div class="trust-text"><strong>Artesanales y orgánicos</strong><span>Elaborados de manera tradicional y artesanal</span></div>
+          </li>
+          <li class="trust-item">
+            <div class="trust-icon"><img src="https://mimasaifigen.com/img/cms/servicio-cliente.svg" alt="" /></div>
+            <div class="trust-text"><strong>Atención al cliente</strong><span>+34 932 374 766</span></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM -->
+    <div class="about-instagram">
+      <div class="container">
+        <h2>Síguenos en Instagram</h2>
+        <p>Recetas, consejos y novedades cada semana en @mimasaifigen</p>
+        <a href="https://www.instagram.com/mimasaifigen/" class="btn btn-outline" target="_blank" rel="noopener">Ver perfil en Instagram</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-shipping-note"><p>Pedidos para Canarias, Ceuta, Melilla e internacional, <a href="https://mimasaifigen.com/info/envios">consultar condiciones de envío</a></p></div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://mimasaifigen.com/img/logo.svg" alt="Mimasa Ifigen" class="footer-logo" />
+          <p>Alimentos saludables y complementos alimenticios de origen natural, elaborados con procesos tradicionales y artesanales.</p>
+          <div class="footer-badges"><img src="https://mimasaifigen.com/img/cms/afepadi-footer-mimasa--sm.png" alt="Afepadi" /></div>
+        </div>
+        <nav class="footer-nav"><h4>Categorías</h4><ul><li><a href="alimentos-saludables.html">Alimentos saludables</a></li><li><a href="salud-y-bienestar.html">Complementos alimenticios</a></li><li><a href="quienes-somos.html">Quiénes somos</a></li><li><a href="blog.html">Blog</a></li></ul></nav>
+        <nav class="footer-nav"><h4>Información</h4><ul><li><a href="https://mimasaifigen.com/info/6-politica-de-cookies">Política de cookies</a></li><li><a href="https://mimasaifigen.com/info/7-condiciones-generales-de-uso-y-contratacion">Condiciones generales</a></li><li><a href="https://mimasaifigen.com/info/9-fichas-tecnicas">Fichas técnicas</a></li></ul></nav>
+        <nav class="footer-nav"><h4>Tu cuenta</h4><ul><li><a href="https://mimasaifigen.com/mi-cuenta">Mi cuenta</a></li><li><a href="https://mimasaifigen.com/historial-compra">Mis pedidos</a></li></ul></nav>
+      </div>
+      <div class="footer-bottom"><p>© Mimasa Ifigen 2026</p><img src="https://mimasaifigen.com/img/cms/banner_logos_kit_digital_1.jpg" alt="Kit Digital" class="footer-kit-digital" /></div>
+    </div>
+  </footer>
+  <script src="../main.js"></script>
+</body>
+</html>
