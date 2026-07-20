@@ -1,0 +1,90 @@
+<!-- Overlay -->
+<div class="mi-overlay" id="miOverlay"></div>
+
+<!-- Mini-cart drawer -->
+<aside class="mi-drawer" id="miDrawer" aria-label="Carrito">
+  <div class="mi-drawer__head">
+    <h3 data-i18n="cart_title">Tu carrito</h3>
+    <button class="mi-drawer__close" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="mi-drawer__body" id="cartBody"></div>
+  <div class="mi-drawer__foot" id="cartFoot"></div>
+</aside>
+
+<!-- Quick view modal -->
+<div class="mi-modal" id="miModal" aria-label="Vista rápida">
+  <div class="mi-modal__card">
+    <div class="mi-modal__media"><img id="qvImg" src="" alt=""></div>
+    <div class="mi-modal__body">
+      <button class="mi-modal__close" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+      <div class="mi-pdp__brandrow"><span id="qvBrand" class="mi-pdp__brand mi-pdp__brand--ifigen">IFIGEN</span><span id="qvCat" class="mi-card__cat" style="margin:0"></span></div>
+      <h2 id="qvName" class="mi-h-md" style="margin-bottom:8px"></h2>
+      <p id="qvRef" class="mi-pdp__ref"></p>
+      <div class="mi-pdp__pricerow"><span id="qvPrice" class="mi-pdp__price" style="font-size:2rem"></span></div>
+      <p class="mi-pdp__tax" id="qvTax" data-i18n="qv_tax">Impuestos incluidos · –10% ya aplicado</p>
+      <div class="mi-buyrow">
+        <div class="mi-qty"><button data-qty="-">−</button><input value="1"><button data-qty="+">+</button></div>
+        <button class="mi-btn mi-btn--lg" style="flex:1" data-add data-i18n="qv_add">Añadir al carrito</button>
+      </div>
+      <a href="producto.html" id="qvLink" class="mi-link"><span data-i18n="qv_full">Ver ficha completa</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile nav -->
+<div class="mi-mobile" id="miMobile">
+  <div class="mi-mobile__head">
+    <a class="mi-logo" href="index.html"><img src="assets/img/brand/logo-horizontal.png" alt="Mimasa Ifigen" style="height:32px"></a>
+    <button class="mi-drawer__close" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="mi-mobile__body">
+    <div class="mi-mobile__doors">
+      <a class="mi-mobile__door mi-mobile__door--mimasa" href="mimasa.html"><span class="mi-mobile__door-brand">Mimasa</span><b class="mi-mobile__door-cat" data-i18n="door_food">Alimentos saludables</b></a>
+      <a class="mi-mobile__door mi-mobile__door--ifigen" href="ifigen.html"><span class="mi-mobile__door-brand">Ifigen</span><b class="mi-mobile__door-cat" data-i18n="door_supp">Salud y bienestar</b></a>
+    </div>
+    <a class="mi-mobile__link" href="categoria.html?cat=Utensilios%20de%20cocina"><span data-i18n="nav_utensilios">Utensilios</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a class="mi-mobile__link" href="categoria.html?ofertas=1"><span data-i18n="nav_ofertas">Packs</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a class="mi-mobile__link" href="https://mimasaifigen.com/blog/">Blog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a class="mi-mobile__link" href="#"><span data-i18n="f_cuenta">Mi cuenta</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+  </div>
+</div>
+
+<!-- Buscador -->
+<div class="mi-search" id="miSearch" aria-label="Buscador">
+  <div class="mi-search__panel">
+    <div class="mi-search__bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="searchInput" type="text" data-i18n-ph="search_ph" placeholder="Busca productos: miso, omega-3, kombu…" autocomplete="off" aria-label="Buscar productos">
+      <button class="mi-drawer__close" data-close aria-label="Cerrar buscador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="mi-search__results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- Popup de bienvenida (carrusel editable en admin.html) -->
+<div class="mi-popup" id="miPopup" role="dialog" aria-modal="true" aria-label="Novedades">
+  <div class="mi-popup__card">
+    <button class="mi-popup__close" data-popup-close aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="mi-popup__head">
+      <b data-i18n="popup_hello">¡Bienvenido/a!</b>
+      <span data-i18n="popup_sub">Descubre las novedades y ofertas de Mimasa Ifigen</span>
+    </div>
+    <div class="mi-popup__track" id="popupTrack">
+      <button class="mi-popup__arrow mi-popup__arrow--prev" data-popprev aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="mi-popup__arrow mi-popup__arrow--next" data-popnext aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="mi-popup__dots" id="popupDots"></div>
+    </div>
+    <div class="mi-popup__foot">
+      <a href="#" id="popupCta" class="mi-btn" data-i18n="popup_cta">Ver ahora</a>
+      <button class="mi-link" data-popup-close data-i18n="popup_skip">Seguir navegando</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/i18n.js?v=7"></script>
+<script src="assets/js/data.js?v=7"></script>
+<script src="assets/js/main.js?v=7"></script>
+</body>
+</html>

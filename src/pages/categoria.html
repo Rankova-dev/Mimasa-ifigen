@@ -1,0 +1,70 @@
+{{HEAD}}
+{{HEADER}}
+
+<div class="mi-container">
+  <nav class="mi-crumb" aria-label="Migas de pan">
+    <a href="index.html" data-i18n="crumb_inicio">Inicio</a>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    <span aria-current="page" id="catCrumbName">Catálogo</span>
+  </nav>
+</div>
+
+<section style="padding-bottom:28px">
+  <div class="mi-container">
+    <div class="mi-pagehead mi-pagehead--ifigen mi-reveal" id="catHead" style="padding-block:clamp(46px,5.5vw,72px)">
+      <div class="mi-pagehead__art"><img id="catArt" src="assets/img/products/ifigen/oligen/oligen-120-caps.jpg" alt=""></div>
+      <span class="mi-eyebrow" id="catEyebrow" style="color:var(--ifigen-deep)">Ifigen · Suplementos</span>
+      <h1 style="font-size:clamp(1.8rem,3.4vw,2.6rem)" id="catTitle">Catálogo</h1>
+      <p id="catDesc">Complementos alimenticios pensados para combinar con una alimentación saludable y unos buenos hábitos de vida.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mi-section" style="padding-top:8px">
+  <div class="mi-container">
+    <div class="mi-shop">
+      <!-- Sidebar -->
+      <aside class="mi-filters">
+        <h3 data-i18n="filter">Filtrar</h3>
+        <div class="mi-fgroup">
+          <h4 data-i18n="f_marca">Marca</h4>
+          <div id="fBrands"></div>
+        </div>
+        <div class="mi-fgroup">
+          <h4 data-i18n="f_cat">Categoría</h4>
+          <div id="fCats" style="max-height:280px;overflow:auto"></div>
+        </div>
+        <div class="mi-fgroup">
+          <h4 data-i18n="f_precio">Precio máximo</h4>
+          <div class="mi-price-range"><input type="range" min="5" max="50" value="50" id="fPrice"></div>
+          <div style="display:flex;justify-content:space-between;font-size:.84rem;color:var(--muted);margin-top:6px"><span>5 €</span><span id="fPriceVal">50 €</span></div>
+        </div>
+        <div class="mi-fgroup">
+          <h4 data-i18n="f_diet">Dieta y certificación</h4>
+          <label class="mi-check"><input type="checkbox" id="fBio"> <span>BIO</span></label>
+          <label class="mi-check"><input type="checkbox" id="fSinGluten"> <span data-i18n="f_singluten">Sin gluten</span></label>
+          <label class="mi-check"><input type="checkbox" id="fSinLactosa"> <span data-i18n="f_sinlactosa">Sin lactosa</span></label>
+        </div>
+        <div class="mi-fgroup">
+          <h4 data-i18n="f_disp">Ofertas</h4>
+          <label class="mi-check"><input type="checkbox" id="fOferta"> <span data-i18n="f_oferta">En oferta (>10%)</span></label>
+        </div>
+      </aside>
+
+      <!-- Results -->
+      <div>
+        <div class="mi-toolbar">
+          <p class="mi-toolbar__count"><b id="shopCount">0</b> <span data-i18n="productos">productos</span></p>
+          <div class="mi-toolbar__right">
+            <button class="mi-select"><span data-i18n="relevancia">Relevancia</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          </div>
+        </div>
+        <div class="mi-chiprow" id="chipRow"></div>
+        <div class="mi-prodgrid mi-prodgrid--3" id="shopGrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{FOOTER}}
+{{OVERLAYS}}

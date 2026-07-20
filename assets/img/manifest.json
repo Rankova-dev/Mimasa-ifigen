@@ -1,0 +1,644 @@
+[
+ {
+  "brand": "ifigen",
+  "category": "general",
+  "file": "ifigen/general/colutorio-dental-200-ml.jpg",
+  "source_name": "Colutorio dental 200 ml"
+ },
+ {
+  "brand": "ifigen",
+  "category": "general",
+  "file": "ifigen/general/elixir-4-estaciones-250-ml.jpg",
+  "source_name": "Elixir 4 Estaciones 250 ml"
+ },
+ {
+  "brand": "ifigen",
+  "category": "general",
+  "file": "ifigen/general/floragen-30-caps.jpg",
+  "source_name": "Floragen 30 caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "general",
+  "file": "ifigen/general/locion-capilar-200-ml.jpg",
+  "source_name": "Loción capilar 200 ml"
+ },
+ {
+  "brand": "ifigen",
+  "category": "general",
+  "file": "ifigen/general/melatonina-plus-30-caps.jpg",
+  "source_name": "Melatonina Plus 30 caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "fitoterapia",
+  "file": "ifigen/fitoterapia/bodegon.jpg",
+  "source_name": "BODEGON"
+ },
+ {
+  "brand": "ifigen",
+  "category": "fitoterapia",
+  "file": "ifigen/fitoterapia/gb-caps.jpg",
+  "source_name": "GB caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "fitoterapia",
+  "file": "ifigen/fitoterapia/gb.jpg",
+  "source_name": "GB_"
+ },
+ {
+  "brand": "ifigen",
+  "category": "fitoterapia",
+  "file": "ifigen/fitoterapia/na-caps.jpg",
+  "source_name": "NA caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "fitoterapia",
+  "file": "ifigen/fitoterapia/nar.jpg",
+  "source_name": "NAR_"
+ },
+ {
+  "brand": "ifigen",
+  "category": "fitoterapia",
+  "file": "ifigen/fitoterapia/na.jpg",
+  "source_name": "NA_"
+ },
+ {
+  "brand": "ifigen",
+  "category": "fitoterapia",
+  "file": "ifigen/fitoterapia/pp40.jpg",
+  "source_name": "PP40_"
+ },
+ {
+  "brand": "ifigen",
+  "category": "fitoterapia",
+  "file": "ifigen/fitoterapia/vr.jpg",
+  "source_name": "VR"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-120-caps-amb-caps.jpg",
+  "source_name": "Oligen 120 caps amb caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-120-caps.jpg",
+  "source_name": "Oligen 120 caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-60-caps-amb-caps.jpg",
+  "source_name": "Oligen 60 caps amb caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-60-caps.jpg",
+  "source_name": "Oligen 60 caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-control-colesterol-blister.jpg",
+  "source_name": "Oligen Control Colesterol blister"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-control-colesterol-caps-blister-i-sueltas.jpg",
+  "source_name": "Oligen Control Colesterol caps blister i sueltas"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-control-colesterol.jpg",
+  "source_name": "Oligen Control Colesterol"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-donna-30-30-softgel-caps.jpg",
+  "source_name": "Oligen Donna 30+30 softgel+caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-donna-30-30.jpg",
+  "source_name": "Oligen Donna 30+30"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-liquido.jpg",
+  "source_name": "Oligen Liquido"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-memory-amb-caps.jpg",
+  "source_name": "Oligen Memory amb caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-memory.jpg",
+  "source_name": "Oligen Memory"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-peques.jpg",
+  "source_name": "Oligen Peques"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-sugar-control-30-30-softgel-caps.jpg",
+  "source_name": "Oligen Sugar Control 30+30 softgel+caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-sugar-control-30-30.jpg",
+  "source_name": "Oligen Sugar Control 30+30"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-vision-amb-caps.jpg",
+  "source_name": "Oligen Visión amb caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-vital-30-30-softgel-caps.jpg",
+  "source_name": "Oligen Vital 30+30 softgel+caps"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligen",
+  "file": "ifigen/oligen/oligen-vital-30-30.jpg",
+  "source_name": "Oligen Vital 30+30"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/azufre.jpg",
+  "source_name": "Azufre"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/bismuto.jpg",
+  "source_name": "Bismuto"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/calacio.jpg",
+  "source_name": "Calacio"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/cobalto.jpg",
+  "source_name": "Cobalto"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/cobre.jpg",
+  "source_name": "Cobre"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/cromo.jpg",
+  "source_name": "Cromo"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/fluor.jpg",
+  "source_name": "Fluor"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/fosforo.jpg",
+  "source_name": "Fosforo"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/hierro.jpg",
+  "source_name": "Hierro"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/manganeso.jpg",
+  "source_name": "Manganeso"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/niquel.jpg",
+  "source_name": "Niquel"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/potasio.jpg",
+  "source_name": "Potasio"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/selenio.jpg",
+  "source_name": "Selenio"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/silicio.jpg",
+  "source_name": "Silicio"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/yodo.jpg",
+  "source_name": "Yodo"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/zinc-cobre.jpg",
+  "source_name": "Zinc + Cobre"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/zinc-niquel-cobalto.jpg",
+  "source_name": "Zinc + Niquel + Cobalto"
+ },
+ {
+  "brand": "ifigen",
+  "category": "oligoelements",
+  "file": "ifigen/oligoelements/zinc.jpg",
+  "source_name": "Zinc"
+ },
+ {
+  "brand": "ifigen",
+  "category": "phyto-min",
+  "file": "ifigen/phyto-min/phyto-min-berro.jpg",
+  "source_name": "Phyto-Min Berro"
+ },
+ {
+  "brand": "ifigen",
+  "category": "phyto-min",
+  "file": "ifigen/phyto-min/phyto-min-flor-de-naranjo.jpg",
+  "source_name": "Phyto-Min Flor de Naranjo"
+ },
+ {
+  "brand": "ifigen",
+  "category": "phyto-min",
+  "file": "ifigen/phyto-min/phyto-min-grosellero-negro.jpg",
+  "source_name": "Phyto-Min Grosellero negro"
+ },
+ {
+  "brand": "ifigen",
+  "category": "phyto-min",
+  "file": "ifigen/phyto-min/phyto-min-salvia.jpg",
+  "source_name": "Phyto-Min Salvia"
+ },
+ {
+  "brand": "mimasa",
+  "category": "general",
+  "file": "mimasa/general/azuki-bio-500-grs.jpg",
+  "source_name": "Azuki BIO 500 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "general",
+  "file": "mimasa/general/tekka-100-grs.jpg",
+  "source_name": "Tekka 100 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/agar-agar-20-grs.jpg",
+  "source_name": "AGAR AGAR 20 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/agar-agar-en-polvo-40-grs.jpg",
+  "source_name": "Agar Agar en polvo 40 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/alga-dulse-bio-amb-alga.jpg",
+  "source_name": "Alga Dulse BIO amb alga"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/alga-dulse-bio.jpg",
+  "source_name": "Alga Dulse BIO"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/bodegon.jpg",
+  "source_name": "BODEGON"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/espagueti-de-mar-bio-amb-alga.jpg",
+  "source_name": "Espagueti de Mar BIO amb  alga"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/espagueti-de-mar-bio.jpg",
+  "source_name": "Espagueti de Mar BIO"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/kombu-bio-amb-alga-2.jpg",
+  "source_name": "Kombu BIO amb alga 2"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/kombu-bio.jpg",
+  "source_name": "Kombu BIO"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/wakame-bio-amb-alga.jpg",
+  "source_name": "Wakame BIO amb alga"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/alga-nori-origen-japon-25-grs.jpg",
+  "source_name": "Alga Nori origen Japon 25 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/hijiki-origen-japon-50-grs.jpg",
+  "source_name": "Hijiki origen Japon 50 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "algas-marinas",
+  "file": "mimasa/algas-marinas/kombu-origen-japon-50-grs.jpg",
+  "source_name": "Kombu origen Japon 50 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "bebidas",
+  "file": "mimasa/bebidas/bancha-bio-100-grs-amb-te.jpg",
+  "source_name": "BANCHA BIO 100 GRS. amb tè_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "bebidas",
+  "file": "mimasa/bebidas/bancha-bio-100-grs.jpg",
+  "source_name": "BANCHA BIO 100 GRS"
+ },
+ {
+  "brand": "mimasa",
+  "category": "bebidas",
+  "file": "mimasa/bebidas/inka.jpg",
+  "source_name": "INKA"
+ },
+ {
+  "brand": "mimasa",
+  "category": "bebidas",
+  "file": "mimasa/bebidas/kukicha-bio-100grs-amb-te.jpg",
+  "source_name": "KUKICHA BIO 100GRS. amb tè_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "bebidas",
+  "file": "mimasa/bebidas/kukicha-bio-100grs.jpg",
+  "source_name": "KUKICHA BIO 100GRS"
+ },
+ {
+  "brand": "mimasa",
+  "category": "cereales-i-proteinas-vegetales",
+  "file": "mimasa/cereales-i-proteinas-vegetales/copos-de-avena-bio-500-grs.jpg",
+  "source_name": "Copos de avena BIO 500 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "cereales-i-proteinas-vegetales",
+  "file": "mimasa/cereales-i-proteinas-vegetales/mijo-bio-500-grs.jpg",
+  "source_name": "Mijo BIO 500 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "cereales-i-proteinas-vegetales",
+  "file": "mimasa/cereales-i-proteinas-vegetales/protina-400-grs.jpg",
+  "source_name": "Protina 400 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "misos",
+  "file": "mimasa/misos/genmai-miso-400-grs.jpg",
+  "source_name": "Genmai miso 400 grs_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "misos",
+  "file": "mimasa/misos/hatcho-miso-400-grs.jpg",
+  "source_name": "Hatcho miso 400 grs_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "misos",
+  "file": "mimasa/misos/kome-miso-300-grs.jpg",
+  "source_name": "Kome miso 300 grs_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "misos",
+  "file": "mimasa/misos/shiro-miso.jpg",
+  "source_name": "Shiro Miso"
+ },
+ {
+  "brand": "mimasa",
+  "category": "raices-y-otras-plantas",
+  "file": "mimasa/raices-y-otras-plantas/daikon-100-grs.jpg",
+  "source_name": "Daikon 100 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "raices-y-otras-plantas",
+  "file": "mimasa/raices-y-otras-plantas/jengibre-130-grs.jpg",
+  "source_name": "Jengibre 130 grs"
+ },
+ {
+  "brand": "mimasa",
+  "category": "raices-y-otras-plantas",
+  "file": "mimasa/raices-y-otras-plantas/kuzu-bio-800-gr.jpg",
+  "source_name": "KUZU BIO 800 gr"
+ },
+ {
+  "brand": "mimasa",
+  "category": "raices-y-otras-plantas",
+  "file": "mimasa/raices-y-otras-plantas/kuzu-bio-bolsa-100gr.jpg",
+  "source_name": "KUZU BIO bolsa 100gr"
+ },
+ {
+  "brand": "mimasa",
+  "category": "raices-y-otras-plantas",
+  "file": "mimasa/raices-y-otras-plantas/kuzu-bolsa-100gr.jpg",
+  "source_name": "KUZU bolsa 100gr"
+ },
+ {
+  "brand": "mimasa",
+  "category": "raices-y-otras-plantas",
+  "file": "mimasa/raices-y-otras-plantas/lotus-100-gr.jpg",
+  "source_name": "Lotus 100 gr"
+ },
+ {
+  "brand": "mimasa",
+  "category": "raices-y-otras-plantas",
+  "file": "mimasa/raices-y-otras-plantas/lotus-200-gr.jpg",
+  "source_name": "Lotus 200 gr"
+ },
+ {
+  "brand": "mimasa",
+  "category": "raices-y-otras-plantas",
+  "file": "mimasa/raices-y-otras-plantas/lotus-50-gr.jpg",
+  "source_name": "Lotus 50 gr"
+ },
+ {
+  "brand": "mimasa",
+  "category": "sesamo",
+  "file": "mimasa/sesamo/gomasio-bio-200-grs.jpg",
+  "source_name": "GOMASIO BIO 200 grs_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "sesamo",
+  "file": "mimasa/sesamo/tahin-bio-300grs.jpg",
+  "source_name": "TAHIN BIO 300GRS_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "soja",
+  "file": "mimasa/soja/tamari-bio-150ml.jpg",
+  "source_name": "TAMARI BIO 150ml"
+ },
+ {
+  "brand": "mimasa",
+  "category": "soja",
+  "file": "mimasa/soja/tamari-bio-360ml.jpg",
+  "source_name": "TAMARI BIO 360ml"
+ },
+ {
+  "brand": "mimasa",
+  "category": "soja",
+  "file": "mimasa/soja/tamari-shoyu-bio-150ml.jpg",
+  "source_name": "TAMARI-SHOYU BIO 150ml"
+ },
+ {
+  "brand": "mimasa",
+  "category": "soja",
+  "file": "mimasa/soja/tamari-shoyu-bio-500ml.jpg",
+  "source_name": "TAMARI-SHOYU BIO 500ml"
+ },
+ {
+  "brand": "mimasa",
+  "category": "umeboshi",
+  "file": "mimasa/umeboshi/pasta-umeboshi-250-grs.jpg",
+  "source_name": "Pasta umeboshi 250 grs_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "umeboshi",
+  "file": "mimasa/umeboshi/umebol-35-grs.jpg",
+  "source_name": "Umebol 35 grs_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "umeboshi",
+  "file": "mimasa/umeboshi/umebol-65-grs.jpg",
+  "source_name": "Umebol 65 grs_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "umeboshi",
+  "file": "mimasa/umeboshi/umeboshi-con-shiso-150-grs.jpg",
+  "source_name": "Umeboshi con Shiso 150 grs_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "umeboshi",
+  "file": "mimasa/umeboshi/umeboshi-natural-1-kg.jpg",
+  "source_name": "Umeboshi natural 1 kg"
+ },
+ {
+  "brand": "mimasa",
+  "category": "umeboshi",
+  "file": "mimasa/umeboshi/umeboshi-natural-150-grs.jpg",
+  "source_name": "Umeboshi natural 150 grs_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "umeboshi",
+  "file": "mimasa/umeboshi/umeboshi-natural-250-grs.jpg",
+  "source_name": "Umeboshi natural 250 grs_"
+ },
+ {
+  "brand": "mimasa",
+  "category": "utensilios-y-bibliografia",
+  "file": "mimasa/utensilios-y-bibliografia/cepillo-para-limpiar-hortalizas-tawashi.jpg",
+  "source_name": "Cepillo para limpiar hortalizas (tawashi)"
+ },
+ {
+  "brand": "mimasa",
+  "category": "utensilios-y-bibliografia",
+  "file": "mimasa/utensilios-y-bibliografia/colador-de-te-cana-de-bambu.jpg",
+  "source_name": "Colador de te (caña de bambu)"
+ },
+ {
+  "brand": "mimasa",
+  "category": "utensilios-y-bibliografia",
+  "file": "mimasa/utensilios-y-bibliografia/esterillas-sushi-cana-de-bambu.jpg",
+  "source_name": "Esterillas sushi (caña de bambu)"
+ },
+ {
+  "brand": "mimasa",
+  "category": "utensilios-y-bibliografia",
+  "file": "mimasa/utensilios-y-bibliografia/libro-macrobiotica-michio-kushi.jpg",
+  "source_name": "Libro macrobiotica (Michio Kushi)"
+ },
+ {
+  "brand": "mimasa",
+  "category": "utensilios-y-bibliografia",
+  "file": "mimasa/utensilios-y-bibliografia/suribachi.jpg",
+  "source_name": "Suribachi"
+ },
+ {
+  "brand": "mimasa",
+  "category": "utensilios-y-bibliografia",
+  "file": "mimasa/utensilios-y-bibliografia/surikogi.jpg",
+  "source_name": "Surikogi"
+ }
+]

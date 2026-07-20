@@ -1,2 +1,9 @@
+node_modules/
+.vercel/
 .claude/
-*.png
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+.vercel
