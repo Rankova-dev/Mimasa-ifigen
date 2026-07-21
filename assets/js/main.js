@@ -465,7 +465,8 @@
     let banners; try{ banners = JSON.parse(localStorage.getItem('mi-site-banners')) || DEFAULT_SITE_BANNERS; }catch(e){ banners = DEFAULT_SITE_BANNERS; }
     banners = banners.filter(b=>b.active!==false && b.img);
     if(!banners.length){ el.style.display='none'; return; }
-    el.innerHTML = banners.map(b=>`<a class="mi-sitebanner__item" href="${b.link||'#'}"><img src="${b.img}" alt="${b.alt||''}" loading="lazy"></a>`).join('');
+    el.innerHTML = banners.map(b=>`<a class="mi-sitebanner__item" href="${b.link||'#'}"><img src="${b.img}" alt="${b.alt||''}" loading="lazy">
+      <span class="mi-sitebanner__cta">${t('banner_cta')} ${ICON.arrow}</span></a>`).join('');
   }
 
   document.addEventListener('DOMContentLoaded', ()=>{
