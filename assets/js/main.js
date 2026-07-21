@@ -459,14 +459,31 @@
     setTimeout(()=>{ pop.classList.add('is-on'); document.body.style.overflow='hidden'; sessionStorage.setItem('mi-popup-seen','1'); }, 900);
   }
 
-  /* ---------- Banner permanente (portada, no se cierra) ---------- */
+  /* ---------- Banner permanente (portada, no se cierra) — carrusel ---------- */
   function renderSiteBanner(){
     const el = $('#miSiteBanner'); if(!el) return;
     let banners; try{ banners = JSON.parse(localStorage.getItem('mi-site-banners')) || DEFAULT_SITE_BANNERS; }catch(e){ banners = DEFAULT_SITE_BANNERS; }
     banners = banners.filter(b=>b.active!==false && b.img);
     if(!banners.length){ el.style.display='none'; return; }
-    el.innerHTML = banners.map(b=>`<a class="mi-sitebanner__item" href="${b.link||'#'}"><img src="${b.img}" alt="${b.alt||''}" loading="lazy">
-      <span class="mi-sitebanner__cta">${t('banner_cta')} ${ICON.arrow}</span></a>`).join('');
+
+    const slides = banners.map((b,i)=>`<a class="mi-topbanner__slide${i===0?' is-on':''}" href="${b.link||'#'}">
+      <img src="${b.img}" alt="${b.alt||''}" loading="${i===0?'eager':'lazy'}">
+      <span class="mi-topbanner__cta">${t('banner_cta')} ${ICON.arrow}</span></a>`).join('');
+    const dots = banners.length>1
+      ? `<div class="mi-topbanner__dots">${banners.map((b,i)=>`<button class="mi-topbanner__dot${i===0?' is-on':''}" data-slide="${i}" aria-label="${i+1}"></button>`).join('')}</div>`
+      : '';
+    el.innerHTML = slides + dots;
+    if(banners.length<2) return;
+
+    let idx = 0;
+    const slideEls = $$('.mi-topbanner__slide', el), dotEls = $$('.mi-topbanner__dot', el);
+    const go = n=>{
+      idx = (n+banners.length)%banners.length;
+      slideEls.forEach((s,i)=>s.classList.toggle('is-on', i===idx));
+      dotEls.forEach((d,i)=>d.classList.toggle('is-on', i===idx));
+    };
+    dotEls.forEach((d,i)=>d.addEventListener('click', e=>{ e.preventDefault(); go(i); }));
+    setInterval(()=>go(idx+1), 5000);
   }
 
   document.addEventListener('DOMContentLoaded', ()=>{

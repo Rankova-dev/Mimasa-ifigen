@@ -93,7 +93,7 @@ PRODUCTS.forEach(p=>{
 /* Banners reales de la web actual (editables en admin.html):
    - popup de bienvenida: una sola imagen, se puede cerrar
    - banner del sitio: siempre visible en portada, no se cierra */
-const DEFAULT_POPUP_SLIDE = {img:"assets/img/banners/banner-oligen-memory.png", alt:"Oligen Memory", link:"producto.html?p=83040", active:true};
+const DEFAULT_POPUP_SLIDE = {img:"assets/img/banners/popup-packs.svg", alt:"Packs especiales Mimasa Ifigen", link:"categoria.html?ofertas=1", active:true};
 const DEFAULT_SITE_BANNERS = [
   {img:"assets/img/banners/banner-soja.png", alt:"Descuento salsas de soja", link:"categoria.html?brand=mimasa&cat=Salsas%20de%20soja", active:true},
   {img:"assets/img/banners/banner-oligen-memory.png", alt:"Oligen Memory", link:"producto.html?p=83040", active:true},
