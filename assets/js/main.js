@@ -97,7 +97,7 @@
 
   function openDrawer(){ renderCart(); $('#miDrawer')?.classList.add('is-on'); $('#miOverlay')?.classList.add('is-on'); document.body.style.overflow='hidden'; }
   function closeAll(){
-    ['#miDrawer','#miModal','#miMobile','#miSearch'].forEach(s=>$(s)?.classList.remove('is-on'));
+    ['#miDrawer','#miModal','#miMobile','#miSearch','#miFilters'].forEach(s=>$(s)?.classList.remove('is-on'));
     $('#miOverlay')?.classList.remove('is-on');
     document.body.style.overflow='';
   }
@@ -234,6 +234,7 @@
     if(q){ openQuick(q.closest('.mi-card').dataset.id); return; }
     if(e.target.closest('[data-cart-open]')){ openDrawer(); return; }
     if(e.target.closest('[data-search-open]')){ openSearch(); return; }
+    if(e.target.closest('[data-filters-open]')){ $('#miFilters')?.classList.add('is-on'); $('#miOverlay')?.classList.add('is-on'); document.body.style.overflow='hidden'; return; }
     const sug = e.target.closest('[data-sug]');
     if(sug){ const inp=$('#searchInput'); inp.value=sug.dataset.sug; renderSearch(inp.value); inp.focus(); return; }
     if(e.target.closest('[data-close]') || e.target.id==='miOverlay' || e.target.id==='miSearch'){ closeAll(); return; }

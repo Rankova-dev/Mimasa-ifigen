@@ -116,8 +116,11 @@
   <div class="mi-container">
     <div class="mi-shop">
       <!-- Sidebar -->
-      <aside class="mi-filters">
-        <h3 data-i18n="filter">Filtrar</h3>
+      <aside class="mi-filters" id="miFilters">
+        <div class="mi-filters__head">
+          <h3 data-i18n="filter">Filtrar</h3>
+          <button class="mi-drawer__close" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        </div>
         <div class="mi-fgroup">
           <h4 data-i18n="f_marca">Marca</h4>
           <div id="fBrands"></div>
@@ -141,6 +144,7 @@
           <h4 data-i18n="f_disp">Ofertas</h4>
           <label class="mi-check"><input type="checkbox" id="fOferta"> <span data-i18n="f_oferta">En oferta (>10%)</span></label>
         </div>
+        <button class="mi-btn mi-btn--block mi-filters__apply" data-close data-i18n="filter_apply">Ver resultados</button>
       </aside>
 
       <!-- Results -->
@@ -148,6 +152,10 @@
         <div class="mi-toolbar">
           <p class="mi-toolbar__count"><b id="shopCount">0</b> <span data-i18n="productos">productos</span></p>
           <div class="mi-toolbar__right">
+            <button class="mi-filterbtn" data-filters-open>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+              <span data-i18n="filter">Filtrar</span>
+            </button>
             <button class="mi-select"><span data-i18n="relevancia">Relevancia</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
           </div>
         </div>
