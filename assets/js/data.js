@@ -95,8 +95,8 @@ PRODUCTS.forEach(p=>{
    - banner del sitio: siempre visible en portada, no se cierra */
 const DEFAULT_POPUP_SLIDE = {img:"assets/img/banners/popup-packs.svg", alt:"Packs especiales Mimasa Ifigen", link:"categoria.html?ofertas=1", active:true};
 const DEFAULT_SITE_BANNERS = [
-  {img:"assets/img/banners/banner-soja.png", alt:"Descuento salsas de soja", link:"categoria.html?brand=mimasa&cat=Salsas%20de%20soja", active:true},
-  {img:"assets/img/banners/banner-oligen-memory.png", alt:"Oligen Memory", link:"producto.html?p=83040", active:true},
+  {img:"assets/img/banners/banner-soja.jpg", alt:"Descuento salsas de soja", link:"categoria.html?brand=mimasa&cat=Salsas%20de%20soja", active:true},
+  {img:"assets/img/banners/banner-oligen-memory.jpg", alt:"Oligen Memory", link:"producto.html?p=83040", active:true},
 ];
 
 /* Identificador estable para URLs de la demo (?p=…) */
