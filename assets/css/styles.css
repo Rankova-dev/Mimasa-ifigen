@@ -256,8 +256,8 @@ p{margin:0}
 .mi-cat__img{position:absolute;inset:0}
 .mi-cat__img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
 .mi-cat:hover .mi-cat__img img{transform:scale(1.07)}
-.mi-cat__grad{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(20,21,18,.78) 100%)}
-.mi-cat__body{position:absolute;left:20px;right:20px;bottom:18px;color:#fff;z-index:2}
+.mi-cat__body{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;color:#fff;
+  background:rgba(32,33,29,.72);backdrop-filter:blur(3px);border-radius:var(--r-sm);padding:11px 15px}
 .mi-cat__body b{font-family:var(--ff-display);font-size:1.18rem;font-weight:600;display:block}
 .mi-cat__body span{font-size:.82rem;opacity:.8}
 .mi-cat__chip{position:absolute;top:14px;left:14px;z-index:2;font-size:.68rem;font-weight:800;letter-spacing:.1em;

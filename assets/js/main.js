@@ -55,7 +55,6 @@
   function tile(c, brand){
     return `<a class="mi-cat" href="${c.url}">
       <div class="mi-cat__img"><img src="${c.img}" alt="${c.name}" loading="lazy"></div>
-      <div class="mi-cat__grad"></div>
       <span class="mi-cat__chip mi-cat__chip--${brand}">${brand.toUpperCase()}</span>
       <div class="mi-cat__body"><b>${c.name}</b><span>${c.desc}</span></div>
     </a>`;
