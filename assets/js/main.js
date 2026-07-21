@@ -90,7 +90,8 @@
   }
 
   /* ---------- Mini-cart (funcional; empieza vacío) ---------- */
-  const FREE_SHIP = 29;
+  /* Envío gratis: 29 € en España (ES), 299 € en envíos internacionales (EN/FR) */
+  const FREE_SHIP = (typeof LANG!=='undefined' && LANG!=='es') ? 299 : 29;
   let cart = [];
   const cartUnits = () => cart.reduce((s,i)=>s+i.qty,0);
   const cartTotal = () => cart.reduce((s,i)=>s+(i.price||0)*i.qty,0);
@@ -285,18 +286,8 @@
       const oneBrand = state.brands.size===1 ? [...state.brands][0] : null;
       head.classList.remove('mi-pagehead--mimasa','mi-pagehead--ifigen');
       if(oneBrand) head.classList.add('mi-pagehead--'+oneBrand);
-      const eyebrow = $('#catEyebrow');
-      if(eyebrow){
-        eyebrow.textContent = isOfertas? 'Mimasa & Ifigen' : (oneBrand? t(oneBrand==='mimasa'?'brand_tag_m':'brand_tag_i') : t('cat_all'));
-        eyebrow.style.color = oneBrand ? `var(--${oneBrand==='mimasa'?'mimasa':'ifigen-deep'})` : 'var(--wine)';
-      }
       const title = isOfertas? t('ofertas') : (state.cat || (oneBrand? t(oneBrand==='mimasa'?'cat_food':'cat_supp') : t('cat_todos')));
       $('#catTitle').textContent = title;
-      $('#catDesc').textContent = isOfertas
-        ? t('ofertas_desc')
-        : (oneBrand==='mimasa' ? t('cat_m_desc') : t('cat_i_desc'));
-      const first = PRODUCTS.find(p=> state.brands.has(p.brand) && (!state.cat || norm(p.cat)===norm(state.cat)));
-      if(first) $('#catArt').src = first.img;
       $('#catCrumbName').textContent = title;
       document.title = title+' | Mimasa Ifigen';
     }
@@ -456,37 +447,32 @@
   }
 
   /* ---------- Init ---------- */
-  /* ---------- Popup de bienvenida (carrusel) ---------- */
-  let popIdx = 0, popSlides = [], popTimer = null;
-  function popupRender(){
-    $$('#popupTrack .mi-popup__slide').forEach((el,i)=>el.classList.toggle('is-on', i===popIdx));
-    $$('#popupDots button').forEach((d,i)=>d.classList.toggle('is-on', i===popIdx));
-    const cta = $('#popupCta'); if(cta) cta.href = popSlides[popIdx].link || '#';
-  }
-  function popupGo(i){ popIdx = (i+popSlides.length)%popSlides.length; popupRender(); }
-  function closePopup(){ const p=$('#miPopup'); if(p){ p.classList.remove('is-on'); document.body.style.overflow=''; clearInterval(popTimer); } }
+  /* ---------- Popup de bienvenida (una sola imagen) ---------- */
+  function closePopup(){ const p=$('#miPopup'); if(p){ p.classList.remove('is-on'); document.body.style.overflow=''; } }
   function initPopup(){
     const pop = $('#miPopup'); if(!pop) return;
     if(params.get('nopopup')) return;
     if(sessionStorage.getItem('mi-popup-seen')) return;
-    let slides; try{ slides = JSON.parse(localStorage.getItem('mi-popup-slides')) || DEFAULT_SLIDES; }catch(e){ slides = DEFAULT_SLIDES; }
-    popSlides = slides.filter(sl=>sl.active!==false && sl.img);
-    if(!popSlides.length) return;
-    $('#popupTrack').insertAdjacentHTML('afterbegin', popSlides.map(sl=>`<a class="mi-popup__slide" href="${sl.link||'#'}"><img src="${sl.img}" alt="${sl.alt||''}"></a>`).join(''));
-    $('#popupDots').innerHTML = popSlides.map((_,i)=>`<button data-popdot="${i}" aria-label="Banner ${i+1}"></button>`).join('');
-    document.addEventListener('click', e=>{
-      const d = e.target.closest('[data-popdot]'); if(d){ popupGo(+d.dataset.popdot); return; }
-      if(e.target.closest('[data-popprev]')){ popupGo(popIdx-1); return; }
-      if(e.target.closest('[data-popnext]')){ popupGo(popIdx+1); return; }
-    });
-    popupRender();
+    let slide; try{ slide = JSON.parse(localStorage.getItem('mi-popup-slide')) || DEFAULT_POPUP_SLIDE; }catch(e){ slide = DEFAULT_POPUP_SLIDE; }
+    if(!slide || slide.active===false || !slide.img) return;
+    $('#popupTrack').innerHTML = `<a class="mi-popup__slide is-on" href="${slide.link||'#'}"><img src="${slide.img}" alt="${slide.alt||''}"></a>`;
+    const cta = $('#popupCta'); if(cta) cta.href = slide.link || '#';
     setTimeout(()=>{ pop.classList.add('is-on'); document.body.style.overflow='hidden'; sessionStorage.setItem('mi-popup-seen','1'); }, 900);
-    popTimer = setInterval(()=>popupGo(popIdx+1), 4500);
+  }
+
+  /* ---------- Banner permanente (portada, no se cierra) ---------- */
+  function renderSiteBanner(){
+    const el = $('#miSiteBanner'); if(!el) return;
+    let banners; try{ banners = JSON.parse(localStorage.getItem('mi-site-banners')) || DEFAULT_SITE_BANNERS; }catch(e){ banners = DEFAULT_SITE_BANNERS; }
+    banners = banners.filter(b=>b.active!==false && b.img);
+    if(!banners.length){ el.style.display='none'; return; }
+    el.innerHTML = banners.map(b=>`<a class="mi-sitebanner__item" href="${b.link||'#'}"><img src="${b.img}" alt="${b.alt||''}" loading="lazy"></a>`).join('');
   }
 
   document.addEventListener('DOMContentLoaded', ()=>{
     applyI18n();
     initPopup();
+    renderSiteBanner();
     // home
     renderGrid('#gridFeatured', PRODUCTS.filter(p=>p.price!=null).slice(0,8));
     renderTiles('#tilesMimasaHome', CATS_MIMASA.slice(0,4), 'mimasa');

@@ -6,8 +6,8 @@
 <title>Sobre nosotros | Mimasa Ifigen</title>
 <meta name="description" content="Conoce Mimasa Ifigen: una empresa familiar con una larga tradición en alimentos ecológicos y complementos alimenticios de vanguardia.">
 <meta name="keywords" content="mimasa, mimasa ifigen, alimentos saludables, complementos alimenticios, productos ecológicos">
-<meta property="og:title" content="Sobre nosotros | Mimasa Ifigen">
-<meta property="og:description" content="Conoce Mimasa Ifigen: una empresa familiar con una larga tradición en alimentos ecológicos y complementos alimenticios de vanguardia.">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESC}}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mimasa Ifigen">
 <link rel="icon" type="image/png" href="assets/img/brand/favicon.png?v=9">
@@ -124,6 +124,20 @@
     <div class="mi-reveal">
       <h2 class="mi-h-md" style="font-size:1.5rem;margin-bottom:14px;color:var(--ifigen-deep)">Ifigen</h2>
       <p class="mi-lead" data-i18n="about_ifigen">IFIGEN ofrece complementos alimenticios de vanguardia: oligoterapia fabricada en prestigiosos laboratorios suizos, fitoterapia y ácidos grasos esenciales elaborados con técnicas innovadoras que preservan sus propiedades.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="mi-section mi-section--tight">
+  <div class="mi-container">
+    <div class="mi-news mi-reveal">
+      <h2 data-i18n="news_t">¿Quieres aprender a cuidarte desde dentro?</h2>
+      <p data-i18n="news_d">Recibe consejos, recetas y novedades de Mimasa Ifigen para empezar o mantener un estilo de vida saludable.</p>
+      <form class="mi-news__form" onsubmit="return false">
+        <input type="email" data-i18n-ph="news_ph" placeholder="Tu correo electrónico" aria-label="Correo electrónico">
+        <button class="mi-btn" type="submit" data-i18n="news_btn">Suscribirme</button>
+      </form>
     </div>
   </div>
 </section>
@@ -266,11 +280,7 @@
       <b data-i18n="popup_hello">¡Bienvenido/a!</b>
       <span data-i18n="popup_sub">Descubre las novedades y ofertas de Mimasa Ifigen</span>
     </div>
-    <div class="mi-popup__track" id="popupTrack">
-      <button class="mi-popup__arrow mi-popup__arrow--prev" data-popprev aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <button class="mi-popup__arrow mi-popup__arrow--next" data-popnext aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-      <div class="mi-popup__dots" id="popupDots"></div>
-    </div>
+    <div class="mi-popup__track" id="popupTrack"></div>
     <div class="mi-popup__foot">
       <a href="#" id="popupCta" class="mi-btn" data-i18n="popup_cta">Ver ahora</a>
       <button class="mi-link" data-popup-close data-i18n="popup_skip">Seguir navegando</button>
@@ -283,3 +293,4 @@
 <script src="assets/js/main.js?v=7"></script>
 </body>
 </html>
+

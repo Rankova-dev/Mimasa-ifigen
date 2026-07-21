@@ -39,14 +39,22 @@
     <a href="index.html"><img src="assets/img/brand/logo-color.png" alt="Mimasa Ifigen"></a>
     <span class="adm-badge">Modo administración · Demo</span>
   </div>
-  <h1 class="mi-h-md" style="margin-bottom:8px">Popup de bienvenida</h1>
-  <p style="color:var(--ink-2);max-width:64ch">Gestiona los banners del carrusel que ven los clientes al entrar en la web: cambia imágenes, enlaces, el orden, o desactívalos — sin tocar código.</p>
+  <h1 class="mi-h-md" style="margin-bottom:8px">Banners de la web</h1>
+  <p style="color:var(--ink-2);max-width:64ch">Gestiona el popup de bienvenida y el banner fijo de portada: cambia imágenes, enlaces, el orden, o desactívalos — sin tocar código.</p>
   <div class="adm-note"><b>Demo:</b> los cambios se guardan en este navegador para que pruebes la experiencia. En la web final este panel se gestionará desde el back-office de PrestaShop que ya conocéis, y los cambios serán visibles para todos los clientes.</div>
 
+  <h2 class="mi-h-md" style="font-size:1.3rem;margin:28px 0 4px">Popup de bienvenida</h2>
+  <p style="color:var(--ink-2);font-size:.92rem;margin-bottom:14px">Una sola imagen. Se muestra una vez al entrar en la web y el cliente puede cerrarla.</p>
+  <div id="admPopup"></div>
+
+  <h2 class="mi-h-md" style="font-size:1.3rem;margin:32px 0 4px">Banner fijo de portada</h2>
+  <p style="color:var(--ink-2);font-size:.92rem;margin-bottom:14px">Se muestra siempre en la portada, no se puede cerrar. Puedes añadir varias imágenes.</p>
   <div id="admList"></div>
+  <div class="adm-bar" style="margin-top:6px">
+    <button class="mi-btn mi-btn--ghost" id="admAdd">+ Añadir banner</button>
+  </div>
 
   <div class="adm-bar">
-    <button class="mi-btn" id="admAdd">+ Añadir banner</button>
     <button class="mi-btn mi-btn--dark" id="admSave">Guardar cambios</button>
     <button class="mi-btn mi-btn--ghost" id="admPreview">Probar popup</button>
     <button class="mi-btn mi-btn--ghost" id="admReset">Restaurar originales</button>
@@ -58,48 +66,64 @@
 <script>
 (function(){
   const $ = s=>document.querySelector(s);
-  let slides;
-  try{ slides = JSON.parse(localStorage.getItem('mi-popup-slides')) || structuredClone(DEFAULT_SLIDES); }
-  catch(e){ slides = structuredClone(DEFAULT_SLIDES); }
+  let popup, banners;
+  try{ popup = JSON.parse(localStorage.getItem('mi-popup-slide')) || structuredClone(DEFAULT_POPUP_SLIDE); }
+  catch(e){ popup = structuredClone(DEFAULT_POPUP_SLIDE); }
+  try{ banners = JSON.parse(localStorage.getItem('mi-site-banners')) || structuredClone(DEFAULT_SITE_BANNERS); }
+  catch(e){ banners = structuredClone(DEFAULT_SITE_BANNERS); }
 
-  function render(){
-    $('#admList').innerHTML = slides.map((sl,i)=>`
-      <div class="adm-slide ${sl.active===false?'is-off':''}">
-        <div class="adm-slide__thumb"><img src="${sl.img}" alt="" onerror="this.style.opacity=.2"></div>
-        <div class="adm-slide__fields">
-          <div><label>Imagen (URL)</label><input data-f="img" data-i="${i}" value="${sl.img||''}"></div>
-          <div><label>Enlace al hacer clic</label><input data-f="link" data-i="${i}" value="${sl.link||''}"></div>
-        </div>
-        <div class="adm-slide__acts">
-          <button class="adm-ico" data-up="${i}" title="Subir">↑</button>
-          <button class="adm-ico" data-down="${i}" title="Bajar">↓</button>
-          <button class="adm-ico" data-toggle="${i}" title="${sl.active===false?'Activar':'Desactivar'}">${sl.active===false?'◻':'◼'}</button>
-          <button class="adm-ico" data-del="${i}" title="Eliminar">✕</button>
-        </div>
-      </div>`).join('');
+  function slideCard(sl, html){
+    return `<div class="adm-slide ${sl.active===false?'is-off':''}">
+      <div class="adm-slide__thumb"><img src="${sl.img}" alt="" onerror="this.style.opacity=.2"></div>
+      <div class="adm-slide__fields">
+        <div><label>Imagen (URL)</label><input data-f="img" value="${sl.img||''}"></div>
+        <div><label>Enlace al hacer clic</label><input data-f="link" value="${sl.link||''}"></div>
+      </div>
+      <div class="adm-slide__acts">${html}</div>
+    </div>`;
+  }
+  function renderPopup(){
+    $('#admPopup').innerHTML = slideCard(popup, `<button class="adm-ico" data-ptoggle title="${popup.active===false?'Activar':'Desactivar'}">${popup.active===false?'◻':'◼'}</button>`);
+  }
+  function renderBanners(){
+    $('#admList').innerHTML = banners.map((sl,i)=>slideCard(sl, `
+      <button class="adm-ico" data-up="${i}" title="Subir">↑</button>
+      <button class="adm-ico" data-down="${i}" title="Bajar">↓</button>
+      <button class="adm-ico" data-toggle="${i}" title="${sl.active===false?'Activar':'Desactivar'}">${sl.active===false?'◻':'◼'}</button>
+      <button class="adm-ico" data-del="${i}" title="Eliminar">✕</button>
+    `)).join('');
   }
   function save(){
-    localStorage.setItem('mi-popup-slides', JSON.stringify(slides));
+    localStorage.setItem('mi-popup-slide', JSON.stringify(popup));
+    localStorage.setItem('mi-site-banners', JSON.stringify(banners));
     const el=$('#admSaved'); el.classList.add('is-on');
     setTimeout(()=>el.classList.remove('is-on'), 1800);
   }
   document.addEventListener('input', e=>{
     const f=e.target.dataset.f; if(!f) return;
-    slides[+e.target.dataset.i][f]=e.target.value;
+    const popEl = e.target.closest('#admPopup');
+    if(popEl){ popup[f]=e.target.value; return; }
+    const row = e.target.closest('.adm-slide'); const i=[...$('#admList').children].indexOf(row);
+    if(i>-1) banners[i][f]=e.target.value;
   });
   document.addEventListener('click', e=>{
+    if(e.target.closest('[data-ptoggle]')){ popup.active = popup.active===false; renderPopup(); return; }
     const up=e.target.closest('[data-up]'), dn=e.target.closest('[data-down]'),
           tg=e.target.closest('[data-toggle]'), del=e.target.closest('[data-del]');
-    if(up){ const i=+up.dataset.up; if(i>0){ [slides[i-1],slides[i]]=[slides[i],slides[i-1]]; render(); } return; }
-    if(dn){ const i=+dn.dataset.down; if(i<slides.length-1){ [slides[i+1],slides[i]]=[slides[i],slides[i+1]]; render(); } return; }
-    if(tg){ const i=+tg.dataset.toggle; slides[i].active = slides[i].active===false; render(); return; }
-    if(del){ slides.splice(+del.dataset.del,1); render(); return; }
+    if(up){ const i=+up.dataset.up; if(i>0){ [banners[i-1],banners[i]]=[banners[i],banners[i-1]]; renderBanners(); } return; }
+    if(dn){ const i=+dn.dataset.down; if(i<banners.length-1){ [banners[i+1],banners[i]]=[banners[i],banners[i+1]]; renderBanners(); } return; }
+    if(tg){ const i=+tg.dataset.toggle; banners[i].active = banners[i].active===false; renderBanners(); return; }
+    if(del){ banners.splice(+del.dataset.del,1); renderBanners(); return; }
   });
-  $('#admAdd').addEventListener('click', ()=>{ slides.push({img:'', link:'', active:true}); render(); });
+  $('#admAdd').addEventListener('click', ()=>{ banners.push({img:'', link:'', active:true}); renderBanners(); });
   $('#admSave').addEventListener('click', save);
-  $('#admReset').addEventListener('click', ()=>{ slides = structuredClone(DEFAULT_SLIDES); localStorage.removeItem('mi-popup-slides'); render(); save(); });
+  $('#admReset').addEventListener('click', ()=>{
+    popup = structuredClone(DEFAULT_POPUP_SLIDE); banners = structuredClone(DEFAULT_SITE_BANNERS);
+    localStorage.removeItem('mi-popup-slide'); localStorage.removeItem('mi-site-banners');
+    renderPopup(); renderBanners(); save();
+  });
   $('#admPreview').addEventListener('click', ()=>{ save(); sessionStorage.removeItem('mi-popup-seen'); location.href='index.html'; });
-  render();
+  renderPopup(); renderBanners();
 })();
 </script>
 </body>
