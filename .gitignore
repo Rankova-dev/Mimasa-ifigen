@@ -7,3 +7,6 @@ __pycache__/
 Thumbs.db
 
 .vercel
+
+www/
+www.zip

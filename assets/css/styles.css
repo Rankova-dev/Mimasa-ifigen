@@ -142,7 +142,7 @@ p{margin:0}
 .mi-header{position:sticky;top:0;z-index:60;background:rgba(255,253,249,.82);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);transition:box-shadow .3s}
 .mi-header.is-stuck{box-shadow:var(--sh-1)}
-.mi-header__row{display:flex;align-items:center;gap:22px;height:78px}
+.mi-header__row{display:flex;align-items:center;justify-content:space-between;gap:22px;height:78px}
 .mi-logo{display:flex;align-items:center;gap:11px;flex:none}
 .mi-logo img{height:40px;width:auto}
 .mi-logo__txt{display:flex;flex-direction:column;line-height:1}
@@ -685,8 +685,14 @@ p{margin:0}
 @media(max-width:880px){
   .mi-nav{display:none}
   .mi-burger{display:grid}
+  .mi-hide-mobile{display:none}
+  .mi-header__row{gap:10px}
+  .mi-logo img{height:32px}
+  .mi-actions{gap:2px}
   .mi-world,.mi-pdp,.mi-modal__card{grid-template-columns:1fr}
   .mi-world--rev .mi-world__media{order:0}
+  .mi-world__chip--tl{left:0}
+  .mi-world__chip--br{right:0}
   .mi-gallery{position:static}
   .mi-shop{grid-template-columns:1fr}
   .mi-filters{display:none}
@@ -707,6 +713,15 @@ p{margin:0}
 @media(max-width:430px){
   .mi-prodgrid,.mi-prodgrid--3,.mi-catgrid{grid-template-columns:1fr 1fr;gap:12px}
   .mi-card__title{font-size:.92rem}
+  .mi-logo img{height:26px}
+  .mi-iconbtn{width:38px;height:38px}
+  .mi-iconbtn svg{width:18px;height:18px}
+  .mi-lang__btn{height:38px;padding:0 8px}
+}
+@media(max-width:360px){
+  .mi-logo img{height:23px}
+  .mi-header__row{gap:6px}
+  .mi-lang__btn svg{display:none}
 }
 
 /* Mobile nav panel */
