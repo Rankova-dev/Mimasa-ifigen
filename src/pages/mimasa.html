@@ -29,13 +29,60 @@
 
 <section class="mi-section" style="padding-top:0">
   <div class="mi-container">
-    <div class="mi-toolbar mi-reveal">
-      <p class="mi-toolbar__count"><b id="countMimasa">26</b> <span data-i18n="productos">productos</span> · <span style="color:var(--mimasa);font-weight:700">Mimasa</span></p>
-      <div class="mi-toolbar__right">
-        <button class="mi-select"><span data-i18n="sort_rel">Ordenar: Relevancia</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+    <div class="mi-shop">
+      <!-- Sidebar -->
+      <aside class="mi-filters" id="miFilters">
+        <div class="mi-filters__head">
+          <h3 data-i18n="filter">Filtrar</h3>
+          <button class="mi-drawer__close" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        </div>
+        <div class="mi-fgroup">
+          <h4 data-i18n="f_cat">Categoría</h4>
+          <div id="fCats" style="max-height:280px;overflow:auto"></div>
+        </div>
+        <div class="mi-fgroup">
+          <h4 data-i18n="f_precio">Precio máximo</h4>
+          <div class="mi-price-range"><input type="range" min="5" max="50" value="50" id="fPrice"></div>
+          <div style="display:flex;justify-content:space-between;font-size:.84rem;color:var(--muted);margin-top:6px"><span>5 €</span><span id="fPriceVal">50 €</span></div>
+        </div>
+        <div class="mi-fgroup">
+          <h4 data-i18n="f_diet">Dieta y certificación</h4>
+          <label class="mi-check"><input type="checkbox" id="fBio"> <span>BIO</span></label>
+          <label class="mi-check"><input type="checkbox" id="fSinGluten"> <span data-i18n="f_singluten">Sin gluten</span></label>
+          <label class="mi-check"><input type="checkbox" id="fSinLactosa"> <span data-i18n="f_sinlactosa">Sin lactosa</span></label>
+        </div>
+        <button class="mi-btn mi-btn--block mi-filters__apply" data-close data-i18n="filter_apply">Ver resultados</button>
+      </aside>
+
+      <!-- Results -->
+      <div>
+        <div class="mi-toolbar">
+          <p class="mi-toolbar__count"><b id="shopCount">0</b> <span data-i18n="productos">productos</span> · <span style="color:var(--mimasa);font-weight:700">Mimasa</span></p>
+          <div class="mi-toolbar__right">
+            <button class="mi-filterbtn" data-filters-open aria-controls="miFilters" aria-expanded="false" aria-haspopup="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+              <span data-i18n="filter">Filtrar</span>
+              <span class="mi-filterbtn__count" id="filterCount" hidden>0</span>
+            </button>
+            <div class="mi-select" id="sortSelect">
+              <button class="mi-select__btn" data-sort-open aria-haspopup="true" aria-expanded="false" aria-controls="sortMenu">
+                <span id="sortLabel" data-i18n="sort_novedades">Novedades</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="mi-select__menu" id="sortMenu">
+                <button data-sort="novedades" class="is-on" data-i18n="sort_novedades">Novedades</button>
+                <button data-sort="name-asc" data-i18n="sort_name_asc">Nombre: A a Z</button>
+                <button data-sort="name-desc" data-i18n="sort_name_desc">Nombre: Z a A</button>
+                <button data-sort="price-asc" data-i18n="sort_price_asc">Precio: menor a mayor</button>
+                <button data-sort="price-desc" data-i18n="sort_price_desc">Precio: mayor a menor</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mi-chiprow" id="chipRow"></div>
+        <div class="mi-prodgrid mi-prodgrid--3 mi-reveal" id="shopGrid" data-force-brand="mimasa" data-exclude-cat="Utensilios de cocina"></div>
       </div>
     </div>
-    <div class="mi-prodgrid mi-reveal" id="gridMimasaAll"></div>
   </div>
 </section>
 

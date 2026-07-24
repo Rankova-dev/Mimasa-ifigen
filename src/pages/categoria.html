@@ -11,8 +11,10 @@
 
 <section style="padding-bottom:28px">
   <div class="mi-container">
-    <div class="mi-pagehead mi-pagehead--ifigen mi-pagehead--min mi-reveal" id="catHead" style="padding-block:clamp(32px,4vw,48px)">
-      <h1 style="font-size:clamp(1.8rem,3.4vw,2.6rem)" id="catTitle">Catálogo</h1>
+    <div class="mi-pagehead mi-pagehead--ifigen mi-reveal" id="catHead">
+      <img class="mi-pagehead__bg" id="catHeadBg" alt="" aria-hidden="true" loading="lazy">
+      <h1 id="catTitle">Catálogo</h1>
+      <p class="mi-pagehead__desc" id="catDesc"></p>
     </div>
   </div>
 </section>
@@ -45,10 +47,6 @@
           <label class="mi-check"><input type="checkbox" id="fSinGluten"> <span data-i18n="f_singluten">Sin gluten</span></label>
           <label class="mi-check"><input type="checkbox" id="fSinLactosa"> <span data-i18n="f_sinlactosa">Sin lactosa</span></label>
         </div>
-        <div class="mi-fgroup">
-          <h4 data-i18n="f_disp">Ofertas</h4>
-          <label class="mi-check"><input type="checkbox" id="fOferta"> <span data-i18n="f_oferta">En oferta (>10%)</span></label>
-        </div>
         <button class="mi-btn mi-btn--block mi-filters__apply" data-close data-i18n="filter_apply">Ver resultados</button>
       </aside>
 
@@ -57,11 +55,24 @@
         <div class="mi-toolbar">
           <p class="mi-toolbar__count"><b id="shopCount">0</b> <span data-i18n="productos">productos</span></p>
           <div class="mi-toolbar__right">
-            <button class="mi-filterbtn" data-filters-open>
+            <button class="mi-filterbtn" data-filters-open aria-controls="miFilters" aria-expanded="false" aria-haspopup="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
               <span data-i18n="filter">Filtrar</span>
+              <span class="mi-filterbtn__count" id="filterCount" hidden>0</span>
             </button>
-            <button class="mi-select"><span data-i18n="relevancia">Relevancia</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="mi-select" id="sortSelect">
+              <button class="mi-select__btn" data-sort-open aria-haspopup="true" aria-expanded="false" aria-controls="sortMenu">
+                <span id="sortLabel" data-i18n="sort_novedades">Novedades</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="mi-select__menu" id="sortMenu">
+                <button data-sort="novedades" class="is-on" data-i18n="sort_novedades">Novedades</button>
+                <button data-sort="name-asc" data-i18n="sort_name_asc">Nombre: A a Z</button>
+                <button data-sort="name-desc" data-i18n="sort_name_desc">Nombre: Z a A</button>
+                <button data-sort="price-asc" data-i18n="sort_price_asc">Precio: menor a mayor</button>
+                <button data-sort="price-desc" data-i18n="sort_price_desc">Precio: mayor a menor</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="mi-chiprow" id="chipRow"></div>

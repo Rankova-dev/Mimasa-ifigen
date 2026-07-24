@@ -14,8 +14,9 @@
 <link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=7">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/league-spartan/league-spartan-latin.woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css?v=8">
 </head>
 <body>
 
@@ -61,7 +62,16 @@
         </div>
       </div>
 
-      <div class="mi-nav__item"><a class="mi-nav__link" href="categoria.html?cat=Utensilios%20de%20cocina" data-i18n="nav_utensilios">Utensilios</a></div>
+      <div class="mi-nav__item">
+        <a class="mi-nav__link" href="categoria.html?cat=Utensilios%20de%20cocina" data-i18n="nav_utensilios">Utensilios
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="mi-simple">
+          <a class="mi-simple__link" href="https://mimasaifigen.com/es/99-coleccion-vajilla-japonesa-shibumi">Colección Vajilla Japonesa Shibumi</a>
+          <a class="mi-simple__link" href="https://mimasaifigen.com/es/103-cuchillos-japoneses">Cuchillos Japoneses</a>
+          <a class="mi-simple__link" href="https://mimasaifigen.com/es/106-accesorios-de-cocina">Accesorios de cocina</a>
+        </div>
+      </div>
       <div class="mi-nav__item"><a class="mi-nav__link" href="categoria.html?ofertas=1" data-i18n="nav_ofertas">Packs</a></div>
       <div class="mi-nav__item"><a class="mi-nav__link" href="https://mimasaifigen.com/blog/" data-i18n="nav_blog">Blog</a></div>
     </nav>
@@ -88,7 +98,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
         <span class="mi-iconbtn__badge js-cartcount" style="display:none">0</span>
       </button>
-      <button class="mi-iconbtn mi-burger" data-menu-open aria-label="Menú">
+      <button class="mi-iconbtn mi-burger" data-menu-open aria-label="Menú" aria-controls="miMobile" aria-expanded="false" aria-haspopup="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
@@ -109,38 +119,22 @@
   <div class="mi-container">
     <div class="mi-hero__intro mi-reveal">
       <h1 class="mi-h-xl"><span data-i18n="hero_t1">Dos formas de cuidarte,</span><br><span class="mi-italic" style="color:var(--wine)" data-i18n="hero_t2">una misma esencia</span></h1>
-      <p class="mi-lead" style="margin:18px auto 0;text-align:center" data-i18n="hero_lead">Mimasa Ifigen reúne dos marcas hermanas: <b>alimentos saludables</b> de la tradición japonesa y <b>complementos alimenticios</b> para tu bienestar. Elige por dónde quieres empezar.</p>
-      <div class="mi-hero__trust">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> <span data-i18n="hero_c1">Envío gratis +29 €</span></span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> <span data-i18n="hero_c2">Elaboración artesanal</span></span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> <span data-i18n="hero_c3">Envíos a todo el mundo</span></span>
-      </div>
     </div>
 
-    <div class="mi-doors mi-reveal">
-      <a class="mi-door mi-door--mimasa" href="mimasa.html">
-        <div class="mi-door__art">
-          <img src="assets/img/products/mimasa/algas-marinas/bodegon.jpg" alt="">
-          <span class="mi-door__badge">Mimasa</span>
-        </div>
-        <div class="mi-door__body">
-          <h2 class="mi-door__title" data-i18n="door_m_title">Alimentos saludables</h2>
-          <p class="mi-door__desc" data-i18n="door_m_desc">Algas marinas, miso, umeboshi, salsas de soja y más, siguiendo técnicas orientales tradicionales.</p>
-          <span class="mi-door__cta"><span data-i18n="door_m_cta">Explorar Mimasa</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
-
-      <a class="mi-door mi-door--ifigen" href="ifigen.html">
-        <div class="mi-door__art">
-          <img src="assets/img/products/ifigen/fitoterapia/bodegon.jpg" alt="">
-          <span class="mi-door__badge">Ifigen</span>
-        </div>
-        <div class="mi-door__body">
-          <h2 class="mi-door__title" data-i18n="door_i_title">Salud y bienestar</h2>
-          <p class="mi-door__desc" data-i18n="door_i_desc">Suplementos pensados para combinar con una alimentación saludable y unos buenos hábitos de vida.</p>
-          <span class="mi-door__cta"><span data-i18n="door_i_cta">Explorar Ifigen</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
+    <div class="mi-brands mi-reveal">
+      <span class="mi-brands__eyebrow" data-i18n="brands_eyebrow">Nuestras marcas:</span>
+      <div class="mi-brands__grid">
+        <a class="mi-brand-card mi-brand-card--mimasa" href="mimasa.html">
+          <img class="mi-brand-card__icon" src="assets/img/brand/favicon.png" alt="" loading="lazy">
+          <span class="mi-brand-card__word">Mimasa</span>
+          <span class="mi-brand-card__tag" data-i18n="door_m_title">Alimentos saludables</span>
+        </a>
+        <a class="mi-brand-card mi-brand-card--ifigen" href="ifigen.html">
+          <img class="mi-brand-card__icon" src="assets/img/brand/favicon.png" alt="" loading="lazy">
+          <span class="mi-brand-card__word">ifigen</span>
+          <span class="mi-brand-card__tag" data-i18n="door_i_title">Salud y bienestar</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -162,8 +156,7 @@
   <div class="mi-container">
     <div class="mi-section-head mi-reveal">
       <span class="mi-eyebrow" data-i18n="feat_eyebrow">Lo más vendido</span>
-      <h2 class="mi-h-lg" data-i18n="feat_title">Alimentos y complementos destacados</h2>
-      <p class="mi-lead" style="margin-top:14px" data-i18n="feat_lead">Una selección de los productos ecológicos que más gustan a nuestra comunidad. Te los recomendamos.</p>
+      <h2 class="mi-h-lg" data-i18n="feat_title">Top Promos</h2>
     </div>
     <div class="mi-prodgrid mi-reveal" id="gridFeatured"></div>
   </div>
@@ -367,7 +360,19 @@
       <a class="mi-mobile__door mi-mobile__door--mimasa" href="mimasa.html"><span class="mi-mobile__door-brand">Mimasa</span><b class="mi-mobile__door-cat" data-i18n="door_food">Alimentos saludables</b></a>
       <a class="mi-mobile__door mi-mobile__door--ifigen" href="ifigen.html"><span class="mi-mobile__door-brand">Ifigen</span><b class="mi-mobile__door-cat" data-i18n="door_supp">Salud y bienestar</b></a>
     </div>
-    <a class="mi-mobile__link" href="categoria.html?cat=Utensilios%20de%20cocina"><span data-i18n="nav_utensilios">Utensilios</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="mi-acc__item mi-mobile__acc">
+      <button class="mi-acc__head" aria-expanded="false">
+        <span data-i18n="nav_utensilios">Utensilios</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+      </button>
+      <div class="mi-acc__body">
+        <div class="mi-acc__inner">
+          <a class="mi-acc__sublink" href="https://mimasaifigen.com/es/99-coleccion-vajilla-japonesa-shibumi">Colección Vajilla Japonesa Shibumi</a>
+          <a class="mi-acc__sublink" href="https://mimasaifigen.com/es/103-cuchillos-japoneses">Cuchillos Japoneses</a>
+          <a class="mi-acc__sublink" href="https://mimasaifigen.com/es/106-accesorios-de-cocina">Accesorios de cocina</a>
+        </div>
+      </div>
+    </div>
     <a class="mi-mobile__link" href="categoria.html?ofertas=1"><span data-i18n="nav_ofertas">Packs</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
     <a class="mi-mobile__link" href="https://mimasaifigen.com/blog/">Blog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
     <a class="mi-mobile__link" href="#"><span data-i18n="f_cuenta">Mi cuenta</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>

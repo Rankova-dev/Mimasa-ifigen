@@ -52,16 +52,16 @@
   }
 
   /* ---------- Category tile ---------- */
-  function tile(c, brand){
-    return `<a class="mi-cat" href="${c.url}">
+  function tile(c, brand, noDesc){
+    return `<a class="mi-cat${noDesc?' mi-cat--nodesc':''}" href="${c.url}">
       <div class="mi-cat__img"><img src="${c.img}" alt="${c.name}" loading="lazy"></div>
       <span class="mi-cat__chip mi-cat__chip--${brand}">${brand.toUpperCase()}</span>
-      <div class="mi-cat__body"><b>${c.name}</b><span>${c.desc}</span></div>
+      <div class="mi-cat__body"><b>${c.name}</b>${noDesc?'':`<span>${c.desc}</span>`}</div>
     </a>`;
   }
-  function renderTiles(sel, list, brand){
+  function renderTiles(sel, list, brand, noDesc){
     const el = $(sel); if(!el) return;
-    el.innerHTML = list.map(c=>tile(c,brand)).join('');
+    el.innerHTML = list.map(c=>tile(c,brand,noDesc)).join('');
   }
 
   /* ---------- Blog ---------- */
@@ -100,6 +100,11 @@
     ['#miDrawer','#miModal','#miMobile','#miSearch','#miFilters'].forEach(s=>$(s)?.classList.remove('is-on'));
     $('#miOverlay')?.classList.remove('is-on');
     document.body.style.overflow='';
+    $$('[data-menu-open],[data-filters-open]').forEach(b=>b.setAttribute('aria-expanded','false'));
+    $$('.mi-select.is-open').forEach(s=>{
+      s.classList.remove('is-open');
+      s.querySelector('[data-sort-open]')?.setAttribute('aria-expanded','false');
+    });
   }
 
   function addToCart(item, qty){
@@ -234,13 +239,20 @@
     if(q){ openQuick(q.closest('.mi-card').dataset.id); return; }
     if(e.target.closest('[data-cart-open]')){ openDrawer(); return; }
     if(e.target.closest('[data-search-open]')){ openSearch(); return; }
-    if(e.target.closest('[data-filters-open]')){ $('#miFilters')?.classList.add('is-on'); $('#miOverlay')?.classList.add('is-on'); document.body.style.overflow='hidden'; return; }
+    const filtersOpen = e.target.closest('[data-filters-open]');
+    if(filtersOpen){ $('#miFilters')?.classList.add('is-on'); $('#miOverlay')?.classList.add('is-on'); document.body.style.overflow='hidden'; filtersOpen.setAttribute('aria-expanded','true'); return; }
     const sug = e.target.closest('[data-sug]');
     if(sug){ const inp=$('#searchInput'); inp.value=sug.dataset.sug; renderSearch(inp.value); inp.focus(); return; }
     if(e.target.closest('[data-close]') || e.target.id==='miOverlay' || e.target.id==='miSearch'){ closeAll(); return; }
-    if(e.target.closest('[data-menu-open]')){ $('#miMobile')?.classList.add('is-on'); document.body.style.overflow='hidden'; return; }
+    const menuOpen = e.target.closest('[data-menu-open]');
+    if(menuOpen){ $('#miMobile')?.classList.add('is-on'); document.body.style.overflow='hidden'; menuOpen.setAttribute('aria-expanded','true'); return; }
     const acc = e.target.closest('.mi-acc__head');
-    if(acc){ acc.parentElement.classList.toggle('is-open'); const b=acc.nextElementSibling; b.style.maxHeight = acc.parentElement.classList.contains('is-open')? b.scrollHeight+'px':0; return; }
+    if(acc){
+      const isOpen = acc.parentElement.classList.toggle('is-open');
+      const b=acc.nextElementSibling; b.style.maxHeight = isOpen? b.scrollHeight+'px':0;
+      acc.setAttribute('aria-expanded', isOpen);
+      return;
+    }
     const qty = e.target.closest('[data-qty]');
     if(qty){ const input=qty.parentElement.querySelector('input'); let v=+input.value+(qty.dataset.qty==='+'?1:-1); input.value=Math.max(1,v); return; }
     const variant = e.target.closest('.mi-variant');
@@ -269,20 +281,24 @@
      ============================================================ */
   function setupShop(){
     const grid = $('#shopGrid'); if(!grid) return;
+    const opts = { forceBrand: grid.dataset.forceBrand || null, excludeCat: grid.dataset.excludeCat || null };
 
     const state = {
-      brands: new Set(params.get('brand')? [params.get('brand')] : ['mimasa','ifigen']),
+      brands: new Set(opts.forceBrand ? [opts.forceBrand] : (params.get('brand')? [params.get('brand')] : ['mimasa','ifigen'])),
       cat: params.get('cat') || null,
       oferta: params.get('ofertas')==='1',
       bio: params.get('bio')==='1',
       sinGluten: params.get('singluten')==='1', sinLactosa: false,
-      maxPrice: 50
+      maxPrice: 50, sort: 'novedades'
     };
     const isOfertas = params.get('ofertas')==='1';
 
-    /* cabecera contextual */
+    /* cabecera contextual — variante A (tipográfica) por defecto; variante B
+       (imagen de categoría + overlay) se activa sola cuando hay una categoría
+       concreta seleccionada, para comparar ambas variantes en la misma demo. */
     const head = $('#catHead');
-    if(head){
+    function updateHead(){
+      if(!head) return;
       const oneBrand = state.brands.size===1 ? [...state.brands][0] : null;
       head.classList.remove('mi-pagehead--mimasa','mi-pagehead--ifigen');
       if(oneBrand) head.classList.add('mi-pagehead--'+oneBrand);
@@ -290,10 +306,19 @@
       $('#catTitle').textContent = title;
       $('#catCrumbName').textContent = title;
       document.title = title+' | Mimasa Ifigen';
+
+      const bg = $('#catHeadBg'), descEl = $('#catDesc');
+      const catData = state.cat ? [...CATS_MIMASA,...CATS_IFIGEN].find(c=>norm(c.name)===norm(state.cat)) : null;
+      if(descEl) descEl.textContent = catData ? catData.desc : '';
+      if(bg){
+        if(catData){ bg.src = catData.img; head.classList.add('mi-pagehead--image'); }
+        else { bg.removeAttribute('src'); head.classList.remove('mi-pagehead--image'); }
+      }
     }
 
     function matches(p){
       if(!state.brands.has(p.brand)) return false;
+      if(opts.excludeCat && !state.cat && norm(p.cat)===norm(opts.excludeCat)) return false;
       if(state.cat && norm(p.cat)!==norm(state.cat)) return false;
       if(state.oferta && !(p.off>10)) return false;   /* el −10% global no es oferta */
       if(state.bio && !p.bio) return false;
@@ -306,15 +331,21 @@
     function chips(){
       const row = $('#chipRow'); if(!row) return;
       const parts=[];
-      if(state.brands.size===1) parts.push({t:BRAND_LABEL[[...state.brands][0]], k:'brand'});
+      if(state.brands.size===1 && !opts.forceBrand) parts.push({t:BRAND_LABEL[[...state.brands][0]], k:'brand'});
       if(state.cat) parts.push({t:state.cat, k:'cat'});
-      if(state.oferta) parts.push({t:t('f_oferta'), k:'oferta'});
       if(state.sinLactosa) parts.push({t:t('f_sinlactosa'), k:'sl'});
       /* accesos rápidos siempre visibles + chips de filtros activos */
       row.innerHTML =
         `<button class="mi-chip ${state.bio?'is-on':''}" data-qtoggle="bio">BIO</button>`+
         `<button class="mi-chip ${state.sinGluten?'is-on':''}" data-qtoggle="sg">${t('f_singluten')}</button>`+
         parts.map(c=>`<span class="mi-chip is-on" data-unchip="${c.k}">${c.t} ${ICON.x}</span>`).join('');
+
+      const count = $('#filterCount');
+      if(count){
+        const n = parts.length + (state.bio?1:0) + (state.sinGluten?1:0) + (state.maxPrice<50?1:0);
+        count.textContent = n;
+        count.hidden = n===0;
+      }
     }
 
     function sidebar(){
@@ -332,14 +363,22 @@
           return `<label class="mi-check"><input type="checkbox" data-fcat="${c}" ${on?'checked':''}> ${c} <span class="c">${n}</span></label>`;
         }).join('');
       }
-      const fo = $('#fOferta'); if(fo) fo.checked = state.oferta;
       const fbio = $('#fBio'); if(fbio) fbio.checked = state.bio;
       const fg = $('#fSinGluten'); if(fg) fg.checked = state.sinGluten;
       const fl = $('#fSinLactosa'); if(fl) fl.checked = state.sinLactosa;
     }
 
+    function sortList(list){
+      const l = list.slice();
+      if(state.sort==='name-asc') l.sort((a,b)=>a.name.localeCompare(b.name));
+      else if(state.sort==='name-desc') l.sort((a,b)=>b.name.localeCompare(a.name));
+      else if(state.sort==='price-asc') l.sort((a,b)=>(a.price??Infinity)-(b.price??Infinity));
+      else if(state.sort==='price-desc') l.sort((a,b)=>(b.price??-Infinity)-(a.price??-Infinity));
+      return l; /* 'novedades': orden de catálogo por defecto */
+    }
+
     function apply(){
-      const list = PRODUCTS.filter(matches);
+      const list = sortList(PRODUCTS.filter(matches));
       if(list.length){
         renderGrid(grid, list);
       } else {
@@ -348,7 +387,7 @@
           <p style="color:var(--ink-2);font-size:.94rem">${t('empty_cat_d')}</p></div>`;
       }
       $('#shopCount').textContent = list.length;
-      chips(); sidebar();
+      chips(); sidebar(); updateHead();
     }
 
     document.addEventListener('change', e=>{
@@ -360,13 +399,32 @@
       }
       const fc = e.target.closest('[data-fcat]');
       if(fc){ state.cat = fc.checked? fc.dataset.fcat : null; apply(); return; }
-      if(e.target.id==='fOferta'){ state.oferta = e.target.checked; apply(); return; }
       if(e.target.id==='fBio'){ state.bio = e.target.checked; apply(); return; }
       if(e.target.id==='fSinGluten'){ state.sinGluten = e.target.checked; apply(); return; }
       if(e.target.id==='fSinLactosa'){ state.sinLactosa = e.target.checked; apply(); return; }
       if(e.target.id==='fPrice'){ state.maxPrice = +e.target.value; $('#fPriceVal').textContent = e.target.value+' €'; apply(); return; }
     });
     document.addEventListener('click', e=>{
+      const sortOpen = e.target.closest('[data-sort-open]');
+      if(sortOpen){
+        const wrap = sortOpen.closest('.mi-select');
+        const isOpen = wrap.classList.toggle('is-open');
+        sortOpen.setAttribute('aria-expanded', isOpen);
+        return;
+      }
+      const sortOpt = e.target.closest('[data-sort]');
+      if(sortOpt){
+        state.sort = sortOpt.dataset.sort;
+        $$('#sortMenu button').forEach(b=>b.classList.toggle('is-on', b===sortOpt));
+        const label = $('#sortLabel'); if(label) label.textContent = sortOpt.textContent;
+        sortOpt.closest('.mi-select')?.classList.remove('is-open');
+        apply();
+        return;
+      }
+      if(!e.target.closest('.mi-select')) $$('.mi-select.is-open').forEach(s=>{
+        s.classList.remove('is-open');
+        s.querySelector('[data-sort-open]')?.setAttribute('aria-expanded','false');
+      });
       const qt = e.target.closest('[data-qtoggle]');
       if(qt){ if(qt.dataset.qtoggle==='bio') state.bio=!state.bio; else state.sinGluten=!state.sinGluten; apply(); return; }
       const un = e.target.closest('[data-unchip]');
@@ -374,7 +432,6 @@
       const k = un.dataset.unchip;
       if(k==='brand'){ state.brands = new Set(['mimasa','ifigen']); state.cat=null; }
       if(k==='cat') state.cat = null;
-      if(k==='oferta') state.oferta = false;
       if(k==='sg') state.sinGluten = false;
       if(k==='sl') state.sinLactosa = false;
       apply();
@@ -467,9 +524,18 @@
     banners = banners.filter(b=>b.active!==false && b.img);
     if(!banners.length){ el.style.display='none'; return; }
 
-    const slides = banners.map((b,i)=>`<a class="mi-topbanner__slide${i===0?' is-on':''}" href="${b.link||'#'}">
-      <img src="${b.img}" alt="${b.alt||''}" loading="${i===0?'eager':'lazy'}">
-      <span class="mi-topbanner__cta">${t('banner_cta')} ${ICON.arrow}</span></a>`).join('');
+    const slides = banners.map((b,i)=>`<a class="mi-topbanner__slide slide--${b.pos||'left'}${i===0?' is-on':''}" href="${b.link||'#'}">
+      <picture>
+        ${b.mobileImg?`<source media="(max-width:767px)" srcset="${b.mobileImg}">`:''}
+        <img src="${b.img}" alt="${b.alt||''}" loading="${i===0?'eager':'lazy'}" fetchpriority="${i===0?'high':'auto'}">
+      </picture>
+      <span class="mi-topbanner__cta mi-topbanner__cta--desktop">${t('banner_cta')} ${ICON.arrow}</span>
+      <div class="mi-topbanner__content">
+        ${b.eyebrow?`<span class="mi-topbanner__eyebrow">${b.eyebrow}</span>`:''}
+        ${b.title?`<strong class="mi-topbanner__headline">${b.title}</strong>`:''}
+        ${b.sub?`<span class="mi-topbanner__sub">${b.sub}</span>`:''}
+        <span class="mi-topbanner__cta">${t('banner_cta')} ${ICON.arrow}</span>
+      </div></a>`).join('');
     const dots = banners.length>1
       ? `<div class="mi-topbanner__dots">${banners.map((b,i)=>`<button class="mi-topbanner__dot${i===0?' is-on':''}" data-slide="${i}" aria-label="${i+1}"></button>`).join('')}</div>`
       : '';
@@ -493,19 +559,15 @@
     renderSiteBanner();
     // home
     renderGrid('#gridFeatured', PRODUCTS.filter(p=>p.price!=null).slice(0,8));
-    renderTiles('#tilesMimasaHome', CATS_MIMASA.slice(0,4), 'mimasa');
+    renderTiles('#tilesMimasaHome', CATS_MIMASA.slice(0,4), 'mimasa', true);
     renderTiles('#tilesIfigenHome', CATS_IFIGEN.slice(0,4), 'ifigen');
     renderPosts('#blogGrid');
     megaList('#megaMimasa', CATS_MIMASA, 'mimasa');
     megaList('#megaIfigen', CATS_IFIGEN, 'ifigen');
 
-    // páginas de marca
-    renderTiles('#tilesMimasa', CATS_MIMASA, 'mimasa');
-    const gm = $('#gridMimasaAll');
-    if(gm){ const l=PRODUCTS.filter(p=>p.brand==='mimasa' && p.cat!=='Utensilios de cocina'); renderGrid(gm,l); const c=$('#countMimasa'); if(c) c.textContent=l.length; }
+    // páginas de marca (el listado con filtros lo gestiona setupShop() vía #shopGrid)
+    renderTiles('#tilesMimasa', CATS_MIMASA, 'mimasa', true);
     renderTiles('#tilesIfigen', CATS_IFIGEN, 'ifigen');
-    const gi = $('#gridIfigenAll');
-    if(gi){ const l=PRODUCTS.filter(p=>p.brand==='ifigen'); renderGrid(gi,l); const c=$('#countIfigen'); if(c) c.textContent=l.length; }
     const oligo = $('#oligoStrip');
     if(oligo) oligo.innerHTML = OLIGO.map(o=>{
       const prod = PRODUCTS.find(x=>x.cat==='Oligoelementos' && x.name===o.name);

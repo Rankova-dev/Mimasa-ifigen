@@ -95,8 +95,10 @@ PRODUCTS.forEach(p=>{
    - banner del sitio: siempre visible en portada, no se cierra */
 const DEFAULT_POPUP_SLIDE = {img:"assets/img/banners/popup-packs.svg", alt:"Packs especiales Mimasa Ifigen", link:"categoria.html?ofertas=1", active:true};
 const DEFAULT_SITE_BANNERS = [
-  {img:"assets/img/banners/banner-soja.jpg", alt:"Descuento salsas de soja", link:"categoria.html?brand=mimasa&cat=Salsas%20de%20soja", active:true},
-  {img:"assets/img/banners/banner-oligen-memory.jpg", alt:"Oligen Memory", link:"producto.html?p=83040", active:true},
+  {img:"assets/img/banners/banner-soja.jpg", mobileImg:"assets/img/banners/banner-soja-mobile.jpg", alt:"Descuento salsas de soja", link:"categoria.html?brand=mimasa&cat=Salsas%20de%20soja", active:true,
+    eyebrow:"-20%", title:"Salsa de soja Tamari", sub:"Tamari · Tamari Shoyu"},
+  {img:"assets/img/banners/banner-oligen-memory.jpg", mobileImg:"assets/img/banners/banner-oligen-memory-mobile.jpg", alt:"Oligen Memory", link:"producto.html?p=83040", active:true,
+    eyebrow:"Novedad", title:"Memoria para todas las edades", sub:"Omega-3 DHA 80% + BacoMind"},
 ];
 
 /* Identificador estable para URLs de la demo (?p=…) */
@@ -127,7 +129,7 @@ const CATS_IFIGEN = [
   {name:"Probióticos", desc:"Flora intestinal", img:IMG+"ifigen/general/floragen-30-caps.jpg", url:catUrl("ifigen","Probióticos")},
   {name:"Oligoelementos", desc:"Minerales esenciales", img:IMG+"ifigen/oligoelements/zinc.jpg", url:catUrl("ifigen","Oligoelementos")},
   {name:"Phyto-Min", desc:"Extractos de planta", img:IMG+"ifigen/phyto-min/phyto-min-salvia.jpg", url:catUrl("ifigen","Phyto-Min")},
-  {name:"Fitoterapia", desc:"Plantas medicinales", img:IMG+"ifigen/general/elixir-4-estaciones-250-ml.jpg", url:catUrl("ifigen","Fitoterapia")},
+  {name:"Fitoterapia", desc:"Plantas", img:IMG+"ifigen/general/elixir-4-estaciones-250-ml.jpg", url:catUrl("ifigen","Fitoterapia")},
   {name:"Uso tópico", desc:"Colutorio y loción", img:IMG+"ifigen/general/colutorio-dental-200-ml.jpg", url:catUrl("ifigen","Productos de uso tópico")},
   {name:"Jarabes", desc:"Para toda la familia", img:IMG+"ifigen/general/elixir-4-estaciones-250-ml.jpg", url:catUrl("ifigen","Jarabes")},
 ];

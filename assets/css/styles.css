@@ -3,6 +3,18 @@
    Sistema de diseño · vanilla CSS, namespaced bajo .mi-
    ============================================================ */
 
+/* Titulares: misma tipografía que el blog real (Elementor global kit,
+   font-family:"League Spartan" en h1-h6 — ver www/blog/wp-content/uploads/
+   elementor/css/post-7.css). Mismo archivo woff2 que sirve el blog. */
+@font-face{
+  font-family:"League Spartan";
+  font-style:normal;
+  font-weight:100 900;
+  font-display:swap;
+  src:url("../fonts/league-spartan/league-spartan-latin.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
 /* ---------- Tokens ---------- */
 :root{
   /* Marca maestra */
@@ -47,7 +59,7 @@
   --container:1240px;
   --ease:cubic-bezier(.22,.61,.36,1);
 
-  --ff-display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --ff-display:"League Spartan", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --ff-body:"Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -126,7 +138,7 @@ p{margin:0}
    Announcement bar
    ============================================================ */
 .mi-announce{
-  background:linear-gradient(90deg,var(--wine-deep),var(--wine));
+  background:var(--wine-deep);
   color:#fff;font-size:.84rem;font-weight:600;letter-spacing:.02em;
 }
 .mi-announce__track{
@@ -175,6 +187,18 @@ p{margin:0}
 .mi-mega__link span{font-size:.76rem;color:var(--muted)}
 .mi-mega__foot{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;align-items:center;gap:12px}
 
+/* Dropdown simple (Utensilios): lista corta de subcategorías reales */
+.mi-simple{
+  position:absolute;top:calc(100% + 14px);left:0;transform:translateY(10px);
+  min-width:260px;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);
+  box-shadow:var(--sh-3);padding:10px;opacity:0;visibility:hidden;transition:.28s var(--ease);z-index:70;
+}
+.mi-nav__item:hover .mi-simple{opacity:1;visibility:visible;transform:translateY(0)}
+.mi-simple::before{content:"";position:absolute;top:-14px;left:0;right:0;height:14px}
+.mi-simple__link{display:block;min-height:44px;display:flex;align-items:center;padding:11px 14px;border-radius:var(--r-sm);
+  font-weight:600;font-size:.92rem;transition:background .2s}
+.mi-simple__link:hover{background:var(--sand)}
+
 .mi-actions{display:flex;align-items:center;gap:6px;flex:none}
 .mi-iconbtn{position:relative;width:44px;height:44px;border-radius:var(--r-pill);display:grid;place-items:center;color:var(--ink);transition:background .2s,color .2s}
 .mi-iconbtn:hover{background:var(--sand);color:var(--wine)}
@@ -189,54 +213,37 @@ p{margin:0}
 .mi-hero{position:relative;padding-top:clamp(30px,4vw,52px);padding-bottom:clamp(40px,5vw,70px);overflow:hidden}
 .mi-hero__bg{position:absolute;inset:0;z-index:-1}
 .mi-hero__blob{display:none}
-.mi-hero__intro{text-align:center;max-width:820px;margin:0 auto clamp(30px,4vw,48px)}
-.mi-hero__intro h1{margin-bottom:18px}
-.mi-hero__trust{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:22px}
-.mi-hero__trust span{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;font-weight:600;color:var(--ink-2)}
-.mi-hero__trust svg{width:18px;height:18px;color:var(--wine)}
+.mi-hero__intro{text-align:center;max-width:820px;margin:0 auto clamp(24px,3.4vw,36px)}
+.mi-hero__intro h1{margin-bottom:0}
 
-/* Las dos puertas — tarjetas planas, foto sin difuminar + contenido claro debajo */
-.mi-doors{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,28px)}
-.mi-door{
-  position:relative;border-radius:var(--r-xl);overflow:hidden;display:flex;flex-direction:column;
-  background:var(--white);border:1.5px solid var(--line);box-shadow:var(--sh-2);
-  color:var(--ink);isolation:isolate;
-  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
+/* Dos formas de cuidarte — tarjetas de marca (logo + bajada), sin fotografía */
+.mi-brands{max-width:820px;margin:0 auto}
+.mi-brands__eyebrow{display:block;text-align:center;font-weight:800;text-transform:uppercase;
+  letter-spacing:.08em;font-size:.8rem;color:var(--ink-2);margin-bottom:16px}
+.mi-brands__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.4vw,24px)}
+.mi-brand-card{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;
+  border-radius:var(--r-xl);padding:clamp(32px,5vw,48px) 20px;box-shadow:var(--sh-2);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
 }
-.mi-door:hover{transform:translateY(-6px);box-shadow:var(--sh-soft)}
-.mi-door--mimasa{border-color:rgba(107,16,48,.30)}
-.mi-door--ifigen{border-color:rgba(160,0,48,.30)}
-.mi-door--mimasa:hover{border-color:rgba(107,16,48,.55)}
-.mi-door--ifigen:hover{border-color:rgba(160,0,48,.55)}
-/* filo de color superior, discreto */
-.mi-door::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;z-index:2}
-.mi-door--mimasa::before{background:var(--mimasa)}
-.mi-door--ifigen::before{background:var(--ifigen)}
-/* fotografía de producto, plana, sin máscara ni degradado */
-.mi-door__art{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--sand)}
-.mi-door__art img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.mi-door:hover .mi-door__art img{transform:scale(1.045)}
-.mi-door__badge{position:absolute;top:16px;left:16px;z-index:2;
-  padding:7px 14px;border-radius:var(--r-pill);font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
-  background:#fff}
-.mi-door--mimasa .mi-door__badge{color:var(--mimasa)}
-.mi-door--ifigen .mi-door__badge{color:var(--ifigen-deep)}
-.mi-door__body{position:relative;padding:clamp(24px,3vw,34px);display:flex;flex-direction:column;flex:1}
-.mi-door__title{font-size:clamp(1.5rem,2.4vw,1.9rem);margin:0 0 10px;color:var(--ink)}
-.mi-door__desc{font-size:.97rem;color:var(--ink-2);margin-bottom:22px}
-.mi-door__cta{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;margin-top:auto;
-  color:#fff;padding:14px 26px;border-radius:var(--r-pill);font-weight:700;font-size:.95rem;
-  box-shadow:var(--sh-2);transition:gap .3s var(--ease),transform .3s var(--ease)}
-.mi-door--mimasa .mi-door__cta{background:var(--mimasa)}
-.mi-door--ifigen .mi-door__cta{background:#fff;color:var(--ifigen-deep);box-shadow:inset 0 0 0 2px var(--ifigen),var(--sh-1)}
-.mi-door--ifigen:hover .mi-door__cta{background:var(--ifigen);color:#fff}
-.mi-door:hover .mi-door__cta{gap:18px}
-.mi-door__cta svg{width:18px;height:18px}
+@media(prefers-reduced-motion:no-preference){
+  .mi-brand-card:hover{transform:translateY(-4px) scale(1.01);box-shadow:var(--sh-soft)}
+}
+.mi-brand-card--mimasa{background:var(--paper);border:1.5px solid var(--line);color:var(--mimasa)}
+.mi-brand-card--ifigen{background:var(--wine);color:#fff}
+.mi-brand-card__icon{width:44px;height:44px;object-fit:contain}
+.mi-brand-card--ifigen .mi-brand-card__icon{filter:brightness(0) invert(1)}
+.mi-brand-card__word{font-family:var(--ff-display);font-weight:800;font-size:clamp(1.5rem,4vw,1.9rem);line-height:1}
+.mi-brand-card--ifigen .mi-brand-card__word{text-transform:lowercase}
+.mi-brand-card__tag{font-size:.95rem;font-weight:600;opacity:.82}
+@media(max-width:560px){
+  .mi-brands__grid{grid-template-columns:1fr}
+}
 
 /* ============================================================
    Trust strip (badges reales)
    ============================================================ */
-.mi-trust{background:linear-gradient(115deg,var(--wine-deep),var(--wine));color:#fff}
+.mi-trust{background:var(--wine-deep);color:#fff}
 .mi-trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .mi-trust__item{display:flex;align-items:center;gap:15px;padding:26px 22px;position:relative}
 .mi-trust__item:not(:last-child)::after{content:"";position:absolute;right:0;top:24px;bottom:24px;width:1px;background:rgba(255,255,255,.16)}
@@ -349,10 +356,7 @@ p{margin:0}
 /* ============================================================
    Franja valores / promesa
    ============================================================ */
-.mi-promise{background:
-   radial-gradient(120% 120% at 0% 0%, var(--wine-soft) 0%, transparent 50%),
-   radial-gradient(120% 120% at 100% 100%, var(--mimasa-soft) 0%, transparent 55%),
-   var(--sand);
+.mi-promise{background:var(--sand);
   border-radius:var(--r-xl);padding:clamp(34px,5vw,68px)}
 .mi-promise__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
 .mi-promise__item{}
@@ -423,18 +427,27 @@ p{margin:0}
 .mi-crumb svg{width:13px;height:13px;opacity:.5}
 .mi-crumb [aria-current]{color:var(--ink);font-weight:600}
 
-.mi-pagehead{position:relative;border-radius:var(--r-xl);overflow:hidden;padding:clamp(40px,6vw,76px) clamp(28px,5vw,64px);
-  color:var(--ink);isolation:isolate;background:var(--white);border:1.5px solid var(--line)}
-.mi-pagehead::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;z-index:2}
-.mi-pagehead--mimasa{border-color:rgba(107,16,48,.30)}
-.mi-pagehead--mimasa::before{background:var(--mimasa)}
-.mi-pagehead--ifigen{border-color:rgba(160,0,48,.30)}
-.mi-pagehead--ifigen::before{background:var(--ifigen)}
-.mi-pagehead--mimasa{background:var(--mimasa-soft)}
-.mi-pagehead--ifigen{background:var(--ifigen-soft)}
-.mi-pagehead h1{font-size:clamp(2rem,4vw,3rem);margin:0}
-/* variante compacta: solo título */
-.mi-pagehead--min{padding:clamp(26px,3.4vw,38px) clamp(28px,5vw,64px)}
+/* Cabecera de categoría — variante A (por defecto): sobria, solo tipografía.
+   Sin caja de color pesada: borde inferior fino + acento de marca discreto. */
+.mi-pagehead{position:relative;padding:clamp(18px,2.6vw,28px) 0 clamp(20px,2.8vw,30px);
+  color:var(--ink);isolation:isolate;background:none;border:none;border-bottom:1px solid var(--line)}
+.mi-pagehead--mimasa{border-bottom-color:rgba(107,16,48,.25)}
+.mi-pagehead--ifigen{border-bottom-color:rgba(160,0,48,.25)}
+.mi-pagehead h1{font-size:clamp(1.7rem,3.2vw,2.5rem);margin:0}
+.mi-pagehead__desc{margin-top:8px;color:var(--ink-2);font-size:.98rem;max-width:640px}
+/* compat: alias histórico, ya no añade padding extra */
+.mi-pagehead--min{}
+
+/* Cabecera de categoría — variante B: imagen de fondo + overlay sólido (sin degradado).
+   Se activa dinámicamente en categoria.html cuando hay una categoría concreta seleccionada,
+   para que el cliente pueda comparar ambas variantes en la propia demo. */
+.mi-pagehead--image{border-bottom:none;border-radius:var(--r-lg);overflow:hidden;
+  padding:clamp(40px,6vw,64px) clamp(24px,4vw,40px);color:#fff}
+.mi-pagehead__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;display:none}
+.mi-pagehead--image .mi-pagehead__bg{display:block}
+.mi-pagehead--image::after{content:"";position:absolute;inset:0;background:rgba(20,8,14,.58);z-index:1}
+.mi-pagehead--image h1,.mi-pagehead--image .mi-pagehead__desc{position:relative;z-index:2}
+.mi-pagehead--image .mi-pagehead__desc{color:rgba(255,255,255,.88)}
 
 /* ============================================================
    Listado: toolbar + sidebar
@@ -463,8 +476,15 @@ p{margin:0}
 .mi-toolbar__count{font-size:.92rem;color:var(--ink-2)}
 .mi-toolbar__count b{color:var(--ink)}
 .mi-toolbar__right{display:flex;align-items:center;gap:10px}
-.mi-select{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border:1px solid var(--line);border-radius:var(--r-pill);background:#fff;font-weight:600;font-size:.9rem}
-.mi-select svg{width:15px;height:15px;opacity:.6}
+.mi-select{position:relative}
+.mi-select__btn{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:11px 16px;border:1px solid var(--line);border-radius:var(--r-pill);background:#fff;font-weight:600;font-size:.9rem}
+.mi-select__btn svg{width:15px;height:15px;opacity:.6}
+.mi-select__menu{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
+  box-shadow:var(--sh-3);overflow:hidden;min-width:220px;opacity:0;visibility:hidden;transform:translateY(6px);transition:.22s;z-index:80}
+.mi-select.is-open .mi-select__menu{opacity:1;visibility:visible;transform:none}
+.mi-select__menu button{display:block;width:100%;min-height:44px;padding:11px 16px;font-weight:600;font-size:.9rem;text-align:left;transition:background .15s}
+.mi-select__menu button:hover{background:var(--sand)}
+.mi-select__menu button.is-on{color:var(--wine);font-weight:800}
 .mi-chiprow{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:24px}
 .mi-chip{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:var(--r-pill);font-size:.88rem;font-weight:600;
   border:1px solid var(--line);background:#fff;transition:.25s}
@@ -473,8 +493,10 @@ p{margin:0}
 .mi-chip{white-space:nowrap}
 .mi-chip svg{width:13px;height:13px;flex:none}
 
-.mi-filterbtn{display:none;align-items:center;gap:9px;padding:11px 16px;border:1px solid var(--line);border-radius:var(--r-pill);background:#fff;font-weight:600;font-size:.9rem}
+.mi-filterbtn{display:none;align-items:center;gap:9px;min-height:44px;padding:11px 16px;border:1px solid var(--line);border-radius:var(--r-pill);background:#fff;font-weight:600;font-size:.9rem}
 .mi-filterbtn svg{width:16px;height:16px}
+.mi-filterbtn__count{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:var(--r-pill);background:var(--wine);color:#fff;font-size:.72rem;font-weight:800}
+.mi-filterbtn__count[hidden]{display:none}
 .mi-filters__head{display:none}
 .mi-filters__apply{display:none}
 
@@ -491,7 +513,7 @@ p{margin:0}
 .mi-gallery__main{position:relative;border-radius:var(--r-xl);overflow:hidden;background:var(--sand);aspect-ratio:1/1;box-shadow:var(--sh-2);margin-bottom:14px}
 .mi-gallery__main img{width:100%;height:100%;object-fit:contain;padding:34px}
 .mi-gallery__flags{position:absolute;top:18px;left:18px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:7px;z-index:2}
-.mi-gallery__thumbs{display:flex;gap:12px}
+.mi-gallery__thumbs{display:flex;gap:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
 .mi-thumb{width:84px;height:84px;border-radius:var(--r-sm);overflow:hidden;background:var(--sand);border:2px solid transparent;cursor:pointer;transition:.2s;padding:0;flex:none}
 .mi-thumb img{width:100%;height:100%;object-fit:contain;padding:8px}
 .mi-thumb.is-on{border-color:var(--wine)}
@@ -572,7 +594,7 @@ p{margin:0}
 .mi-drawer__foot{padding:22px 24px;border-top:1px solid var(--line);background:#fff}
 .mi-drawer__ship{display:flex;align-items:center;gap:10px;font-size:.84rem;color:var(--ink-2);margin-bottom:14px}
 .mi-drawer__bar{height:7px;border-radius:5px;background:var(--sand);overflow:hidden;margin-bottom:8px}
-.mi-drawer__bar i{display:block;height:100%;width:78%;background:linear-gradient(90deg,var(--wine),var(--wine-deep));border-radius:5px}
+.mi-drawer__bar i{display:block;height:100%;width:78%;background:var(--wine);border-radius:5px}
 .mi-drawer__total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
 .mi-drawer__total b{font-size:1.35rem;font-family:var(--ff-body);font-weight:800}
 
@@ -625,25 +647,53 @@ p{margin:0}
 
 /* ============================================================
    Banner promocional permanente — carrusel de una sola pantalla
+   Mobile-first: imagen + tarjeta de texto en flujo normal (recorte
+   propio, sin texto de píxel). Desktop (>=768px): imagen ancha con
+   CTA superpuesto, como antes — el texto ya viene en la imagen.
    ============================================================ */
 .mi-topbanner-wrap{padding-top:clamp(18px,2.4vw,26px)}
-.mi-topbanner{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-1);
-  aspect-ratio:2.95/1;background:var(--sand)}
-.mi-topbanner__slide{position:absolute;inset:0;display:block;opacity:0;visibility:hidden;transition:opacity .5s var(--ease)}
-.mi-topbanner__slide.is-on{opacity:1;visibility:visible;z-index:1}
-.mi-topbanner__slide img{width:100%;height:100%;object-fit:cover;display:block}
-.mi-topbanner__cta{position:absolute;left:22px;bottom:22px;z-index:2;display:inline-flex;align-items:center;gap:9px;
-  padding:13px 22px;border-radius:var(--r-pill);background:var(--wine);color:#fff;font-weight:700;font-size:.92rem}
-.mi-topbanner__cta svg{width:16px;height:16px}
-.mi-topbanner__dots{position:absolute;right:20px;bottom:20px;z-index:3;display:flex;gap:7px}
-.mi-topbanner__dot{width:8px;height:8px;padding:0;border:none;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer;transition:.25s var(--ease)}
-.mi-topbanner__dot.is-on{width:22px;border-radius:5px;background:#fff}
-@media(max-width:640px){
-  .mi-topbanner__cta{left:12px;bottom:12px;padding:9px 14px;font-size:.78rem;gap:6px}
-  .mi-topbanner__cta svg{width:13px;height:13px}
-  .mi-topbanner__dots{right:12px;bottom:12px;gap:5px}
-  .mi-topbanner__dot{width:6px;height:6px}
-  .mi-topbanner__dot.is-on{width:16px}
+.mi-topbanner{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-1);background:var(--sand)}
+.mi-topbanner__slide{display:none}
+.mi-topbanner__slide.is-on{display:block}
+.mi-topbanner__slide picture{display:block;aspect-ratio:4/3}
+.mi-topbanner__slide picture img{width:100%;height:100%;object-fit:cover;display:block}
+
+.mi-topbanner__cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  min-height:44px;padding:12px 22px;border-radius:var(--r-pill);background:var(--wine);color:#fff;
+  font-weight:700;font-size:.92rem}
+.mi-topbanner__cta svg{width:16px;height:16px;flex:none}
+.mi-topbanner__cta--desktop{display:none}
+
+.mi-topbanner__content{display:flex;flex-direction:column;align-items:flex-start;gap:7px;
+  padding:18px 20px 20px;background:var(--wine)}
+.mi-topbanner__eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.04em;
+  font-size:clamp(.72rem,3vw,.82rem);color:var(--wine);background:#fff;padding:4px 12px;border-radius:var(--r-pill)}
+.mi-topbanner__headline{color:#fff;font-family:var(--ff-display);font-weight:700;
+  font-size:clamp(1.2rem,5vw,1.5rem);line-height:1.15;letter-spacing:.001em}
+.mi-topbanner__sub{color:rgba(255,255,255,.88);font-size:clamp(.88rem,3.6vw,.95rem)}
+.mi-topbanner__content .mi-topbanner__cta{margin-top:6px;width:100%;background:#fff;color:var(--wine)}
+
+.mi-topbanner__dots{position:absolute;top:12px;right:12px;z-index:3;display:flex;gap:6px}
+.mi-topbanner__dot{width:7px;height:7px;padding:0;border:none;border-radius:50%;min-width:0;
+  background:rgba(255,255,255,.6);cursor:pointer;transition:.25s var(--ease)}
+.mi-topbanner__dot.is-on{width:18px;border-radius:5px;background:#fff}
+/* los puntos necesitan un target táctil >=44px aunque el indicador visual sea pequeño */
+.mi-topbanner__dot{position:relative}
+.mi-topbanner__dot::before{content:"";position:absolute;inset:-14px}
+
+@media(min-width:768px){
+  .mi-topbanner{aspect-ratio:2.95/1}
+  .mi-topbanner__slide{position:absolute;inset:0;display:block;opacity:0;visibility:hidden;transition:opacity .5s var(--ease)}
+  .mi-topbanner__slide.is-on{opacity:1;visibility:visible;z-index:1}
+  .mi-topbanner__slide picture{height:100%;aspect-ratio:auto}
+  .mi-topbanner__content{display:none}
+  .mi-topbanner__cta--desktop{position:absolute;bottom:22px;z-index:2;display:inline-flex}
+  .mi-topbanner__slide.slide--left .mi-topbanner__cta--desktop{left:22px}
+  .mi-topbanner__slide.slide--center .mi-topbanner__cta--desktop{left:50%;transform:translateX(-50%)}
+  .mi-topbanner__slide.slide--right .mi-topbanner__cta--desktop{right:22px}
+  .mi-topbanner__dots{top:auto;bottom:20px;right:20px}
+  .mi-topbanner__dot{width:8px;height:8px}
+  .mi-topbanner__dot.is-on{width:22px}
 }
 
 /* ============================================================
@@ -694,7 +744,7 @@ p{margin:0}
   .mi-header__row{gap:10px}
   .mi-logo img{height:32px}
   .mi-actions{gap:2px}
-  .mi-world,.mi-pdp,.mi-modal__card{grid-template-columns:1fr}
+  .mi-world,.mi-pdp,.mi-modal__card{grid-template-columns:minmax(0,1fr)}
   .mi-world--rev .mi-world__media{order:0}
   .mi-world__chip--tl{left:0}
   .mi-world__chip--br{right:0}
@@ -712,7 +762,6 @@ p{margin:0}
   .mi-modal__media img{max-height:220px}
 }
 @media(max-width:720px){
-  .mi-doors{grid-template-columns:1fr}
   .mi-prodgrid,.mi-prodgrid--3{grid-template-columns:repeat(2,1fr)}
   .mi-catgrid{grid-template-columns:repeat(2,1fr)}
   .mi-trust__grid{grid-template-columns:1fr}
@@ -748,3 +797,11 @@ p{margin:0}
 .mi-mobile__door-cat{font-weight:800;font-size:1.05rem;line-height:1.25}
 .mi-mobile__link{display:flex;align-items:center;justify-content:space-between;padding:16px 4px;border-bottom:1px solid var(--line);font-weight:600;font-size:1.05rem}
 .mi-mobile__link svg{width:18px;height:18px;opacity:.4}
+
+/* Utensilios: acordeón dentro del menú móvil, mismo look que .mi-mobile__link */
+.mi-mobile__acc.mi-acc__item{border-bottom:1px solid var(--line)}
+.mi-mobile__acc .mi-acc__head{padding:16px 4px;font-weight:600;font-size:1.05rem}
+.mi-mobile__acc .mi-acc__head .ic{width:26px;height:26px;border:none}
+.mi-mobile__acc .mi-acc__inner{padding:0 4px 14px}
+.mi-acc__sublink{display:flex;align-items:center;min-height:44px;padding:8px 12px;font-size:.95rem;font-weight:600;color:var(--ink-2)}
+.mi-acc__sublink:hover{color:var(--wine)}
