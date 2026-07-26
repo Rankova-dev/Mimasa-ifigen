@@ -78,13 +78,13 @@
   }
 
   /* ---------- Mega menu ---------- */
-  function megaList(sel, list, brand){
+  function megaList(sel, list, brand, noDesc){
     const el = $(sel); if(!el) return;
     el.innerHTML = list.map(c=>`<a class="mi-mega__link" href="${c.url}">
       <span class="mi-mega__ic" style="background:var(--${brand}-soft)">
         <img src="${c.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">
       </span>
-      <span><b>${c.name}</b><span>${c.desc}</span></span>
+      <span><b>${c.name}</b>${noDesc?'':`<span>${c.desc}</span>`}</span>
     </a>`).join('');
   }
 
@@ -286,6 +286,7 @@
     const state = {
       brands: new Set(opts.forceBrand ? [opts.forceBrand] : (params.get('brand')? [params.get('brand')] : ['mimasa','ifigen'])),
       cat: params.get('cat') || null,
+      subcat: params.get('subcat') || null,
       oferta: params.get('ofertas')==='1',
       bio: params.get('bio')==='1',
       sinGluten: params.get('singluten')==='1', sinLactosa: false,
@@ -293,33 +294,25 @@
     };
     const isOfertas = params.get('ofertas')==='1';
 
-    /* cabecera contextual — variante A (tipográfica) por defecto; variante B
-       (imagen de categoría + overlay) se activa sola cuando hay una categoría
-       concreta seleccionada, para comparar ambas variantes en la misma demo. */
+    /* cabecera contextual — siempre tipográfica (mismo formato que "Raíces y
+       otras plantas"): solo título, sin imagen ni descripción de fondo. */
     const head = $('#catHead');
     function updateHead(){
       if(!head) return;
       const oneBrand = state.brands.size===1 ? [...state.brands][0] : null;
       head.classList.remove('mi-pagehead--mimasa','mi-pagehead--ifigen');
       if(oneBrand) head.classList.add('mi-pagehead--'+oneBrand);
-      const title = isOfertas? t('ofertas') : (state.cat || (oneBrand? t(oneBrand==='mimasa'?'cat_food':'cat_supp') : t('cat_todos')));
+      const title = isOfertas? t('ofertas') : (state.subcat || state.cat || (oneBrand? t(oneBrand==='mimasa'?'cat_food':'cat_supp') : t('cat_todos')));
       $('#catTitle').textContent = title;
       $('#catCrumbName').textContent = title;
       document.title = title+' | Mimasa Ifigen';
-
-      const bg = $('#catHeadBg'), descEl = $('#catDesc');
-      const catData = state.cat ? [...CATS_MIMASA,...CATS_IFIGEN].find(c=>norm(c.name)===norm(state.cat)) : null;
-      if(descEl) descEl.textContent = catData ? catData.desc : '';
-      if(bg){
-        if(catData){ bg.src = catData.img; head.classList.add('mi-pagehead--image'); }
-        else { bg.removeAttribute('src'); head.classList.remove('mi-pagehead--image'); }
-      }
     }
 
     function matches(p){
       if(!state.brands.has(p.brand)) return false;
       if(opts.excludeCat && !state.cat && norm(p.cat)===norm(opts.excludeCat)) return false;
       if(state.cat && norm(p.cat)!==norm(state.cat)) return false;
+      if(state.subcat && norm(p.subcat||'')!==norm(state.subcat)) return false;
       if(state.oferta && !(p.off>10)) return false;   /* el −10% global no es oferta */
       if(state.bio && !p.bio) return false;
       if(state.sinGluten && !p.sinGluten) return false;
@@ -333,6 +326,7 @@
       const parts=[];
       if(state.brands.size===1 && !opts.forceBrand) parts.push({t:BRAND_LABEL[[...state.brands][0]], k:'brand'});
       if(state.cat) parts.push({t:state.cat, k:'cat'});
+      if(state.subcat) parts.push({t:state.subcat, k:'subcat'});
       if(state.sinLactosa) parts.push({t:t('f_sinlactosa'), k:'sl'});
       /* accesos rápidos siempre visibles + chips de filtros activos */
       row.innerHTML =
@@ -395,10 +389,10 @@
       if(fb){
         fb.checked ? state.brands.add(fb.dataset.fbrand) : state.brands.delete(fb.dataset.fbrand);
         if(!state.brands.size){ state.brands.add(fb.dataset.fbrand); fb.checked=true; }
-        state.cat=null; apply(); return;
+        state.cat=null; state.subcat=null; apply(); return;
       }
       const fc = e.target.closest('[data-fcat]');
-      if(fc){ state.cat = fc.checked? fc.dataset.fcat : null; apply(); return; }
+      if(fc){ state.cat = fc.checked? fc.dataset.fcat : null; state.subcat=null; apply(); return; }
       if(e.target.id==='fBio'){ state.bio = e.target.checked; apply(); return; }
       if(e.target.id==='fSinGluten'){ state.sinGluten = e.target.checked; apply(); return; }
       if(e.target.id==='fSinLactosa'){ state.sinLactosa = e.target.checked; apply(); return; }
@@ -430,8 +424,9 @@
       const un = e.target.closest('[data-unchip]');
       if(!un) return;
       const k = un.dataset.unchip;
-      if(k==='brand'){ state.brands = new Set(['mimasa','ifigen']); state.cat=null; }
-      if(k==='cat') state.cat = null;
+      if(k==='brand'){ state.brands = new Set(['mimasa','ifigen']); state.cat=null; state.subcat=null; }
+      if(k==='cat'){ state.cat = null; state.subcat=null; }
+      if(k==='subcat') state.subcat = null;
       if(k==='sg') state.sinGluten = false;
       if(k==='sl') state.sinLactosa = false;
       apply();
@@ -562,7 +557,7 @@
     renderTiles('#tilesMimasaHome', CATS_MIMASA.slice(0,4), 'mimasa', true);
     renderTiles('#tilesIfigenHome', CATS_IFIGEN.slice(0,4), 'ifigen');
     renderPosts('#blogGrid');
-    megaList('#megaMimasa', CATS_MIMASA, 'mimasa');
+    megaList('#megaMimasa', CATS_MIMASA, 'mimasa', true);
     megaList('#megaIfigen', CATS_IFIGEN, 'ifigen');
 
     // páginas de marca (el listado con filtros lo gestiona setupShop() vía #shopGrid)

@@ -60,12 +60,12 @@ const PRODUCTS = [
   {brand:"ifigen", cat:"Productos de uso tópico", name:"Loción Capilar 200ml", ref:"82001", price:24.34, was:27.04, off:10, img:IMG+"ifigen/general/locion-capilar-200-ml.jpg"},
   {brand:"ifigen", cat:"Fitoterapia", name:"Elixir 4 Estaciones 250ml", ref:"81010", price:null, img:IMG+"ifigen/general/elixir-4-estaciones-250-ml.jpg"},
 
-  {brand:"mimasa", cat:"Utensilios de cocina", name:"Suribachi 18cm", ref:"23000", price:15.18, was:16.87, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/suribachi.jpg"},
-  {brand:"mimasa", cat:"Utensilios de cocina", name:"Surikogi", ref:"23002", price:7.31, was:8.12, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/surikogi.jpg"},
-  {brand:"mimasa", cat:"Utensilios de cocina", name:"Colador de té (caña de bambú)", ref:"23005", price:7.91, was:8.78, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/colador-de-te-cana-de-bambu.jpg"},
-  {brand:"mimasa", cat:"Utensilios de cocina", name:"Esterillas sushi (caña de bambú)", ref:"23006", price:5.70, was:6.33, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/esterillas-sushi-cana-de-bambu.jpg"},
-  {brand:"mimasa", cat:"Utensilios de cocina", name:"Cepillo para limpiar hortalizas (tawashi)", ref:"23004", price:9.83, was:10.93, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/cepillo-para-limpiar-hortalizas-tawashi.jpg"},
-  {brand:"mimasa", cat:"Utensilios de cocina", name:"Libro Macrobiótica (M. Kushi)", ref:"24000", price:16.78, was:18.65, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/libro-macrobiotica-michio-kushi.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Suribachi 18cm", ref:"23000", price:15.18, was:16.87, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/suribachi.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Surikogi", ref:"23002", price:7.31, was:8.12, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/surikogi.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Colador de té (caña de bambú)", ref:"23005", price:7.91, was:8.78, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/colador-de-te-cana-de-bambu.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Esterillas sushi (caña de bambú)", ref:"23006", price:5.70, was:6.33, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/esterillas-sushi-cana-de-bambu.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Cepillo para limpiar hortalizas (tawashi)", ref:"23004", price:9.83, was:10.93, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/cepillo-para-limpiar-hortalizas-tawashi.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Libro Macrobiótica (M. Kushi)", ref:"24000", price:16.78, was:18.65, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/libro-macrobiotica-michio-kushi.jpg"},
 ];
 
 /* Oligoelementos — familia (sin precio público en demo) */

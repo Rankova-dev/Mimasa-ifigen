@@ -427,27 +427,16 @@ p{margin:0}
 .mi-crumb svg{width:13px;height:13px;opacity:.5}
 .mi-crumb [aria-current]{color:var(--ink);font-weight:600}
 
-/* Cabecera de categoría — variante A (por defecto): sobria, solo tipografía.
-   Sin caja de color pesada: borde inferior fino + acento de marca discreto. */
+/* Cabecera de categoría: sobria, solo tipografía (mismo formato en todas
+   las páginas de este estilo). Sin caja de color pesada: borde inferior
+   fino + acento de marca discreto. */
 .mi-pagehead{position:relative;padding:clamp(18px,2.6vw,28px) 0 clamp(20px,2.8vw,30px);
   color:var(--ink);isolation:isolate;background:none;border:none;border-bottom:1px solid var(--line)}
 .mi-pagehead--mimasa{border-bottom-color:rgba(107,16,48,.25)}
 .mi-pagehead--ifigen{border-bottom-color:rgba(160,0,48,.25)}
 .mi-pagehead h1{font-size:clamp(1.7rem,3.2vw,2.5rem);margin:0}
-.mi-pagehead__desc{margin-top:8px;color:var(--ink-2);font-size:.98rem;max-width:640px}
 /* compat: alias histórico, ya no añade padding extra */
 .mi-pagehead--min{}
-
-/* Cabecera de categoría — variante B: imagen de fondo + overlay sólido (sin degradado).
-   Se activa dinámicamente en categoria.html cuando hay una categoría concreta seleccionada,
-   para que el cliente pueda comparar ambas variantes en la propia demo. */
-.mi-pagehead--image{border-bottom:none;border-radius:var(--r-lg);overflow:hidden;
-  padding:clamp(40px,6vw,64px) clamp(24px,4vw,40px);color:#fff}
-.mi-pagehead__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;display:none}
-.mi-pagehead--image .mi-pagehead__bg{display:block}
-.mi-pagehead--image::after{content:"";position:absolute;inset:0;background:rgba(20,8,14,.58);z-index:1}
-.mi-pagehead--image h1,.mi-pagehead--image .mi-pagehead__desc{position:relative;z-index:2}
-.mi-pagehead--image .mi-pagehead__desc{color:rgba(255,255,255,.88)}
 
 /* ============================================================
    Listado: toolbar + sidebar
