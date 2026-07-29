@@ -82,15 +82,12 @@
   /* ---------- Mega menu ---------- */
   function megaList(sel, list, brand, noDesc){
     const el = $(sel); if(!el) return;
-    el.innerHTML = list.map(c=>{
-      const tall = c.name === 'Salsas de soja';
-      return `<a class="mi-mega__link" href="${c.url}">
-      <span class="mi-mega__ic${tall?' mi-mega__ic--tall':''}" style="background:var(--white)">
-        <img src="${c.img}" alt="" style="width:100%;height:100%;object-fit:contain;padding:${tall?10:8}px;border-radius:inherit">
+    el.innerHTML = list.map(c=>`<a class="mi-mega__link" href="${c.url}">
+      <span class="mi-mega__ic" style="background:var(--white)">
+        <img src="${c.img}" alt="" style="width:100%;height:100%;object-fit:contain;padding:8px;border-radius:inherit">
       </span>
       <span><b>${c.name}</b>${noDesc?'':`<span>${c.desc}</span>`}</span>
-    </a>`;
-    }).join('');
+    </a>`).join('');
   }
 
   /* ---------- Mini-cart (funcional; empieza vacío) ---------- */

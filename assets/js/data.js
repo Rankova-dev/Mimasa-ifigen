@@ -112,7 +112,7 @@ const CATS_MIMASA = [
   {name:"Algas marinas", desc:"Bio y de fermentación tradicional", img:IMG+"mimasa/algas-marinas/kombu-bio.jpg", url:catUrl("mimasa","Algas marinas")},
   {name:"Misos", desc:"Pasta de soja fermentada", img:IMG+"mimasa/misos/hatcho-miso-400-grs.jpg", url:catUrl("mimasa","Misos")},
   {name:"Umeboshi", desc:"Ciruela fermentada", img:IMG+"mimasa/umeboshi/umeboshi-con-shiso-150-grs.jpg", url:catUrl("mimasa","Umeboshi")},
-  {name:"Salsas de soja", desc:"Tamari y Shoyu", img:IMG+"mimasa/soja/tamari-shoyu-bio-500ml.jpg", url:catUrl("mimasa","Salsas de soja")},
+  {name:"Salsas de soja", desc:"Tamari y Shoyu", img:IMG+"mimasa/soja/tamari-shoyu-icon.jpg", url:catUrl("mimasa","Salsas de soja")},
   {name:"Sésamo", desc:"Tahín y Gomasio", img:IMG+"mimasa/sesamo/tahin-bio-300grs.jpg", url:catUrl("mimasa","Sésamo y elaborados")},
   {name:"Raíces y plantas", desc:"Kuzu, jengibre y lotus", img:IMG+"mimasa/raices-y-otras-plantas/lotus-100-gr.jpg", url:catUrl("mimasa","Raíces y otras plantas")},
   {name:"Bebidas", desc:"Bancha y Kukicha", img:IMG+"mimasa/bebidas/kukicha-bio-100grs.jpg", url:catUrl("mimasa","Bebidas")},
