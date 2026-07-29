@@ -126,12 +126,12 @@
       <div class="mi-brands__grid">
         <a class="mi-brand-card mi-brand-card--mimasa" href="mimasa.html">
           <img class="mi-brand-card__icon" src="assets/img/brand/favicon.png" alt="" loading="lazy">
-          <span class="mi-brand-card__word">Mimasa</span>
+          <img class="mi-brand-card__word" src="assets/img/brand/wordmark-mimasa.svg" alt="Mimasa">
           <span class="mi-brand-card__tag" data-i18n="door_m_title">Alimentos saludables</span>
         </a>
         <a class="mi-brand-card mi-brand-card--ifigen" href="ifigen.html">
           <img class="mi-brand-card__icon" src="assets/img/brand/favicon.png" alt="" loading="lazy">
-          <span class="mi-brand-card__word">ifigen</span>
+          <img class="mi-brand-card__word" src="assets/img/brand/wordmark-ifigen.svg" alt="ifigen">
           <span class="mi-brand-card__tag" data-i18n="door_i_title">Salud y bienestar</span>
         </a>
       </div>
@@ -155,7 +155,6 @@
 <section class="mi-section">
   <div class="mi-container">
     <div class="mi-section-head mi-reveal">
-      <span class="mi-eyebrow" data-i18n="feat_eyebrow">Lo más vendido</span>
       <h2 class="mi-h-lg" data-i18n="feat_title">Top Promos</h2>
     </div>
     <div class="mi-prodgrid mi-reveal" id="gridFeatured"></div>
@@ -210,14 +209,14 @@
 <section class="mi-section">
   <div class="mi-container">
     <div class="mi-section-head mi-reveal">
-      <span class="mi-eyebrow" style="color:var(--mimasa)" data-i18n="cats_m_eyebrow">Mimasa · Alimentos</span>
-      <h2 class="mi-h-md" data-i18n="cats_title">Compra por categoría</h2>
+      <span class="mi-eyebrow" style="color:var(--mimasa)" data-i18n="door_m_title">Alimentos saludables</span>
+      <h2 class="mi-h-md" data-i18n="explora">Explora</h2>
     </div>
     <div class="mi-catgrid mi-reveal" id="tilesMimasaHome" style="margin-bottom:48px"></div>
 
     <div class="mi-section-head mi-reveal">
-      <span class="mi-eyebrow" style="color:var(--ifigen-deep)" data-i18n="cats_i_eyebrow">Ifigen · Suplementos</span>
-      <h2 class="mi-h-md" data-i18n="cats_title">Compra por categoría</h2>
+      <span class="mi-eyebrow" style="color:var(--ifigen-deep)" data-i18n="door_i_title">Salud y bienestar</span>
+      <h2 class="mi-h-md" data-i18n="explora">Explora</h2>
     </div>
     <div class="mi-catgrid mi-reveal" id="tilesIfigenHome"></div>
   </div>
@@ -332,7 +331,7 @@
 <!-- Quick view modal -->
 <div class="mi-modal" id="miModal" aria-label="Vista rápida">
   <div class="mi-modal__card">
-    <div class="mi-modal__media"><img id="qvImg" src="" alt=""></div>
+    <div class="mi-modal__media"><div class="mi-modal__flags" id="qvFlags"></div><img id="qvImg" src="" alt=""></div>
     <div class="mi-modal__body">
       <button class="mi-modal__close" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
       <div class="mi-pdp__brandrow"><span id="qvBrand" class="mi-pdp__brand mi-pdp__brand--ifigen">IFIGEN</span><span id="qvCat" class="mi-card__cat" style="margin:0"></span></div>

@@ -9,6 +9,8 @@
   const params = new URLSearchParams(location.search);
   const byId = id => PRODUCTS.find(x=>x.id===id);
   const pdpUrl = p => 'producto.html?p='+encodeURIComponent(p.id);
+  const taxLine = p => p.off ? t('qv_tax').replace('{n}', p.off) : t('tax_incl_only');
+  const flagsHTML = p => (p.off?`<span class="mi-flag mi-flag--off">-${p.off}%</span>`:'') + (p.bio?`<span class="mi-flag mi-flag--bio">BIO</span>`:'') + (p.sinGluten?`<span class="mi-flag mi-flag--diet">${t('sg')}</span>`:'');
 
   const BRAND_LABEL = {mimasa:'Mimasa', ifigen:'Ifigen'};
   const BRAND_TAG   = {mimasa:'Mimasa · Alimentos saludables', ifigen:'Ifigen · Suplementos'};
@@ -34,7 +36,7 @@
         <div class="mi-card__flags">${flags.join('')}</div>
         <span class="mi-card__brand mi-card__brand--${p.brand}">${p.brand.toUpperCase()}</span>
         <a href="${pdpUrl(p)}" aria-label="${p.name}"><img src="${p.img}" alt="${p.name}" loading="lazy"></a>
-        <button class="mi-card__quick" data-quick>${ICON.eye} ${t('qv_quick')}</button>
+        <button class="mi-card__quick" data-quick>${ICON.eye} <span>${t('qv_quick')}</span></button>
       </div>
       <p class="mi-card__cat">${p.cat}</p>
       <h3 class="mi-card__title"><a href="${pdpUrl(p)}">${p.name}</a></h3>
@@ -130,9 +132,9 @@
       return;
     }
     body.innerHTML = cart.map((i,idx)=>`<div class="mi-citem">
-      <div class="mi-citem__img"><img src="${i.img}" alt=""></div>
+      <a class="mi-citem__img" href="${pdpUrl(i)}"><img src="${i.img}" alt=""></a>
       <div class="mi-citem__main">
-        <b>${i.name}</b><span>${i.brand.toUpperCase()}${i.ref? ', '+t('ref')+' '+i.ref:''}</span>
+        <a href="${pdpUrl(i)}"><b>${i.name}</b></a><span>${i.brand.toUpperCase()}${i.ref? ', '+t('ref')+' '+i.ref:''}</span>
         <div class="mi-citem__row">
           <div class="mi-qty mi-qty--sm">
             <button data-cqty="${idx}|-1" aria-label="Quitar uno">−</button>
@@ -163,12 +165,14 @@
     const p = byId(id); const m = $('#miModal'); if(!p || !m) return;
     currentQuick = p;
     $('#qvImg').src = p.img; $('#qvImg').alt = p.name;
+    $('#qvFlags').innerHTML = flagsHTML(p);
     $('#qvName').textContent = p.name;
     $('#qvCat').textContent = p.cat;
     $('#qvRef').textContent = p.ref? 'Ref. '+p.ref : '';
     $('#qvBrand').textContent = p.brand.toUpperCase();
     $('#qvBrand').className = 'mi-pdp__brand mi-pdp__brand--'+p.brand;
     $('#qvPrice').textContent = p.price!=null ? eur(p.price) : t('consultar');
+    $('#qvTax').textContent = taxLine(p);
     $('#qvTax').style.display = p.price!=null? '' : 'none';
     const link = $('#qvLink'); if(link) link.href = pdpUrl(p);
     m.classList.add('is-on'); $('#miOverlay')?.classList.add('is-on'); document.body.style.overflow='hidden';
@@ -458,7 +462,7 @@
 
     $('#pdpMain').src = p.img; $('#pdpMain').alt = p.name;
     $('#pdpThumbs').style.display = 'none';
-    $('#pdpFlags').innerHTML = (p.off?`<span class="mi-flag mi-flag--off">-${p.off}%</span>`:'') + (p.bio?`<span class="mi-flag mi-flag--bio">BIO</span>`:'') + (p.sinGluten?`<span class="mi-flag mi-flag--diet">${t('sg')}</span>`:'');
+    $('#pdpFlags').innerHTML = flagsHTML(p);
 
     const brandPill = $('#pdpBrand');
     brandPill.textContent = p.brand.toUpperCase();
@@ -472,7 +476,7 @@
       $('#pdpWas').textContent = p.was? eur(p.was):''; $('#pdpWas').style.display = p.was? '':'none';
       if(p.was){ $('#pdpSave').textContent = t('save')+' '+eur(p.was-p.price); $('#pdpSave').style.display=''; }
       else $('#pdpSave').style.display='none';
-      $('#pdpTax').style.display='';
+      $('#pdpTax').textContent = taxLine(p); $('#pdpTax').style.display='';
     } else {
       $('#pdpPrice').textContent = t('consultar');
       $('#pdpWas').style.display='none'; $('#pdpSave').style.display='none'; $('#pdpTax').style.display='none';

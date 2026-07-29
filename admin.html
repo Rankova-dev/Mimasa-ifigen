@@ -23,8 +23,8 @@
 .adm-slide__thumb img{width:100%;height:84px;object-fit:cover;display:block}
 .adm-slide__fields{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
 .adm-slide__fields label{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.adm-slide__fields input{width:100%;padding:9px 12px;border:1.5px solid var(--line);border-radius:9px;font-family:var(--ff-body);font-size:.88rem;background:var(--paper)}
-.adm-slide__fields input:focus{outline:none;border-color:var(--wine)}
+.adm-slide__fields input,.adm-slide__fields select{width:100%;padding:9px 12px;border:1.5px solid var(--line);border-radius:9px;font-family:var(--ff-body);font-size:.88rem;background:var(--paper)}
+.adm-slide__fields input:focus,.adm-slide__fields select:focus{outline:none;border-color:var(--wine)}
 .adm-slide__acts{display:flex;flex-direction:column;gap:6px;flex:none}
 .adm-ico{width:36px;height:36px;border-radius:9px;background:var(--sand);display:grid;place-items:center;color:var(--ink-2);transition:.2s;font-size:.9rem;font-weight:800}
 .adm-ico:hover{background:var(--wine);color:#fff}
@@ -72,12 +72,19 @@
   try{ banners = JSON.parse(localStorage.getItem('mi-site-banners')) || structuredClone(DEFAULT_SITE_BANNERS); }
   catch(e){ banners = structuredClone(DEFAULT_SITE_BANNERS); }
 
-  function slideCard(sl, html){
+  function slideCard(sl, html, showPos){
+    const posField = showPos ? `<div><label>Posición del botón (escritorio)</label>
+        <select data-f="pos">
+          <option value="left" ${(sl.pos||'left')==='left'?'selected':''}>Izquierda</option>
+          <option value="center" ${sl.pos==='center'?'selected':''}>Centro</option>
+          <option value="right" ${sl.pos==='right'?'selected':''}>Derecha</option>
+        </select></div>` : '';
     return `<div class="adm-slide ${sl.active===false?'is-off':''}">
       <div class="adm-slide__thumb"><img src="${sl.img}" alt="" onerror="this.style.opacity=.2"></div>
       <div class="adm-slide__fields">
         <div><label>Imagen (URL)</label><input data-f="img" value="${sl.img||''}"></div>
         <div><label>Enlace al hacer clic</label><input data-f="link" value="${sl.link||''}"></div>
+        ${posField}
       </div>
       <div class="adm-slide__acts">${html}</div>
     </div>`;
@@ -91,7 +98,7 @@
       <button class="adm-ico" data-down="${i}" title="Bajar">↓</button>
       <button class="adm-ico" data-toggle="${i}" title="${sl.active===false?'Activar':'Desactivar'}">${sl.active===false?'◻':'◼'}</button>
       <button class="adm-ico" data-del="${i}" title="Eliminar">✕</button>
-    `)).join('');
+    `, true)).join('');
   }
   function save(){
     localStorage.setItem('mi-popup-slide', JSON.stringify(popup));
