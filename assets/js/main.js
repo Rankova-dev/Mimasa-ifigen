@@ -83,8 +83,8 @@
   function megaList(sel, list, brand, noDesc){
     const el = $(sel); if(!el) return;
     el.innerHTML = list.map(c=>`<a class="mi-mega__link" href="${c.url}">
-      <span class="mi-mega__ic" style="background:var(--${brand}-soft)">
-        <img src="${c.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">
+      <span class="mi-mega__ic" style="background:var(--white)">
+        <img src="${c.img}" alt="" style="width:100%;height:100%;object-fit:contain;padding:6px;border-radius:inherit">
       </span>
       <span><b>${c.name}</b>${noDesc?'':`<span>${c.desc}</span>`}</span>
     </a>`).join('');
