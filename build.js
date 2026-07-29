@@ -24,6 +24,8 @@ const META = {
     'Oligen 60 cápsulas de Ifigen, complemento alimenticio de Omega-3 con DHA 80% TG enzimático.'],
   'sobre-nosotros.html': ['Sobre nosotros | Mimasa Ifigen',
     'Conoce Mimasa Ifigen: una empresa familiar con una larga tradición en alimentos ecológicos y complementos alimenticios de vanguardia.'],
+  'blog.html': ['Blog | Mimasa Ifigen',
+    'Consejos y guías de Mimasa Ifigen para aprender a cuidarte desde dentro: alimentación saludable, suplementos y bienestar.'],
 };
 
 for (const [fn, [title, desc]] of Object.entries(META)) {

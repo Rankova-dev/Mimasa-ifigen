@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Omega-3-Oligen | Suplementos Ifigen | Mimasa Ifigen</title>
-<meta name="description" content="Descubre la gama Omega-3-Oligen de Ifigen: complementos alimenticios para combinar con una alimentación saludable.">
+<title>Blog | Mimasa Ifigen</title>
+<meta name="description" content="Consejos y guías de Mimasa Ifigen para aprender a cuidarte desde dentro: alimentación saludable, suplementos y bienestar.">
 <meta name="keywords" content="mimasa, mimasa ifigen, alimentos saludables, complementos alimenticios, productos ecológicos">
 <meta property="og:title" content="{{TITLE}}">
 <meta property="og:description" content="{{DESC}}">
@@ -110,78 +110,22 @@
   <nav class="mi-crumb" aria-label="Migas de pan">
     <a href="index.html" data-i18n="crumb_inicio">Inicio</a>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-    <span aria-current="page" id="catCrumbName">Catálogo</span>
+    <span aria-current="page" data-i18n="nav_blog">Blog</span>
   </nav>
 </div>
 
-<section style="padding-bottom:28px">
-  <div class="mi-container">
-    <div class="mi-pagehead mi-pagehead--ifigen mi-reveal" id="catHead">
-      <h1 id="catTitle">Catálogo</h1>
+<section style="padding-bottom:0">
+  <div class="mi-container" style="max-width:760px">
+    <div class="mi-reveal">
+      <span class="mi-eyebrow" data-i18n="blog_eyebrow">Blog Mimasa Ifigen</span>
+      <h1 class="mi-h-md" style="margin-top:10px" data-i18n="blog_title">Aprende a cuidarte desde dentro</h1>
     </div>
   </div>
 </section>
 
-<section class="mi-section" style="padding-top:8px">
+<section class="mi-section">
   <div class="mi-container">
-    <div class="mi-shop">
-      <!-- Sidebar -->
-      <aside class="mi-filters" id="miFilters">
-        <div class="mi-filters__head">
-          <h3 data-i18n="filter">Filtrar</h3>
-          <button class="mi-drawer__close" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
-        </div>
-        <div class="mi-fgroup">
-          <h4 data-i18n="f_marca">Marca</h4>
-          <div id="fBrands"></div>
-        </div>
-        <div class="mi-fgroup">
-          <h4 data-i18n="f_cat">Categoría</h4>
-          <div id="fCats" style="max-height:280px;overflow:auto"></div>
-        </div>
-        <div class="mi-fgroup">
-          <h4 data-i18n="f_precio">Precio máximo</h4>
-          <div class="mi-price-range"><input type="range" min="5" max="50" value="50" id="fPrice"></div>
-          <div style="display:flex;justify-content:space-between;font-size:.84rem;color:var(--muted);margin-top:6px"><span>5 €</span><span id="fPriceVal">50 €</span></div>
-        </div>
-        <div class="mi-fgroup">
-          <h4 data-i18n="f_diet">Dieta y certificación</h4>
-          <label class="mi-check"><input type="checkbox" id="fBio"> <span>BIO</span></label>
-          <label class="mi-check"><input type="checkbox" id="fSinGluten"> <span data-i18n="f_singluten">Sin gluten</span></label>
-          <label class="mi-check"><input type="checkbox" id="fSinLactosa"> <span data-i18n="f_sinlactosa">Sin lactosa</span></label>
-        </div>
-        <button class="mi-btn mi-btn--block mi-filters__apply" data-close data-i18n="filter_apply">Ver resultados</button>
-      </aside>
-
-      <!-- Results -->
-      <div>
-        <div class="mi-toolbar">
-          <p class="mi-toolbar__count"><b id="shopCount">0</b> <span data-i18n="productos">productos</span></p>
-          <div class="mi-toolbar__right">
-            <button class="mi-filterbtn" data-filters-open aria-controls="miFilters" aria-expanded="false" aria-haspopup="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-              <span data-i18n="filter">Filtrar</span>
-              <span class="mi-filterbtn__count" id="filterCount" hidden>0</span>
-            </button>
-            <div class="mi-select" id="sortSelect">
-              <button class="mi-select__btn" data-sort-open aria-haspopup="true" aria-expanded="false" aria-controls="sortMenu">
-                <span id="sortLabel" data-i18n="sort_novedades">Novedades</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-              </button>
-              <div class="mi-select__menu" id="sortMenu">
-                <button data-sort="novedades" class="is-on" data-i18n="sort_novedades">Novedades</button>
-                <button data-sort="name-asc" data-i18n="sort_name_asc">Nombre: A a Z</button>
-                <button data-sort="name-desc" data-i18n="sort_name_desc">Nombre: Z a A</button>
-                <button data-sort="price-asc" data-i18n="sort_price_asc">Precio: menor a mayor</button>
-                <button data-sort="price-desc" data-i18n="sort_price_desc">Precio: mayor a menor</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mi-chiprow" id="chipRow"></div>
-        <div class="mi-prodgrid mi-prodgrid--3" id="shopGrid"></div>
-      </div>
-    </div>
+    <div class="mi-bloggrid mi-reveal" id="blogGrid"></div>
   </div>
 </section>
 
