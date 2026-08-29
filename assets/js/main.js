@@ -10,7 +10,11 @@
   const byId = id => PRODUCTS.find(x=>x.id===id);
   const pdpUrl = p => 'producto.html?p='+encodeURIComponent(p.id);
   const taxLine = p => p.off ? t('qv_tax').replace('{n}', p.off) : t('tax_incl_only');
-  const flagsHTML = p => (p.off?`<span class="mi-flag mi-flag--off">-${p.off}%</span>`:'') + (p.bio?`<span class="mi-flag mi-flag--bio">BIO</span>`:'') + (p.sinGluten?`<span class="mi-flag mi-flag--diet">${t('sg')}</span>`:'');
+  const flagsHTML = p => (p.off?`<span class="mi-flag mi-flag--off">-${p.off}%</span>`:'') + (p.bio?`<span class="mi-flag mi-flag--bio">BIO</span>`:'') + (p.sinGluten?`<span class="mi-flag mi-flag--diet">${t('sg')}</span>`:'') + (p.sinLactosa?`<span class="mi-flag mi-flag--diet">${t('sl')}</span>`:'');
+
+  /* Tope del filtro de precio: se calcula del catálogo (redondeado a la decena
+     superior) para que ningún producto quede fuera del listado por defecto. */
+  const PRICE_MAX = Math.max(50, Math.ceil(Math.max(...PRODUCTS.map(p=>p.price||0))/10)*10);
 
   const BRAND_LABEL = {mimasa:'Mimasa', ifigen:'Ifigen'};
   const BRAND_TAG   = {mimasa:'Mimasa · Alimentos saludables', ifigen:'Ifigen · Suplementos'};
@@ -24,10 +28,14 @@
 
   /* ---------- Product card ---------- */
   function card(p){
-    const flags = [];
-    if(p.off) flags.push(`<span class="mi-flag mi-flag--off">-${p.off}%</span>`);
-    if(p.bio) flags.push(`<span class="mi-flag mi-flag--bio">BIO</span>`);
-    if(p.sinGluten) flags.push(`<span class="mi-flag mi-flag--diet">${t('sg')}</span>`);
+    const off = p.off? `<span class="mi-flag mi-flag--off">-${p.off}%</span>` : '';
+    /* Dieta y certificación: encima de la foto en escritorio y en una fila propia
+       bajo la referencia en móvil, donde la tarjeta es demasiado estrecha. */
+    const diet =
+      (p.bio? `<span class="mi-flag mi-flag--bio">BIO</span>`:'') +
+      (p.sinGluten? `<span class="mi-flag mi-flag--diet">${t('sg')}</span>`:'') +
+      (p.sinLactosa? `<span class="mi-flag mi-flag--diet">${t('sl')}</span>`:'');
+    const flags = [off + diet];
     const price = p.price!=null
       ? `<div class="mi-card__price"><b>${eur(p.price)}</b>${p.was?`<s>${eur(p.was)}</s>`:''}</div>`
       : `<div class="mi-card__price"><b style="font-size:1rem;color:var(--ink-2)">${t('consultar')}</b></div>`;
@@ -41,6 +49,7 @@
       <p class="mi-card__cat">${p.cat}</p>
       <h3 class="mi-card__title"><a href="${pdpUrl(p)}">${p.name}</a></h3>
       <p class="mi-card__ref">${p.ref? t('ref')+' '+p.ref : '&nbsp;'}</p>
+      ${diet? `<div class="mi-card__diet">${diet}</div>`:''}
       <div class="mi-card__foot">
         ${price}
         <button class="mi-card__add" data-add aria-label="Añadir ${p.name}">${ICON.cart}</button>
@@ -294,9 +303,13 @@
       oferta: params.get('ofertas')==='1',
       bio: params.get('bio')==='1',
       sinGluten: params.get('singluten')==='1', sinLactosa: false,
-      maxPrice: 50, sort: 'novedades'
+      maxPrice: PRICE_MAX, sort: 'novedades'
     };
     const isOfertas = params.get('ofertas')==='1';
+
+    const priceInput = $('#fPrice');
+    if(priceInput){ priceInput.max = PRICE_MAX; priceInput.value = PRICE_MAX; }
+    const priceVal = $('#fPriceVal'); if(priceVal) priceVal.textContent = PRICE_MAX+' €';
 
     /* cabecera contextual — siempre tipográfica (mismo formato que "Raíces y
        otras plantas"): solo título, sin imagen ni descripción de fondo. */
@@ -325,8 +338,28 @@
       return true;
     }
 
+    /* Productos del ámbito actual (marca + categoría), ignorando los propios
+       filtros de dieta y de precio. */
+    function scopeList(){
+      return PRODUCTS.filter(p=>{
+        if(!state.brands.has(p.brand)) return false;
+        if(opts.excludeCat && !state.cat && norm(p.cat)===norm(opts.excludeCat)) return false;
+        if(state.cat && norm(p.cat)!==norm(state.cat)) return false;
+        if(state.subcat && norm(p.subcat||'')!==norm(state.subcat)) return false;
+        return true;
+      });
+    }
+    /* En Salud y bienestar y en Utensilios de cocina no hay ningún producto BIO,
+       sin gluten ni sin lactosa: allí el bloque "Dieta y certificación" y sus
+       accesos rápidos no deben aparecer. */
+    function dietScope(){
+      const l = scopeList();
+      return {bio:l.some(p=>p.bio), sg:l.some(p=>p.sinGluten), sl:l.some(p=>p.sinLactosa)};
+    }
+
     function chips(){
       const row = $('#chipRow'); if(!row) return;
+      const d = dietScope();
       const parts=[];
       if(state.brands.size===1 && !opts.forceBrand) parts.push({t:BRAND_LABEL[[...state.brands][0]], k:'brand'});
       if(state.cat) parts.push({t:state.cat, k:'cat'});
@@ -334,13 +367,13 @@
       if(state.sinLactosa) parts.push({t:t('f_sinlactosa'), k:'sl'});
       /* accesos rápidos siempre visibles + chips de filtros activos */
       row.innerHTML =
-        `<button class="mi-chip ${state.bio?'is-on':''}" data-qtoggle="bio">BIO</button>`+
-        `<button class="mi-chip ${state.sinGluten?'is-on':''}" data-qtoggle="sg">${t('f_singluten')}</button>`+
+        (d.bio? `<button class="mi-chip ${state.bio?'is-on':''}" data-qtoggle="bio">BIO</button>`:'')+
+        (d.sg? `<button class="mi-chip ${state.sinGluten?'is-on':''}" data-qtoggle="sg">${t('f_singluten')}</button>`:'')+
         parts.map(c=>`<span class="mi-chip is-on" data-unchip="${c.k}">${c.t} ${ICON.x}</span>`).join('');
 
       const count = $('#filterCount');
       if(count){
-        const n = parts.length + (state.bio?1:0) + (state.sinGluten?1:0) + (state.maxPrice<50?1:0);
+        const n = parts.length + (state.bio?1:0) + (state.sinGluten?1:0) + (state.maxPrice<PRICE_MAX?1:0);
         count.textContent = n;
         count.hidden = n===0;
       }
@@ -364,6 +397,13 @@
       const fbio = $('#fBio'); if(fbio) fbio.checked = state.bio;
       const fg = $('#fSinGluten'); if(fg) fg.checked = state.sinGluten;
       const fl = $('#fSinLactosa'); if(fl) fl.checked = state.sinLactosa;
+
+      const d = dietScope();
+      if(fbio) fbio.closest('.mi-check').hidden = !d.bio;
+      if(fg) fg.closest('.mi-check').hidden = !d.sg;
+      if(fl) fl.closest('.mi-check').hidden = !d.sl;
+      const dg = $('#fDietGroup');
+      if(dg) dg.hidden = !(d.bio || d.sg || d.sl);
     }
 
     function sortList(list){
@@ -485,7 +525,7 @@
     $('#pdpVariants').style.display = 'none';
     const addBtn = $('#pdpAdd');
     addBtn.classList.remove('mi-btn--ifigen','mi-btn--mimasa');
-    addBtn.classList.add(p.brand==='mimasa'?'mi-btn--mimasa':'mi-btn--ifigen');
+    addBtn.classList.add('mi-btn--cart'); /* blanco + letras en color corporativo */
 
     $('#pdpDescInner').innerHTML = t(p.brand==='ifigen'?'pdp_body_i':'pdp_body_m').replaceAll('{name}',p.name).replaceAll('{cat}',p.cat);
     $('#pdpSpecs').innerHTML = `

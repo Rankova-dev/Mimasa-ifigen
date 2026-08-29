@@ -9,18 +9,10 @@
   </nav>
 </div>
 
-<section style="padding-bottom:clamp(40px,6vw,72px)">
-  <div class="mi-container">
-    <div class="mi-pagehead mi-pagehead--ifigen mi-pagehead--min mi-reveal">
-      <h1 data-i18n="cat_supp">Suplementos</h1>
-    </div>
-  </div>
-</section>
-
-<section class="mi-section" style="padding-top:0">
+<section class="mi-section" style="padding-top:clamp(18px,2.6vw,30px)">
   <div class="mi-container">
     <div class="mi-section-head mi-reveal">
-      <span class="mi-eyebrow" style="color:var(--ifigen-deep)" data-i18n="door_i_title">Salud y bienestar</span>
+      <h1 class="mi-eyebrow mi-eyebrow--page" style="color:var(--ifigen-deep)" data-i18n="door_i_title">Salud y bienestar</h1>
       <h2 class="mi-h-md" data-i18n="explora">Explora</h2>
     </div>
     <div class="mi-catgrid mi-reveal" id="tilesIfigen"></div>
@@ -43,12 +35,13 @@
         <div class="mi-fgroup">
           <h4 data-i18n="f_precio">Precio máximo</h4>
           <div class="mi-price-range"><input type="range" min="5" max="50" value="50" id="fPrice"></div>
-          <div style="display:flex;justify-content:space-between;font-size:.84rem;color:var(--muted);margin-top:6px"><span>5 €</span><span id="fPriceVal">50 €</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.84rem;color:var(--muted);margin-top:6px"><span>5 €</span><span id="fPriceVal">—</span></div>
         </div>
-        <div class="mi-fgroup">
+        <div class="mi-fgroup" id="fDietGroup">
           <h4 data-i18n="f_diet">Dieta y certificación</h4>
           <label class="mi-check"><input type="checkbox" id="fBio"> <span>BIO</span></label>
           <label class="mi-check"><input type="checkbox" id="fSinGluten"> <span data-i18n="f_singluten">Sin gluten</span></label>
+          <label class="mi-check"><input type="checkbox" id="fSinLactosa"> <span data-i18n="f_sinlactosa">Sin lactosa</span></label>
         </div>
         <button class="mi-btn mi-btn--block mi-filters__apply" data-close data-i18n="filter_apply">Ver resultados</button>
       </aside>

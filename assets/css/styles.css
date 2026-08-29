@@ -32,6 +32,9 @@
   --ifigen-deep:#84002a;
   --ifigen-soft:#fdeff3;
 
+  /* Rosa de hover unificado para todas las categorías */
+  --rose:#fbe4ec;
+
   /* Neutros cálidos */
   --paper:#fffdf9;
   --sand:#f7f2ea;
@@ -91,6 +94,9 @@ p{margin:0}
   color:var(--wine);margin-bottom:18px;
 }
 .mi-eyebrow--center{justify-content:center}
+/* Rótulo que hace de <h1> en las páginas de marca: sustituye al titular grande
+   que se repetía con la miga de pan. Mantiene la tipografía de cuerpo. */
+.mi-eyebrow--page{font-family:var(--ff-body);font-size:clamp(1rem,2vw,1.32rem);letter-spacing:.12em;margin-bottom:14px}
 
 .mi-h-xl{font-size:clamp(2.3rem,4.6vw,3.8rem)}
 .mi-h-lg{font-size:clamp(2.2rem,4.8vw,3.6rem)}
@@ -117,6 +123,9 @@ p{margin:0}
 .mi-btn--mimasa{--bg:var(--mimasa)}
 .mi-btn--ifigen{--bg:var(--ifigen)}
 .mi-btn--dark{--bg:var(--ink)}
+/* Añadir al carrito: fondo blanco y texto en color corporativo, como en la web actual */
+.mi-btn--cart{--bg:#fff;--fg:var(--wine);box-shadow:inset 0 0 0 2px var(--wine),var(--sh-1)}
+.mi-btn--cart:hover{--bg:var(--wine);--fg:#fff;box-shadow:inset 0 0 0 2px var(--wine),var(--sh-2)}
 .mi-btn--ghost{
   --bg:transparent;--fg:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);
 }
@@ -166,10 +175,10 @@ p{margin:0}
 .mi-nav__link{display:inline-flex;align-items:center;gap:6px;padding:11px 16px;border-radius:var(--r-pill);
   font-weight:600;font-size:.95rem;color:var(--ink);transition:background .2s,color .2s}
 .mi-nav__link svg{width:13px;height:13px;opacity:.6;transition:transform .25s}
-.mi-nav__item:hover .mi-nav__link{background:var(--sand)}
+.mi-nav__item:hover .mi-nav__link{background:var(--rose)}
 .mi-nav__item:hover .mi-nav__link svg{transform:rotate(180deg)}
-.mi-nav__link--mimasa:hover,.mi-nav__item:hover .mi-nav__link--mimasa{color:var(--mimasa);background:var(--mimasa-soft)}
-.mi-nav__link--ifigen:hover,.mi-nav__item:hover .mi-nav__link--ifigen{color:var(--ifigen-deep);background:var(--ifigen-soft)}
+.mi-nav__link--mimasa:hover,.mi-nav__item:hover .mi-nav__link--mimasa{color:var(--mimasa);background:var(--rose)}
+.mi-nav__link--ifigen:hover,.mi-nav__item:hover .mi-nav__link--ifigen{color:var(--ifigen-deep);background:var(--rose)}
 
 /* Mega menu */
 .mi-mega{
@@ -181,7 +190,7 @@ p{margin:0}
 .mi-mega::before{content:"";position:absolute;top:-14px;left:0;right:0;height:14px}
 .mi-mega__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .mi-mega__link{display:flex;align-items:center;gap:13px;padding:11px;border-radius:var(--r-sm);transition:background .2s;min-width:0}
-.mi-mega__link:hover{background:var(--sand)}
+.mi-mega__link:hover{background:var(--rose);color:var(--ifigen-deep)}
 .mi-mega__ic{width:100px;height:100px;border-radius:16px;display:grid;place-items:center;flex:none;overflow:hidden;border:1px solid var(--line)}
 .mi-mega__link>span:last-child{min-width:0}
 .mi-mega__link b{font-size:.95rem;font-weight:700;display:block;color:var(--ink);overflow-wrap:break-word}
@@ -198,7 +207,7 @@ p{margin:0}
 .mi-simple::before{content:"";position:absolute;top:-14px;left:0;right:0;height:14px}
 .mi-simple__link{display:block;min-height:44px;display:flex;align-items:center;padding:11px 14px;border-radius:var(--r-sm);
   font-weight:600;font-size:.92rem;transition:background .2s}
-.mi-simple__link:hover{background:var(--sand)}
+.mi-simple__link:hover{background:var(--rose);color:var(--ifigen-deep)}
 
 .mi-actions{display:flex;align-items:center;gap:6px;flex:none}
 .mi-iconbtn{position:relative;width:44px;height:44px;border-radius:var(--r-pill);display:grid;place-items:center;color:var(--ink);transition:background .2s,color .2s}
@@ -259,6 +268,7 @@ p{margin:0}
 .mi-cat{position:relative;border-radius:var(--r-lg);overflow:hidden;
   background:#fff;box-shadow:var(--sh-1);transition:transform .4s var(--ease),box-shadow .4s var(--ease);display:block}
 .mi-cat:hover{transform:translateY(-6px);box-shadow:var(--sh-3)}
+.mi-cat:hover .mi-cat__body{background:var(--rose)}
 .mi-cat__img{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--white)}
 .mi-cat__img img{width:100%;height:100%;object-fit:contain;padding:12px;transition:transform .7s var(--ease)}
 .mi-cat:hover .mi-cat__img img{transform:scale(1.07)}
@@ -320,6 +330,7 @@ p{margin:0}
 .mi-card__title{font-family:var(--ff-body);font-size:1rem;font-weight:700;line-height:1.32;color:var(--ink);
   margin-bottom:4px;min-height:2.6em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .mi-card__ref{font-size:.74rem;color:var(--muted);margin-bottom:12px}
+.mi-card__diet{display:none;flex-wrap:wrap;gap:5px;margin:-4px 0 12px}
 .mi-card__foot{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
 .mi-card__price{display:flex;flex-direction:column;line-height:1.15}
 .mi-card__price b{font-size:1.18rem;font-weight:800;color:var(--ink);font-family:var(--ff-body)}
@@ -402,22 +413,29 @@ p{margin:0}
 /* ============================================================
    Footer
    ============================================================ */
-.mi-footer{background:var(--ink);color:rgba(255,255,255,.72);padding-top:clamp(54px,6vw,80px)}
+/* Footer claro (tono arena de la paleta) — reemplaza el fondo casi negro
+   anterior, a petición del cliente. Color plano, sin degradados. */
+.mi-footer{background:var(--sand);color:var(--ink-2);padding-top:clamp(54px,6vw,80px);border-top:1px solid var(--line)}
 .mi-footer a{transition:color .2s}
-.mi-footer a:hover{color:#fff}
-.mi-footer__top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:clamp(24px,3.4vw,48px);padding-bottom:48px}
-.mi-footer__brand img{height:88px;margin-bottom:20px}
-.mi-footer__brand p{font-size:.92rem;max-width:36ch;margin-bottom:20px}
+.mi-footer a:hover{color:var(--wine)}
+.mi-footer__top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1.2fr 1fr;gap:clamp(22px,2.6vw,38px);padding-bottom:48px}
+.mi-footer__brand img{height:44px;width:auto;margin-bottom:20px}
+.mi-footer__brand p{font-size:.92rem;max-width:34ch;margin-bottom:20px}
 .mi-footer__soc{display:flex;gap:10px}
-.mi-footer__soc a{width:42px;height:42px;border-radius:var(--r-pill);background:rgba(255,255,255,.08);display:grid;place-items:center}
-.mi-footer__soc a:hover{background:var(--wine)}
-.mi-footer__soc svg{width:19px;height:19px;color:#fff}
-.mi-footer__col h4{font-family:var(--ff-body);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:18px;font-weight:700}
+.mi-footer__soc a{width:42px;height:42px;border-radius:var(--r-pill);background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink)}
+.mi-footer__soc a:hover{background:var(--wine);border-color:var(--wine);color:#fff}
+.mi-footer__soc svg{width:19px;height:19px;color:currentColor}
+.mi-footer__afepadi{display:flex;align-items:center;margin-top:24px}
+.mi-footer__afepadi img{height:56px;width:auto}
+.mi-footer__col h4{font-family:var(--ff-body);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:18px;font-weight:800}
 .mi-footer__col li{margin-bottom:11px}
 .mi-footer__col a{font-size:.92rem}
-.mi-footer__pay{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
-.mi-footer__pay span{padding:6px 10px;border-radius:7px;background:rgba(255,255,255,.1);font-size:.72rem;font-weight:700;letter-spacing:.04em}
-.mi-footer__bottom{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:.84rem}
+.mi-footer__pay{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mi-footer__pay span{padding:6px 10px;border-radius:7px;background:#fff;border:1px solid var(--line);font-size:.72rem;font-weight:700;letter-spacing:.04em;color:var(--ink-2)}
+/* Financiación pública: obligatorio mostrarlo */
+.mi-footer__gov{border-top:1px solid var(--line);padding:26px 0;display:flex;justify-content:center}
+.mi-footer__gov img{max-width:min(760px,100%);height:auto}
+.mi-footer__bottom{border-top:1px solid var(--line);padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;font-size:.84rem}
 .mi-footer__bottom a{margin-left:18px}
 
 /* ============================================================
@@ -718,6 +736,7 @@ p{margin:0}
    Util / responsive
    ============================================================ */
 .mi-hide{display:none!important}
+[hidden]{display:none!important}
 .mi-reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .mi-reveal.is-in{opacity:1;transform:none}
 
@@ -760,6 +779,10 @@ p{margin:0}
   .mi-footer__top{grid-template-columns:1fr}
   .mi-card__quick{opacity:1;transform:none;left:auto;width:38px;height:38px;padding:0;border-radius:50%;gap:0}
   .mi-card__quick span{display:none}
+  /* La tarjeta es demasiado estrecha para llevar las 3 etiquetas encima de la
+     foto: BIO / sin gluten / sin lactosa pasan a su propia fila bajo la referencia. */
+  .mi-card__flags .mi-flag--bio,.mi-card__flags .mi-flag--diet{display:none}
+  .mi-card__diet{display:flex}
   .mi-h-xl{font-size:clamp(1.9rem,8vw,2.6rem)}
 }
 @media(max-width:430px){
@@ -796,4 +819,4 @@ p{margin:0}
 .mi-mobile__acc .mi-acc__head .ic{width:26px;height:26px;border:none}
 .mi-mobile__acc .mi-acc__inner{padding:0 4px 14px}
 .mi-acc__sublink{display:flex;align-items:center;min-height:44px;padding:8px 12px;font-size:.95rem;font-weight:600;color:var(--ink-2)}
-.mi-acc__sublink:hover{color:var(--wine)}
+.mi-acc__sublink:hover{color:var(--wine);background:var(--rose);border-radius:var(--r-sm)}

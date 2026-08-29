@@ -58,7 +58,16 @@ const PRODUCTS = [
 
   {brand:"ifigen", cat:"Productos de uso tópico", name:"Colutorio Dental 200ml", ref:"82000", price:21.30, was:23.67, off:10, img:IMG+"ifigen/general/colutorio-dental-200-ml.jpg"},
   {brand:"ifigen", cat:"Productos de uso tópico", name:"Loción Capilar 200ml", ref:"82001", price:24.34, was:27.04, off:10, img:IMG+"ifigen/general/locion-capilar-200-ml.jpg"},
-  {brand:"ifigen", cat:"Fitoterapia", name:"Elixir 4 Estaciones 250ml", ref:"81010", price:null, img:IMG+"ifigen/general/elixir-4-estaciones-250-ml.jpg"},
+  {brand:"ifigen", cat:"Jarabes", name:"Elixir 4 Estaciones botella 250ml", ref:"80051", price:29.09, was:32.32, off:10, img:IMG+"ifigen/general/elixir-4-estaciones-250-ml.jpg"},
+
+  /* Fitoterapia (Phyt Herbs) — cat. 70 de la tienda. Nombres, referencias y precios
+     comprobados uno a uno en mimasaifigen.com (28/08/2026). Esta familia no lleva
+     el −10% que sí tiene el resto del catálogo: precio a secas, sin tachado. */
+  {brand:"ifigen", cat:"Fitoterapia", name:"VR bote 90 cápsulas", ref:"81004", price:65.81, img:IMG+"ifigen/fitoterapia/vr.jpg"},
+  {brand:"ifigen", cat:"Fitoterapia", name:"GB bote 90 cápsulas", ref:"81003", price:30.00, img:IMG+"ifigen/fitoterapia/gb.jpg"},
+  {brand:"ifigen", cat:"Fitoterapia", name:"NA bote 90 cápsulas", ref:"81002", price:30.00, img:IMG+"ifigen/fitoterapia/na.jpg"},
+  {brand:"ifigen", cat:"Fitoterapia", name:"PP40 90 cápsulas", ref:"81001", price:92.22, img:IMG+"ifigen/fitoterapia/pp40.jpg"},
+  {brand:"ifigen", cat:"Fitoterapia", name:"NAR sobre monodosis 3g", ref:"81000", price:5.00, img:IMG+"ifigen/fitoterapia/nar.jpg"},
 
   {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Suribachi 18cm", ref:"23000", price:15.18, was:16.87, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/suribachi.jpg"},
   {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Surikogi", ref:"23002", price:7.31, was:8.12, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/surikogi.jpg"},
