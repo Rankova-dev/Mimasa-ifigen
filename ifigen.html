@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/league-spartan/league-spartan-latin.woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/styles.css?v=9">
+<link rel="stylesheet" href="assets/css/styles.css?v=10">
 </head>
 <body>
 
@@ -247,6 +247,9 @@
           <li><a href="categoria.html?brand=mimasa&cat=Umeboshi">Umeboshi</a></li>
           <li><a href="categoria.html?brand=mimasa&cat=Salsas%20de%20soja">Salsas de soja</a></li>
           <li><a href="categoria.html?brand=mimasa&cat=S%C3%A9samo%20y%20elaborados">Sésamo y elaborados</a></li>
+          <li><a href="categoria.html?brand=mimasa&cat=Ra%C3%ADces%20y%20otras%20plantas">Raíces y otras plantas</a></li>
+          <li><a href="categoria.html?brand=mimasa&cat=Bebidas">Bebidas</a></li>
+          <li><a href="categoria.html?brand=mimasa&cat=Cereales">Cereales</a></li>
         </ul>
       </div>
       <div class="mi-footer__col">
@@ -257,12 +260,21 @@
           <li><a href="categoria.html?brand=ifigen&cat=Oligoelementos">Oligoelementos</a></li>
           <li><a href="categoria.html?brand=ifigen&cat=Probi%C3%B3ticos">Probióticos</a></li>
           <li><a href="categoria.html?brand=ifigen&cat=Phyto-Min">Phyto-Min</a></li>
+          <li><a href="categoria.html?brand=ifigen&cat=Fitoterapia">Fitoterapia</a></li>
+          <li><a href="categoria.html?brand=ifigen&cat=Productos%20de%20uso%20t%C3%B3pico">Productos de uso tópico</a></li>
+          <li><a href="categoria.html?brand=ifigen&cat=Jarabes">Jarabes</a></li>
         </ul>
       </div>
       <div class="mi-footer__col">
         <h4 data-i18n="nav_utensilios">Utensilios</h4>
         <ul>
           <li><a href="categoria.html?cat=Utensilios%20de%20cocina">Utensilios de cocina</a></li>
+          <li><a href="categoria.html?cat=Utensilios%20de%20cocina&subcat=Colecci%C3%B3n%20Vajilla%20Japonesa%20Shibumi">Colección Vajilla Japonesa Shibumi</a></li>
+          <li><a href="categoria.html?cat=Utensilios%20de%20cocina&subcat=Cuchillos%20Japoneses">Cuchillos Japoneses</a></li>
+          <li><a href="categoria.html?cat=Utensilios%20de%20cocina&subcat=Accesorios%20de%20cocina">Accesorios de cocina</a></li>
+        </ul>
+        <h4 class="mi-footer__h4--2" data-i18n="footer_descubre">Descubre</h4>
+        <ul>
           <li><a href="categoria.html?ofertas=1" data-i18n="nav_ofertas">Packs</a></li>
           <li><a href="https://mimasaifigen.com/blog/" target="_blank" rel="noopener" data-i18n="nav_blog">Blog</a></li>
           <li><a href="sobre-nosotros.html" data-i18n="about_t">Sobre nosotros</a></li>
@@ -283,25 +295,29 @@
         <ul>
           <li><a href="#" data-i18n="f_tucuenta">Tu cuenta</a></li>
           <li><a href="#" data-i18n="f_tuspedidos">Tus pedidos</a></li>
-          <li><a href="#" data-i18n="f_envio">Gastos de envío</a></li>
-          <li><a href="#" data-i18n="f_dev">Devoluciones</a></li>
         </ul>
       </div>
     </div>
+  </div>
 
-    <!-- Financiación pública (obligatorio) -->
-    <div class="mi-footer__gov">
-      <img src="assets/img/brand/logos-institucionales.jpg" alt="Financiado por la Unión Europea NextGenerationEU · Ministerio de Industria, Comercio y Turismo · Plan de Recuperación, Transformación y Resiliencia" loading="lazy">
-    </div>
+  <!-- Zona baja: mismo fondo que el resto de la web, sin líneas divisorias -->
+  <div class="mi-footer__base">
+    <div class="mi-container">
+      <div class="mi-footer__pay"><span>VISA</span><span>MASTERCARD</span><span>BIZUM</span></div>
 
-    <div class="mi-footer__bottom">
-      <span>© 2026 Ifigen 2011 S.L. Av. de la Riera de Cassoles 20, 1r B, 08012 Barcelona</span>
-      <span class="mi-footer__pay"><span>VISA</span><span>MASTERCARD</span><span>BIZUM</span></span>
-      <span>
-        <a href="#" data-i18n="f_priv">Privacidad</a>
-        <a href="#">Cookies</a>
-        <a href="#" data-i18n="f_cond">Condiciones</a>
-      </span>
+      <!-- Financiación pública (obligatorio) -->
+      <div class="mi-footer__gov">
+        <img src="assets/img/brand/logos-institucionales.jpg" alt="Financiado por la Unión Europea NextGenerationEU · Ministerio de Industria, Comercio y Turismo · Plan de Recuperación, Transformación y Resiliencia" loading="lazy">
+      </div>
+
+      <div class="mi-footer__bottom">
+        <span>© 2026 Ifigen 2011 S.L. Av. de la Riera de Cassoles 20, 1r B, 08012 Barcelona</span>
+        <span>
+          <a href="#" data-i18n="f_priv">Privacidad</a>
+          <a href="#">Cookies</a>
+          <a href="#" data-i18n="f_cond">Condiciones</a>
+        </span>
+      </div>
     </div>
   </div>
 </footer>
@@ -399,9 +415,9 @@
   </div>
 </div>
 
-<script src="assets/js/i18n.js?v=8"></script>
-<script src="assets/js/data.js?v=8"></script>
-<script src="assets/js/main.js?v=8"></script>
+<script src="assets/js/i18n.js?v=9"></script>
+<script src="assets/js/data.js?v=9"></script>
+<script src="assets/js/main.js?v=9"></script>
 </body>
 </html>
 
