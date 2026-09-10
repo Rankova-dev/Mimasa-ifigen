@@ -145,3 +145,73 @@ pero no esté él mismo etiquetado como "Miso" no aparecerá. Dos vías, ninguna
 - **B1 — logos de marca**: usado wordmark tipográfico a falta de logos individuales de Mimasa/Ifigen: confirmar si sirve o si hace falta arte específico.
 - **B4 — franja de confianza inferior** (4 items, distinta de los 3 ticks ya eliminados): confirmar si también hay que tocarla.
 - **C5 — versión en inglés** de las 3 categorías de Utensilios: no se ha podido confirmar si existen URLs EN publicadas.
+
+---
+
+# Ronda de correcciones — septiembre 2026
+
+## 1 — Footer: estructura de la web original y textos legales sin tocar
+
+**Estructura.** El footer pasa a tener la misma estructura que `mimasaifigen.com` (verificada sobre el
+HTML real de la tienda): **Categorías · Información · Tu cuenta · bloque de marca** (logo, copyright,
+redes y sello Afepadi), más la zona baja con los logos institucionales. Desaparecen las columnas por
+marca (Mimasa / Ifigen / Utensilios / Descubre) que listaban producto a producto.
+
+**Categorías** (la lista pedida, tal cual; al clicar se va a la categoría):
+Alimentos saludables · Salud y bienestar · Utensilios de cocina · Packs · Blog · Contacto.
+
+**Textos legales.** No se ha reescrito ni copiado ninguna política. Los enlaces apuntan a las páginas CMS
+reales de la tienda —las revisadas por su equipo— y se han comprobado una a una:
+
+| Enlace | URL (ES) |
+|---|---|
+| Política de privacidad y cookies | `/es/info/6-politica-de-cookies` |
+| Condiciones generales de uso y contratación | `/es/info/7-condiciones-generales-de-uso-y-contratacion` |
+| Descargar fichas técnicas | `/es/info/9-fichas-tecnicas` |
+| Contacto | `/es/contactenos` |
+| Tu cuenta / Tus pedidos | `/es/mi-cuenta` · `/es/historial-compra` |
+
+Las URL cambian con el idioma (ES / EN / FR): se ha añadido `data-i18n-href` en `i18n.js`, con las rutas
+reales de cada versión del sitio. En la Fase 1 estos enlaces los generará `ps_linklist` desde el back
+office, así que el contenido legal seguirá viviendo donde vive hoy, intacto.
+
+Se han quitado los enlaces legales duplicados de la barra inferior (ahora solo están en "Información") y
+las redes sociales apuntan a las cuentas reales (YouTube e Instagram; en la web original no hay Facebook).
+Se mantienen los sellos de pago y los logos de financiación pública, que no formaban parte de la queja.
+
+## 2 — Filtro lateral de Utensilios
+
+Dentro de *Utensilios de cocina* el filtro mostraba las categorías de alimentos y suplementos (Algas,
+Misos, Omega-3…) y un filtro de marca Mimasa/Ifigen, que ahí no significan nada. Ahora:
+
+- El grupo de filtro pasa a llamarse **Subcategoría** y ofrece **exactamente las tres opciones del
+  desplegable del menú**: Colección Vajilla Japonesa Shibumi · Cuchillos Japoneses · Accesorios de cocina.
+- Los filtros de **Marca** y de **Dieta y certificación** se ocultan en esta categoría.
+- Menú y filtro salen ahora de la **misma lista** (`SUBCATS` en `data.js`), así que no pueden volver a
+  decir cosas distintas.
+- *Cuchillos Japoneses* estaba vacío en la demo: se han añadido los dos cuchillos Sakon-Shiraume
+  (ref. 23012 y 23013) con nombre, precio y foto tomados de la tienda real.
+
+## 3 — Descripciones de Salud y bienestar
+
+Tenían razón: la ficha aplicaba el texto de "complemento alimenticio" a **toda** la gama de Ifigen,
+incluidos los oligoelementos, la loción capilar y el colutorio, que no lo son. Ahora cada familia lleva
+su propio texto (ES / EN / FR):
+
+- **Oligoelementos** → texto de oligoterapia (solución agua-glicerina ionizada, absorción sublingual,
+  botella de 150 ml con cuchara dosificadora). Sin la palabra "complemento".
+- **Productos de uso tópico** (Colutorio Dental, Loción Capilar) → producto de uso tópico a base de
+  plantas maceradas, uso externo, no ingerir.
+- El resto de la gama (Omega-3-Oligen, Melatonina, Probióticos, Phyto-Min, Fitoterapia, Jarabes) mantiene
+  el texto de complemento alimenticio, que sí les corresponde.
+- El texto SEO de la página *Salud y bienestar* también se ha corregido: ya no dice que toda la gama sean
+  complementos alimenticios.
+
+## Pendiente de su confirmación
+
+- **"Quiénes somos" en el footer.** En su web original está dentro de la columna Categorías, pero no
+  aparece en la lista que nos han pasado, así que se ha quitado. La página existe (`sobre-nosotros.html`)
+  y ahora mismo no queda enlazada desde el footer. ¿La volvemos a poner en esa columna?
+- **Reparto de subcategorías de Utensilios.** En la demo, Suribachi y Surikogi están bajo *Colección
+  Vajilla Japonesa Shibumi*; en la tienda real cuelgan directamente de *Utensilios de cocina*. Si quieren
+  el reparto exacto de la tienda, se ajusta en un momento.

@@ -41,6 +41,15 @@ es:{
   about_mimasa:"En MIMASA contamos con una larga tradición en el mercado de alimentos ecológicos. Somos una empresa familiar que comercializa productos elaborados de forma tradicional y artesanal en Japón —Tamari, Misos, algas marinas, Kuzu— apostando siempre por la calidad.",
   about_ifigen:"IFIGEN ofrece complementos alimenticios de vanguardia: oligoterapia fabricada en prestigiosos laboratorios suizos, fitoterapia y ácidos grasos esenciales elaborados con técnicas innovadoras que preservan sus propiedades.",
   footer_info:"Información", footer_account:"Tu cuenta", footer_asociado:"Asociado", footer_descubre:"Descubre",
+  footer_cats:"Categorías", f_utensilios:"Utensilios de cocina", f_subcat:"Subcategoría",
+  /* Páginas legales y de cuenta: se enlazan las de la tienda actual (revisadas
+     por el cliente) en lugar de reescribir su texto. Una URL por idioma. */
+  u_contacto:"https://mimasaifigen.com/es/contactenos",
+  u_priv:"https://mimasaifigen.com/es/info/6-politica-de-cookies",
+  u_cond:"https://mimasaifigen.com/es/info/7-condiciones-generales-de-uso-y-contratacion",
+  u_fichas:"https://mimasaifigen.com/es/info/9-fichas-tecnicas",
+  u_cuenta:"https://mimasaifigen.com/es/mi-cuenta",
+  u_pedidos:"https://mimasaifigen.com/es/historial-compra",
   f_priv_cookies:"Política de privacidad y cookies", f_cond_generales:"Condiciones generales de uso y contratación",
   f_fichas:"Descargar fichas técnicas", f_newsletter:"Newsletter", f_tucuenta:"Tu cuenta", f_tuspedidos:"Tus pedidos",
   f_cuenta:"Mi cuenta", f_envio:"Gastos de envío", f_dev:"Devoluciones", f_contacto:"Contacto", f_legal:"Aviso legal",
@@ -87,6 +96,12 @@ es:{
   pdp_short_i:"Complemento alimenticio de la gama {cat}. Pensado para combinarlo con una alimentación saludable y unos buenos hábitos de vida.",
   pdp_body_m:"<p>Cada uno de los alimentos saludables de Mimasa proviene de su lugar de origen y se elabora de manera artesanal, sin procesos químicos ni industriales. {name} forma parte de la categoría {cat}.</p><p>Nuestros productos japoneses los realizan familias japonesas mediante técnicas orientales, manteniendo la tradición.</p>",
   pdp_body_i:"<p>Los complementos alimenticios de Ifigen son preparados que contienen propiedades pensadas para combinarlos con una alimentación saludable y unos buenos hábitos de vida. {name} forma parte de la gama {cat}, elaborada con ingredientes de calidad para asegurar la finalidad del producto.</p><p>Complemento alimenticio. No superar la dosis diaria recomendada. Mantener fuera del alcance de los niños. Los complementos alimenticios no deben utilizarse como sustitutos de una dieta variada y equilibrada y un estilo de vida saludable.</p>",
+  /* Oligoelementos y productos de uso tópico NO son complementos alimenticios:
+     cada familia lleva su propio texto en lugar del genérico de la gama. */
+  pdp_short_oligo:"Oligoelemento en solución agua-glicerina, de absorción sublingual. Botella de 150 ml con cuchara dosificadora.",
+  pdp_body_oligo:"<p>Los oligoelementos son sustancias que el organismo necesita en cantidades muy pequeñas. {name} forma parte de la gama de oligoterapia de Ifigen: solución agua-glicerina ionizada y dinamizada por ultrasonidos, una presentación pensada para favorecer la absorción por vía sublingual.</p><p>Producto de oligoterapia. Consulta la composición y el modo de empleo en la ficha técnica del producto y sigue las indicaciones de un profesional de la salud.</p>",
+  pdp_short_topic:"Producto de uso tópico a base de plantas maceradas. Uso externo: no ingerir.",
+  pdp_body_topic:"<p>{name} pertenece a la gama de productos de uso tópico de Ifigen —Loción Capilar y Colutorio Dental—, elaborados a base de plantas maceradas.</p><p>Producto de uso externo. No ingerir. Consulta la composición y el modo de empleo en la ficha técnica del producto.</p>",
   seo_m_html:`<h2 class="mi-h-md" style="margin-bottom:18px">Alimentos saludables</h2>
       <p class="mi-lead" style="margin-bottom:28px">En <b>Mimasa</b>, ponemos a tu disposición una amplia variedad de alimentos saludables, siguiendo siempre procesos de elaboración tradicionales y artesanales con la finalidad de obtener los mejores productos y asegurar la mejor calidad.</p>
       <h3 class="mi-h-md" style="font-size:1.4rem;margin-bottom:12px">Nuestros alimentos saludables</h3>
@@ -97,7 +112,7 @@ es:{
       <p class="mi-lead" style="margin-bottom:28px"><b>Ifigen</b> ofrece una gran variedad de suplementos con los que mantener una vida saludable, cubrir determinadas carencias o ayudar a tener un mayor bienestar físico. Todos ellos están pensados para combinarlos con una alimentación saludable y unos buenos hábitos de vida.</p>
       <h3 class="mi-h-md" style="font-size:1.4rem;margin-bottom:12px">Nuestros suplementos</h3>
       <p style="color:var(--ink-2);margin-bottom:16px">En muchas ocasiones, nuestro cuerpo puede sufrir desajustes o tener carencias puntuales. Nuestros complementos alimenticios pueden ser un aliado en tu día a día. Se trata de preparados que contienen propiedades con las que cubrir, por ejemplo, falta de vitaminas, dietas inadecuadas, dificultades para conciliar el sueño, imposibilidad de concentración, deporte intenso, etc.</p>
-      <p style="color:var(--ink-2);margin-bottom:16px">Ifigen tiene como objetivo ayudarte y ofrecerte suplementos para cuando así lo necesites. Todos nuestros complementos alimenticios incluyen ingredientes de calidad para asegurar la finalidad de cada uno de nuestros productos.</p>
+      <p style="color:var(--ink-2);margin-bottom:16px">Ifigen tiene como objetivo ayudarte y ofrecerte el producto adecuado para cuando así lo necesites. Junto a los complementos alimenticios, la gama incluye la oligoterapia y los productos de uso tópico —la Loción Capilar y el Colutorio Dental—, que no son complementos alimenticios. Todos ellos se elaboran con ingredientes de calidad para asegurar la finalidad de cada producto.</p>
       <p style="color:var(--ink-2)">Conoce la Melatonina, los beneficios de los Oligoelementos, los Probióticos, los Productos de uso tópico, los Jarabes para toda la familia, las propiedades del Omega-3-Oligen… ¡Y muchos más!</p>`,
 
 },
@@ -136,6 +151,13 @@ en:{
   about_mimasa:"At MIMASA we have a long tradition in the organic food market. We are a family business that markets products made in a traditional and artisanal way in Japan —Tamari, Misos, seaweed, Kuzu— always committed to quality.",
   about_ifigen:"IFIGEN offers state-of-the-art food supplements: oligotherapy manufactured in prestigious Swiss laboratories, phytotherapy and essential fatty acids made with innovative techniques that preserve their properties.",
   footer_info:"Information", footer_account:"Your account", footer_asociado:"Member of", footer_descubre:"Discover",
+  footer_cats:"Categories", f_utensilios:"Kitchenware", f_subcat:"Subcategory",
+  u_contacto:"https://mimasaifigen.com/en/contact-us",
+  u_priv:"https://mimasaifigen.com/en/info/6-privacy-and-cookies-policy",
+  u_cond:"https://mimasaifigen.com/en/info/7-general-conditions-of-use-and-contracting",
+  u_fichas:"https://mimasaifigen.com/en/info/9-technical-data-sheets",
+  u_cuenta:"https://mimasaifigen.com/en/my-account",
+  u_pedidos:"https://mimasaifigen.com/en/order-history",
   f_priv_cookies:"Privacy and cookies policy", f_cond_generales:"General terms of use and sale",
   f_fichas:"Download technical sheets", f_newsletter:"Newsletter", f_tucuenta:"Your account", f_tuspedidos:"Your orders",
   f_cuenta:"My account", f_envio:"Shipping costs", f_dev:"Returns", f_contacto:"Contact", f_legal:"Legal notice",
@@ -182,6 +204,10 @@ en:{
   pdp_short_i:"Food supplement from the {cat} range. Designed to combine with a healthy diet and good lifestyle habits.",
   pdp_body_m:"<p>Each of Mimasa's healthy foods comes from its place of origin and is crafted using traditional methods, with no chemical or industrial processes. {name} belongs to the {cat} category.</p><p>Our Japanese products are made by Japanese families using ancestral techniques that preserve their cultural tradition.</p>",
   pdp_body_i:"<p>Ifigen food supplements are preparations designed to combine with a healthy diet and good lifestyle habits. {name} belongs to the {cat} range, made with quality ingredients.</p><p>Food supplement. Do not exceed the recommended daily dose. Keep out of reach of children. Food supplements should not be used as a substitute for a varied, balanced diet and a healthy lifestyle.</p>",
+  pdp_short_oligo:"Trace element in a water-glycerine solution for sublingual absorption. 150 ml bottle with dosing spoon.",
+  pdp_body_oligo:"<p>Trace elements are substances the body needs in very small amounts. {name} belongs to Ifigen's oligotherapy range: an ionised water-glycerine solution, ultrasound-dynamised, presented to favour sublingual absorption.</p><p>Oligotherapy product. Check the composition and directions for use on the product's technical sheet and follow the advice of a health professional.</p>",
+  pdp_short_topic:"Topical product based on macerated plants. External use: do not swallow.",
+  pdp_body_topic:"<p>{name} belongs to Ifigen's topical range —Hair Lotion and Dental Mouthwash—, made from macerated plants.</p><p>For external use. Do not swallow. Check the composition and directions for use on the product's technical sheet.</p>",
   seo_m_html:`<h2 class="mi-h-md" style="margin-bottom:18px">Healthy food</h2>
       <p class="mi-lead" style="margin-bottom:28px">In <b>Mimasa</b>, we offer a wide variety of healthy foods, always following traditional and artisanal production processes in order to obtain the best products and ensure the highest quality.</p>
       <h3 class="mi-h-md" style="font-size:1.4rem;margin-bottom:12px">Our Healthy Foods</h3>
@@ -192,7 +218,7 @@ en:{
       <p class="mi-lead" style="margin-bottom:28px"><b>Ifigen</b> offers a wide variety of supplements to maintain a healthy life, cover specific needs or improve your physical wellbeing. All of them are designed to combine with a healthy diet and good lifestyle habits.</p>
       <h3 class="mi-h-md" style="font-size:1.4rem;margin-bottom:12px">Our supplements</h3>
       <p style="color:var(--ink-2);margin-bottom:16px">Our body can often suffer imbalances or specific deficiencies. Our food supplements can be an ally in your day to day: preparations designed to help with, for example, lack of vitamins, inadequate diets, trouble sleeping, difficulty concentrating, intense sport, etc.</p>
-      <p style="color:var(--ink-2);margin-bottom:16px">Ifigen's goal is to help you, offering supplements for whenever you need them. All our food supplements include quality ingredients to ensure the purpose of each product.</p>
+      <p style="color:var(--ink-2);margin-bottom:16px">Ifigen's goal is to help you, offering the right product whenever you need it. Alongside food supplements, the range includes oligotherapy and topical products —Hair Lotion and Dental Mouthwash—, which are not food supplements. All of them are made with quality ingredients to ensure the purpose of each product.</p>
       <p style="color:var(--ink-2)">Discover Melatonin, the benefits of Trace elements, Probiotics, Topical products, Syrups for the whole family, the properties of Omega-3-Oligen… and much more!</p>`,
 
 },
@@ -231,6 +257,13 @@ fr:{
   about_mimasa:"Chez MIMASA, nous avons une grande tradition dans le marché des aliments écologiques. Nous sommes une entreprise familiale qui commercialise des produits élaborés traditionnellement et artisanalement au Japon — Tamari, Miso, algues marines, Kuzu — en misant toujours sur la qualité.",
   about_ifigen:"IFIGEN propose des compléments alimentaires de pointe : oligothérapie fabriquée dans de prestigieux laboratoires suisses, phytothérapie et acides gras essentiels élaborés avec des techniques innovantes qui préservent leurs propriétés.",
   footer_info:"Informations", footer_account:"Votre compte", footer_asociado:"Membre de", footer_descubre:"Découvrir",
+  footer_cats:"Catégories", f_utensilios:"Ustensiles de cuisine", f_subcat:"Sous-catégorie",
+  u_contacto:"https://mimasaifigen.com/fr/nous-contacter",
+  u_priv:"https://mimasaifigen.com/fr/info/6-politique-en-matiere-de-protection-de-la-vie-privee-et-de-cookies",
+  u_cond:"https://mimasaifigen.com/fr/info/7-conditions-generales-d-utilisation-et-de-passation-de-marches",
+  u_fichas:"https://mimasaifigen.com/fr/info/9-fiche-technique",
+  u_cuenta:"https://mimasaifigen.com/fr/mon-compte",
+  u_pedidos:"https://mimasaifigen.com/fr/historique-commandes",
   f_priv_cookies:"Politique de confidentialité et cookies", f_cond_generales:"Conditions générales d'utilisation et de vente",
   f_fichas:"Télécharger les fiches techniques", f_newsletter:"Newsletter", f_tucuenta:"Votre compte", f_tuspedidos:"Vos commandes",
   f_cuenta:"Mon compte", f_envio:"Frais de livraison", f_dev:"Retours", f_contacto:"Contact", f_legal:"Mentions légales",
@@ -277,6 +310,10 @@ fr:{
   pdp_short_i:"Complément alimentaire de la gamme {cat}. Conçu pour accompagner une alimentation saine et de bonnes habitudes de vie.",
   pdp_body_m:"<p>Chaque aliment sain de Mimasa provient de son lieu d'origine et est élaboré de manière artisanale, sans procédés chimiques ni industriels. {name} appartient à la catégorie {cat}.</p><p>Nos produits japonais sont élaborés par des familles japonaises selon des techniques orientales traditionnelles.</p>",
   pdp_body_i:"<p>Les compléments alimentaires Ifigen sont des préparations conçues pour accompagner une alimentation saine et de bonnes habitudes de vie. {name} appartient à la gamme {cat}, élaborée avec des ingrédients de qualité.</p><p>Complément alimentaire. Ne pas dépasser la dose journalière recommandée. Tenir hors de portée des enfants. Les compléments alimentaires ne doivent pas être utilisés comme substituts d'un régime alimentaire varié et équilibré et d'un mode de vie sain.</p>",
+  pdp_short_oligo:"Oligo-élément en solution eau-glycérine, à absorption sublinguale. Flacon de 150 ml avec cuillère doseuse.",
+  pdp_body_oligo:"<p>Les oligo-éléments sont des substances dont l'organisme a besoin en très petites quantités. {name} fait partie de la gamme d'oligothérapie d'Ifigen : une solution eau-glycérine ionisée et dynamisée par ultrasons, conçue pour favoriser l'absorption par voie sublinguale.</p><p>Produit d'oligothérapie. Consultez la composition et le mode d'emploi sur la fiche technique du produit et suivez les indications d'un professionnel de santé.</p>",
+  pdp_short_topic:"Produit à usage local à base de plantes macérées. Usage externe : ne pas avaler.",
+  pdp_body_topic:"<p>{name} appartient à la gamme des produits à usage local d'Ifigen —Lotion Capillaire et Bain de Bouche—, élaborés à base de plantes macérées.</p><p>Produit à usage externe. Ne pas avaler. Consultez la composition et le mode d'emploi sur la fiche technique du produit.</p>",
   seo_m_html:`<h2 class="mi-h-md" style="margin-bottom:18px">Aliments sains</h2>
       <p class="mi-lead" style="margin-bottom:28px">Chez <b>Mimasa</b>, nous mettons à votre disposition une grande variété d'aliments sains, en suivant toujours des procédés d'élaboration traditionnels et artisanaux afin d'obtenir les meilleurs produits et de garantir la meilleure qualité.</p>
       <h3 class="mi-h-md" style="font-size:1.4rem;margin-bottom:12px">Nos aliments sains</h3>
@@ -287,7 +324,7 @@ fr:{
       <p class="mi-lead" style="margin-bottom:28px"><b>Ifigen</b> propose une grande variété de compléments pour maintenir une vie saine, couvrir des besoins ponctuels ou améliorer votre bien-être physique. Tous sont conçus pour accompagner une alimentation saine et de bonnes habitudes de vie.</p>
       <h3 class="mi-h-md" style="font-size:1.4rem;margin-bottom:12px">Nos compléments</h3>
       <p style="color:var(--ink-2);margin-bottom:16px">Notre corps peut souvent souffrir de déséquilibres ou de carences ponctuelles. Nos compléments alimentaires peuvent être un allié au quotidien : des préparations conçues pour aider en cas de manque de vitamines, régimes inadaptés, difficultés à dormir, manque de concentration, sport intense, etc.</p>
-      <p style="color:var(--ink-2);margin-bottom:16px">L'objectif d'Ifigen est de vous aider, en vous proposant des compléments quand vous en avez besoin. Tous nos compléments alimentaires incluent des ingrédients de qualité pour assurer la finalité de chaque produit.</p>
+      <p style="color:var(--ink-2);margin-bottom:16px">L'objectif d'Ifigen est de vous aider, en vous proposant le produit adapté quand vous en avez besoin. À côté des compléments alimentaires, la gamme comprend l'oligothérapie et les produits à usage local —la Lotion Capillaire et le Bain de Bouche—, qui ne sont pas des compléments alimentaires. Tous sont élaborés avec des ingrédients de qualité pour assurer la finalité de chaque produit.</p>
       <p style="color:var(--ink-2)">Découvrez la Mélatonine, les bienfaits des Oligo-éléments, les Probiotiques, les Produits à usage local, les Sirops pour toute la famille, les propriétés de l'Omega-3-Oligen… et bien plus !</p>`,
 
 }};
@@ -301,6 +338,8 @@ function applyI18n(){
   document.documentElement.lang = LANG;
   document.querySelectorAll("[data-i18n]").forEach(el=>{ el.innerHTML = t(el.dataset.i18n); });
   document.querySelectorAll("[data-i18n-ph]").forEach(el=>{ el.placeholder = t(el.dataset.i18nPh); });
+  /* Enlaces a páginas de la tienda real: cada idioma tiene su propia URL. */
+  document.querySelectorAll("[data-i18n-href]").forEach(el=>{ el.href = t(el.dataset.i18nHref); });
   document.querySelectorAll(".js-lang-current").forEach(el=>{ el.textContent = LANG.toUpperCase(); });
 }
 function setLang(l){

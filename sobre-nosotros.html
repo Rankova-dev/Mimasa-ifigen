@@ -66,11 +66,9 @@
         <a class="mi-nav__link" href="categoria.html?cat=Utensilios%20de%20cocina" data-i18n="nav_utensilios">Utensilios
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
         </a>
-        <div class="mi-simple">
-          <a class="mi-simple__link" href="categoria.html?cat=Utensilios%20de%20cocina&amp;subcat=Colecci%C3%B3n%20Vajilla%20Japonesa%20Shibumi">Colección Vajilla Japonesa Shibumi</a>
-          <a class="mi-simple__link" href="categoria.html?cat=Utensilios%20de%20cocina&amp;subcat=Cuchillos%20Japoneses">Cuchillos Japoneses</a>
-          <a class="mi-simple__link" href="categoria.html?cat=Utensilios%20de%20cocina&amp;subcat=Accesorios%20de%20cocina">Accesorios de cocina</a>
-        </div>
+        <!-- Se rellena desde SUBCATS (data.js): el desplegable y el filtro
+             lateral de Utensilios salen de la misma lista. -->
+        <div class="mi-simple" id="simpleUtensilios"></div>
       </div>
       <div class="mi-nav__item"><a class="mi-nav__link" href="categoria.html?ofertas=1" data-i18n="nav_ofertas">Packs</a></div>
       <div class="mi-nav__item"><a class="mi-nav__link" href="https://mimasaifigen.com/blog/" target="_blank" rel="noopener" data-i18n="nav_blog">Blog</a></div>
@@ -137,7 +135,7 @@
 </section>
 
 <!-- Newsletter -->
-<section class="mi-section mi-section--tight">
+<section class="mi-section mi-section--tight" id="newsletter">
   <div class="mi-container">
     <div class="mi-news mi-reveal">
       <h2 data-i18n="news_t">¿Quieres aprender a cuidarte desde dentro?</h2>
@@ -150,79 +148,56 @@
   </div>
 </section>
 
-<!-- Footer -->
+<!-- Footer
+     Misma estructura que mimasaifigen.com: Categorías · Información · Tu cuenta
+     + bloque de marca (logo, copyright, redes, Afepadi).
+     Los enlaces legales apuntan a las páginas CMS reales de la tienda —revisadas
+     por el equipo del cliente—; aquí no se reescribe ni se duplica ese texto.
+     Las URL cambian con el idioma (data-i18n-href → claves u_* de i18n.js). -->
 <footer class="mi-footer">
   <div class="mi-container">
     <div class="mi-footer__top">
-      <div class="mi-footer__brand">
-        <img src="assets/img/brand/logo-horizontal.svg" alt="Mimasa Ifigen" loading="lazy">
-        <p data-i18n="footer_about">Productos ecológicos elaborados de manera tradicional y artesanal para ayudarte a tener una vida saludable.</p>
-        <div class="mi-footer__soc">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 8a3 3 0 0 0-2-2c-1.8-.5-9-.5-9-.5s-7.2 0-9 .5A3 3 0 0 0 0 8 31 31 0 0 0 0 12a31 31 0 0 0 .4 4 3 3 0 0 0 2 2c1.8.5 9 .5 9 .5s7.2 0 9-.5a3 3 0 0 0 2-2 31 31 0 0 0 .4-4 31 31 0 0 0-.8-4z" transform="translate(1)"/><path d="M10 15l5-3-5-3z" fill="currentColor"/></svg></a>
-        </div>
-        <div class="mi-footer__afepadi">
-          <img src="assets/img/brand/afepadi.png" alt="Afepadi — Asociación Española de Fabricantes de Preparados Alimenticios Especiales, Dietéticos y Plantas Medicinales" loading="lazy">
-        </div>
-      </div>
       <div class="mi-footer__col">
-        <h4>Mimasa</h4>
+        <h4 data-i18n="footer_cats">Categorías</h4>
         <ul>
-          <li><a href="categoria.html?brand=mimasa&cat=Algas%20marinas">Algas marinas</a></li>
-          <li><a href="categoria.html?brand=mimasa&cat=Misos">Misos</a></li>
-          <li><a href="categoria.html?brand=mimasa&cat=Umeboshi">Umeboshi</a></li>
-          <li><a href="categoria.html?brand=mimasa&cat=Salsas%20de%20soja">Salsas de soja</a></li>
-          <li><a href="categoria.html?brand=mimasa&cat=S%C3%A9samo%20y%20elaborados">Sésamo y elaborados</a></li>
-          <li><a href="categoria.html?brand=mimasa&cat=Ra%C3%ADces%20y%20otras%20plantas">Raíces y otras plantas</a></li>
-          <li><a href="categoria.html?brand=mimasa&cat=Bebidas">Bebidas</a></li>
-          <li><a href="categoria.html?brand=mimasa&cat=Cereales">Cereales</a></li>
-        </ul>
-      </div>
-      <div class="mi-footer__col">
-        <h4>Ifigen</h4>
-        <ul>
-          <li><a href="categoria.html?brand=ifigen&cat=Omega-3-Oligen">Omega-3-Oligen</a></li>
-          <li><a href="categoria.html?brand=ifigen&cat=Melatonina">Melatonina</a></li>
-          <li><a href="categoria.html?brand=ifigen&cat=Oligoelementos">Oligoelementos</a></li>
-          <li><a href="categoria.html?brand=ifigen&cat=Probi%C3%B3ticos">Probióticos</a></li>
-          <li><a href="categoria.html?brand=ifigen&cat=Phyto-Min">Phyto-Min</a></li>
-          <li><a href="categoria.html?brand=ifigen&cat=Fitoterapia">Fitoterapia</a></li>
-          <li><a href="categoria.html?brand=ifigen&cat=Productos%20de%20uso%20t%C3%B3pico">Productos de uso tópico</a></li>
-          <li><a href="categoria.html?brand=ifigen&cat=Jarabes">Jarabes</a></li>
-        </ul>
-      </div>
-      <div class="mi-footer__col">
-        <h4 data-i18n="nav_utensilios">Utensilios</h4>
-        <ul>
-          <li><a href="categoria.html?cat=Utensilios%20de%20cocina">Utensilios de cocina</a></li>
-          <li><a href="categoria.html?cat=Utensilios%20de%20cocina&subcat=Colecci%C3%B3n%20Vajilla%20Japonesa%20Shibumi">Colección Vajilla Japonesa Shibumi</a></li>
-          <li><a href="categoria.html?cat=Utensilios%20de%20cocina&subcat=Cuchillos%20Japoneses">Cuchillos Japoneses</a></li>
-          <li><a href="categoria.html?cat=Utensilios%20de%20cocina&subcat=Accesorios%20de%20cocina">Accesorios de cocina</a></li>
-        </ul>
-        <h4 class="mi-footer__h4--2" data-i18n="footer_descubre">Descubre</h4>
-        <ul>
+          <li><a href="mimasa.html" data-i18n="nav_mimasa">Alimentos saludables</a></li>
+          <li><a href="ifigen.html" data-i18n="nav_ifigen">Salud y bienestar</a></li>
+          <li><a href="categoria.html?cat=Utensilios%20de%20cocina" data-i18n="f_utensilios">Utensilios de cocina</a></li>
           <li><a href="categoria.html?ofertas=1" data-i18n="nav_ofertas">Packs</a></li>
           <li><a href="https://mimasaifigen.com/blog/" target="_blank" rel="noopener" data-i18n="nav_blog">Blog</a></li>
-          <li><a href="sobre-nosotros.html" data-i18n="about_t">Sobre nosotros</a></li>
+          <li><a href="https://mimasaifigen.com/es/contactenos" data-i18n-href="u_contacto" target="_blank" rel="noopener" data-i18n="f_contacto">Contacto</a></li>
         </ul>
       </div>
+
       <div class="mi-footer__col">
         <h4 data-i18n="footer_info">Información</h4>
         <ul>
-          <li><a href="#" data-i18n="f_priv_cookies">Política de privacidad y cookies</a></li>
-          <li><a href="#" data-i18n="f_cond_generales">Condiciones generales de uso y contratación</a></li>
-          <li><a href="#" data-i18n="f_fichas">Descargar fichas técnicas</a></li>
-          <li><a href="#" data-i18n="f_newsletter">Newsletter</a></li>
-          <li><a href="#" data-i18n="f_contacto">Contacto</a></li>
+          <li><a href="https://mimasaifigen.com/es/info/6-politica-de-cookies" data-i18n-href="u_priv" target="_blank" rel="noopener" data-i18n="f_priv_cookies">Política de privacidad y cookies</a></li>
+          <li><a href="https://mimasaifigen.com/es/info/7-condiciones-generales-de-uso-y-contratacion" data-i18n-href="u_cond" target="_blank" rel="noopener" data-i18n="f_cond_generales">Condiciones generales de uso y contratación</a></li>
+          <li><a href="https://mimasaifigen.com/es/info/9-fichas-tecnicas" data-i18n-href="u_fichas" target="_blank" rel="noopener" data-i18n="f_fichas">Descargar fichas técnicas</a></li>
+          <li><a href="#newsletter" data-i18n="f_newsletter">Newsletter</a></li>
         </ul>
       </div>
+
       <div class="mi-footer__col">
         <h4 data-i18n="footer_account">Tu cuenta</h4>
         <ul>
-          <li><a href="#" data-i18n="f_tucuenta">Tu cuenta</a></li>
-          <li><a href="#" data-i18n="f_tuspedidos">Tus pedidos</a></li>
+          <li><a href="https://mimasaifigen.com/es/mi-cuenta" data-i18n-href="u_cuenta" target="_blank" rel="noopener" data-i18n="f_tucuenta">Tu cuenta</a></li>
+          <li><a href="https://mimasaifigen.com/es/historial-compra" data-i18n-href="u_pedidos" target="_blank" rel="noopener" data-i18n="f_tuspedidos">Tus pedidos</a></li>
         </ul>
+      </div>
+
+      <div class="mi-footer__brand">
+        <h4>Mimasa Ifigen</h4>
+        <img src="assets/img/brand/logo-horizontal.svg" alt="Mimasa Ifigen" loading="lazy">
+        <p class="mi-footer__copy">© Mimasa Ifigen 2026</p>
+        <div class="mi-footer__soc">
+          <a href="https://www.youtube.com/channel/UCoB84xoDNBjBAQdIxFxW7Yg" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 8a3 3 0 0 0-2-2c-1.8-.5-9-.5-9-.5s-7.2 0-9 .5A3 3 0 0 0 0 8 31 31 0 0 0 0 12a31 31 0 0 0 .4 4 3 3 0 0 0 2 2c1.8.5 9 .5 9 .5s7.2 0 9-.5a3 3 0 0 0 2-2 31 31 0 0 0 .4-4 31 31 0 0 0-.8-4z" transform="translate(1)"/><path d="M10 15l5-3-5-3z" fill="currentColor"/></svg></a>
+          <a href="https://www.instagram.com/mimasaifigen/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+        <div class="mi-footer__afepadi">
+          <img src="assets/img/brand/afepadi.png" alt="Afepadi. Asociado." loading="lazy">
+        </div>
       </div>
     </div>
   </div>
@@ -238,12 +213,7 @@
       </div>
 
       <div class="mi-footer__bottom">
-        <span>© 2026 Ifigen 2011 S.L. Av. de la Riera de Cassoles 20, 1r B, 08012 Barcelona</span>
-        <span>
-          <a href="#" data-i18n="f_priv">Privacidad</a>
-          <a href="#">Cookies</a>
-          <a href="#" data-i18n="f_cond">Condiciones</a>
-        </span>
+        <span>Ifigen 2011 S.L. · Av. de la Riera de Cassoles 20, 1r B, 08012 Barcelona</span>
       </div>
     </div>
   </div>

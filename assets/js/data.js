@@ -75,6 +75,8 @@ const PRODUCTS = [
   {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Esterillas sushi (caña de bambú)", ref:"23006", price:5.70, was:6.33, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/esterillas-sushi-cana-de-bambu.jpg"},
   {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Cepillo para limpiar hortalizas (tawashi)", ref:"23004", price:9.83, was:10.93, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/cepillo-para-limpiar-hortalizas-tawashi.jpg"},
   {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Libro Macrobiótica (M. Kushi)", ref:"24000", price:16.78, was:18.65, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/libro-macrobiotica-michio-kushi.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Cuchillos Japoneses", name:"Cuchillo japonés Sakon-Shiraume Funayuki 165mm", ref:"23012", price:49.14, was:54.60, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/cuchillo-sakon-shiraume-funayuki.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Cuchillos Japoneses", name:"Cuchillo japonés Sakon-Shiraume Nakiri 165mm", ref:"23013", price:49.14, was:54.60, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/cuchillo-sakon-shiraume-nakiri.jpg"},
 ];
 
 /* Oligoelementos — familia (sin precio público en demo) */
@@ -132,6 +134,15 @@ const CATS_MIMASA = [
 const CATS_UTENSILIOS = [
   {name:"Utensilios de cocina", desc:"Suribachi, bambú y libro", img:IMG+"mimasa/utensilios-y-bibliografia/suribachi.jpg", url:catUrl("mimasa","Utensilios de cocina")},
 ];
+
+/* Subcategorías reales de la tienda (cat. 65 → 99 / 103 / 106). Única fuente:
+   de aquí salen tanto el desplegable de Utensilios del menú como las opciones
+   del filtro lateral, para que no puedan decir cosas distintas.
+   Las categorías que no aparecen aquí mantienen el filtro plano de categorías. */
+const SUBCATS = {
+  "Utensilios de cocina": ["Colección Vajilla Japonesa Shibumi", "Cuchillos Japoneses", "Accesorios de cocina"],
+};
+
 const CATS_IFIGEN = [
   {name:"Omega-3-Oligen", desc:"DHA de alta concentración", img:IMG+"ifigen/oligen/oligen-60-caps.jpg", url:catUrl("ifigen","Omega-3-Oligen")},
   {name:"Melatonina", desc:"Descanso", img:IMG+"ifigen/general/melatonina-plus-30-caps.jpg", url:catUrl("ifigen","Melatonina")},

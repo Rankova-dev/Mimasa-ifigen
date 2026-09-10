@@ -99,6 +99,15 @@
     </a>`).join('');
   }
 
+  /* Desplegable simple de una categoría con subcategorías (Utensilios). Sale de
+     SUBCATS, la misma lista que alimenta el filtro lateral. */
+  function simpleList(sel, cat){
+    const el = $(sel); if(!el) return;
+    const base = 'categoria.html?cat='+encodeURIComponent(cat);
+    el.innerHTML = (SUBCATS[cat]||[]).map(s=>
+      `<a class="mi-simple__link" href="${base}&subcat=${encodeURIComponent(s)}">${s}</a>`).join('');
+  }
+
   /* ---------- Mini-cart (funcional; empieza vacío) ---------- */
   /* Envío gratis: 29 € en España (ES), 299 € en envíos internacionales (EN/FR) */
   const FREE_SHIP = (typeof LANG!=='undefined' && LANG!=='es') ? 299 : 29;
@@ -379,14 +388,39 @@
       }
     }
 
+    /* Nombre canónico de la categoría activa: llega por URL y puede variar en
+       acentos o mayúsculas. */
+    function activeCat(){
+      if(!state.cat) return null;
+      return Object.keys(SUBCATS).find(c=>norm(c)===norm(state.cat)) || state.cat;
+    }
+
     function sidebar(){
+      /* Utensilios de cocina no es una marca: dentro de una categoría con
+         subcategorías propias el filtro de marca sobra y el de categoría pasa a
+         ofrecer exactamente las mismas opciones que su desplegable del menú. */
+      const subs = SUBCATS[activeCat()] || null;
+
+      const fbg = $('#fBrandGroup');
+      if(fbg) fbg.hidden = !!subs;
       const fb = $('#fBrands');
       if(fb) fb.innerHTML = ['mimasa','ifigen'].map(b=>{
         const n = PRODUCTS.filter(p=>p.brand===b).length;
         return `<label class="mi-check"><input type="checkbox" data-fbrand="${b}" ${state.brands.has(b)?'checked':''}> ${BRAND_LABEL[b]} <span class="c">${n}</span></label>`;
       }).join('');
+
       const fc = $('#fCats');
-      if(fc){
+      const fcTitle = $('#fCatsTitle');
+      if(fc && subs){
+        if(fcTitle) fcTitle.textContent = t('f_subcat');
+        const cat = activeCat();
+        fc.innerHTML = subs.map(s=>{
+          const n = PRODUCTS.filter(p=>norm(p.cat)===norm(cat) && norm(p.subcat||'')===norm(s)).length;
+          const on = state.subcat && norm(state.subcat)===norm(s);
+          return `<label class="mi-check"><input type="checkbox" data-fsubcat="${s}" ${on?'checked':''}> ${s} <span class="c">${n}</span></label>`;
+        }).join('');
+      } else if(fc){
+        if(fcTitle) fcTitle.textContent = t('f_cat');
         const cats = [...new Set(PRODUCTS.filter(p=>state.brands.has(p.brand)).map(p=>p.cat))];
         fc.innerHTML = cats.map(c=>{
           const n = PRODUCTS.filter(p=>state.brands.has(p.brand) && p.cat===c).length;
@@ -437,6 +471,8 @@
       }
       const fc = e.target.closest('[data-fcat]');
       if(fc){ state.cat = fc.checked? fc.dataset.fcat : null; state.subcat=null; apply(); return; }
+      const fs = e.target.closest('[data-fsubcat]');
+      if(fs){ state.subcat = fs.checked? fs.dataset.fsubcat : null; apply(); return; }
       if(e.target.id==='fBio'){ state.bio = e.target.checked; apply(); return; }
       if(e.target.id==='fSinGluten'){ state.sinGluten = e.target.checked; apply(); return; }
       if(e.target.id==='fSinLactosa'){ state.sinLactosa = e.target.checked; apply(); return; }
@@ -483,6 +519,21 @@
      Ficha de producto dinámica (producto.html)
      ============================================================ */
   let currentPdp = null;
+
+  /* Dentro de Salud y bienestar conviven familias con estatus legal distinto:
+     los oligoelementos son oligoterapia y el colutorio y la loción capilar son
+     productos de uso tópico — ninguno de los dos es un complemento alimenticio,
+     así que no pueden compartir el texto genérico de la gama. */
+  const IFIGEN_COPY = {
+    'Oligoelementos': 'oligo',
+    'Productos de uso tópico': 'topic',
+  };
+  function pdpCopyKey(p, kind){
+    if(p.brand!=='ifigen') return kind+'_m';
+    const fam = Object.keys(IFIGEN_COPY).find(c=>norm(c)===norm(p.cat));
+    return kind+'_'+(fam? IFIGEN_COPY[fam] : 'i');
+  }
+
   function setupPdp(){
     const root = $('.mi-pdp'); if(!root) return;
     const p = byId(params.get('p'));
@@ -509,7 +560,7 @@
     brandPill.className = 'mi-pdp__brand mi-pdp__brand--'+p.brand;
     $('#pdpName').textContent = p.name;
     $('#pdpRefLine').textContent = p.ref? t('ref')+' '+p.ref : t('pdp_categoria')+': '+p.cat;
-    $('#pdpShort').innerHTML = t(p.brand==='ifigen'?'pdp_short_i':'pdp_short_m').replaceAll('{cat}','<b>'+p.cat+'</b>');
+    $('#pdpShort').innerHTML = t(pdpCopyKey(p,'pdp_short')).replaceAll('{cat}','<b>'+p.cat+'</b>');
 
     if(p.price!=null){
       $('#pdpPrice').textContent = eur(p.price);
@@ -527,7 +578,7 @@
     addBtn.classList.remove('mi-btn--ifigen','mi-btn--mimasa');
     addBtn.classList.add('mi-btn--cart'); /* blanco + letras en color corporativo */
 
-    $('#pdpDescInner').innerHTML = t(p.brand==='ifigen'?'pdp_body_i':'pdp_body_m').replaceAll('{name}',p.name).replaceAll('{cat}',p.cat);
+    $('#pdpDescInner').innerHTML = t(pdpCopyKey(p,'pdp_body')).replaceAll('{name}',p.name).replaceAll('{cat}',p.cat);
     $('#pdpSpecs').innerHTML = `
       <tr><td>${t('pdp_marca')}</td><td>${BRAND_LABEL[p.brand]}</td></tr>
       ${p.ref? `<tr><td>${t('pdp_referencia')}</td><td>${p.ref}</td></tr>`:''}
@@ -603,6 +654,7 @@
     renderPosts('#blogGrid');
     megaList('#megaMimasa', CATS_MIMASA, 'mimasa', true);
     megaList('#megaIfigen', CATS_IFIGEN, 'ifigen');
+    simpleList('#simpleUtensilios', 'Utensilios de cocina');
 
     // páginas de marca (el listado con filtros lo gestiona setupShop() vía #shopGrid)
     renderTiles('#tilesMimasa', CATS_MIMASA, 'mimasa', true);
