@@ -10,6 +10,8 @@
   const byId = id => PRODUCTS.find(x=>x.id===id);
   const pdpUrl = p => 'producto.html?p='+encodeURIComponent(p.id);
   const taxLine = p => p.off ? t('qv_tax').replace('{n}', p.off) : t('tax_incl_only');
+  /* Textos de data.js: cadena simple o {es,en,fr} */
+  const loc = v => (v && typeof v==='object') ? (v[typeof LANG!=='undefined'?LANG:'es'] || v.es || '') : (v || '');
   const flagsHTML = p => (p.off?`<span class="mi-flag mi-flag--off">-${p.off}%</span>`:'') + (p.bio?`<span class="mi-flag mi-flag--bio">BIO</span>`:'') + (p.sinGluten?`<span class="mi-flag mi-flag--diet">${t('sg')}</span>`:'') + (p.sinLactosa?`<span class="mi-flag mi-flag--diet">${t('sl')}</span>`:'');
 
   /* Tope del filtro de precio: se calcula del catálogo (redondeado a la decena
@@ -23,6 +25,7 @@
     cart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>',
     eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>',
     arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>',
+    bowl:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M8 20h8"/><path d="M9 7c0-1.5 1-1.5 1-3M13 7c0-1.5 1-1.5 1-3"/></svg>',
     x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>'
   };
 
@@ -36,9 +39,14 @@
       (p.sinGluten? `<span class="mi-flag mi-flag--diet">${t('sg')}</span>`:'') +
       (p.sinLactosa? `<span class="mi-flag mi-flag--diet">${t('sl')}</span>`:'');
     const flags = [off + diet];
+    /* Sin precio público no se pinta "Consultar": el hueco queda vacío y el botón
+       de carrito pasa a ser un acceso a la ficha. */
     const price = p.price!=null
       ? `<div class="mi-card__price"><b>${eur(p.price)}</b>${p.was?`<s>${eur(p.was)}</s>`:''}</div>`
-      : `<div class="mi-card__price"><b style="font-size:1rem;color:var(--ink-2)">${t('consultar')}</b></div>`;
+      : `<div class="mi-card__price"></div>`;
+    const action = p.price!=null
+      ? `<button class="mi-card__add" data-add aria-label="Añadir ${p.name}">${ICON.cart}</button>`
+      : `<a class="mi-card__add mi-card__add--link" href="${pdpUrl(p)}" aria-label="${t('qv_full')}: ${p.name}">${ICON.arrow}</a>`;
     return `<article class="mi-card" data-id="${p.id}">
       <div class="mi-card__media">
         <div class="mi-card__flags">${flags.join('')}</div>
@@ -52,7 +60,7 @@
       ${diet? `<div class="mi-card__diet">${diet}</div>`:''}
       <div class="mi-card__foot">
         ${price}
-        <button class="mi-card__add" data-add aria-label="Añadir ${p.name}">${ICON.cart}</button>
+        ${action}
       </div>
     </article>`;
   }
@@ -189,9 +197,17 @@
     $('#qvRef').textContent = p.ref? 'Ref. '+p.ref : '';
     $('#qvBrand').textContent = p.brand.toUpperCase();
     $('#qvBrand').className = 'mi-pdp__brand mi-pdp__brand--'+p.brand;
-    $('#qvPrice').textContent = p.price!=null ? eur(p.price) : t('consultar');
+    /* Sin precio: fuera precio, cantidad y carrito; en su lugar la descripción
+       corta (si la hay) y el enlace a la ficha. */
+    const hasPrice = p.price!=null;
+    $('#qvPrice').textContent = hasPrice ? eur(p.price) : '';
+    $('#qvPriceRow').hidden = !hasPrice;
     $('#qvTax').textContent = taxLine(p);
-    $('#qvTax').style.display = p.price!=null? '' : 'none';
+    $('#qvTax').hidden = !hasPrice;
+    $('#qvBuy').hidden = !hasPrice;
+    const short = hasPrice ? '' : loc(p.short);
+    $('#qvShort').textContent = short;
+    $('#qvShort').hidden = !short;
     const link = $('#qvLink'); if(link) link.href = pdpUrl(p);
     m.classList.add('is-on'); $('#miOverlay')?.classList.add('is-on'); document.body.style.overflow='hidden';
   }
@@ -222,7 +238,7 @@
     return `<a class="mi-srow" href="${pdpUrl(p)}">
       <span class="mi-srow__img"><img src="${p.img}" alt="" loading="lazy"></span>
       <span class="mi-srow__t"><b>${p.name}</b><span>${BRAND_LABEL[p.brand]}, ${p.cat}</span></span>
-      <span class="mi-srow__p">${p.price!=null? eur(p.price):t('consultar')}</span>
+      <span class="mi-srow__p">${p.price!=null? eur(p.price):''}</span>
       ${ICON.arrow}
     </a>`;
   }
@@ -417,7 +433,7 @@
         fc.innerHTML = subs.map(s=>{
           const n = PRODUCTS.filter(p=>norm(p.cat)===norm(cat) && norm(p.subcat||'')===norm(s)).length;
           const on = state.subcat && norm(state.subcat)===norm(s);
-          return `<label class="mi-check"><input type="checkbox" data-fsubcat="${s}" ${on?'checked':''}> ${s} <span class="c">${n}</span></label>`;
+          return `<label class="mi-check"><input type="checkbox" data-fsubcat="${s}" ${on?'checked':''}> ${s} ${n?`<span class="c">${n}</span>`:''}</label>`;
         }).join('');
       } else if(fc){
         if(fcTitle) fcTitle.textContent = t('f_cat');
@@ -453,12 +469,23 @@
       const list = sortList(PRODUCTS.filter(matches));
       if(list.length){
         renderGrid(grid, list);
+      } else if(!scopeList().length){
+        /* Colección todavía sin productos: estado vacío en lugar de rejilla en blanco */
+        const back = state.cat ? 'categoria.html?cat='+encodeURIComponent(activeCat()) : 'index.html';
+        grid.innerHTML = `<div class="mi-empty">
+          <span class="mi-empty__ic">${ICON.bowl}</span>
+          <p class="mi-empty__t">${t('empty_soon_t')}</p>
+          <p class="mi-empty__d">${t('empty_soon_d')}</p>
+          ${state.subcat? `<a class="mi-btn mi-btn--ghost" href="${back}">${t('empty_soon_cta')} ${ICON.arrow}</a>`:''}
+        </div>`;
       } else {
-        grid.innerHTML = `<div class="mi-card" style="grid-column:1/-1;padding:34px;text-align:center">
-          <p style="font-weight:700;margin-bottom:6px">${t('empty_cat_t')}</p>
-          <p style="color:var(--ink-2);font-size:.94rem">${t('empty_cat_d')}</p></div>`;
+        grid.innerHTML = `<div class="mi-empty">
+          <p class="mi-empty__t">${t('empty_filter_t')}</p>
+          <p class="mi-empty__d">${t('empty_filter_d')}</p></div>`;
       }
       $('#shopCount').textContent = list.length;
+      const countWrap = $('#shopCount').closest('.mi-toolbar__count');
+      if(countWrap) countWrap.hidden = !list.length;
       chips(); sidebar(); updateHead();
     }
 
@@ -560,7 +587,9 @@
     brandPill.className = 'mi-pdp__brand mi-pdp__brand--'+p.brand;
     $('#pdpName').textContent = p.name;
     $('#pdpRefLine').textContent = p.ref? t('ref')+' '+p.ref : t('pdp_categoria')+': '+p.cat;
-    $('#pdpShort').innerHTML = t(pdpCopyKey(p,'pdp_short')).replaceAll('{cat}','<b>'+p.cat+'</b>');
+    const short = loc(p.short);
+    if(short) $('#pdpShort').textContent = short;
+    else $('#pdpShort').innerHTML = t(pdpCopyKey(p,'pdp_short')).replaceAll('{cat}','<b>'+p.cat+'</b>');
 
     if(p.price!=null){
       $('#pdpPrice').textContent = eur(p.price);
@@ -569,8 +598,9 @@
       else $('#pdpSave').style.display='none';
       $('#pdpTax').textContent = taxLine(p); $('#pdpTax').style.display='';
     } else {
-      $('#pdpPrice').textContent = t('consultar');
-      $('#pdpWas').style.display='none'; $('#pdpSave').style.display='none'; $('#pdpTax').style.display='none';
+      /* Sin precio público: ni "Consultar" en grande ni compra; queda la descripción */
+      $('#pdpPriceRow').hidden = true; $('#pdpTax').style.display='none';
+      $('#pdpBuy').hidden = true;
     }
 
     $('#pdpVariants').style.display = 'none';
@@ -603,7 +633,6 @@
     let slide; try{ slide = JSON.parse(localStorage.getItem('mi-popup-slide')) || DEFAULT_POPUP_SLIDE; }catch(e){ slide = DEFAULT_POPUP_SLIDE; }
     if(!slide || slide.active===false || !slide.img) return;
     $('#popupTrack').innerHTML = `<a class="mi-popup__slide is-on" href="${slide.link||'#'}"><img src="${slide.img}" alt="${slide.alt||''}"></a>`;
-    const cta = $('#popupCta'); if(cta) cta.href = slide.link || '#';
     setTimeout(()=>{ pop.classList.add('is-on'); document.body.style.overflow='hidden'; sessionStorage.setItem('mi-popup-seen','1'); }, 900);
   }
 
@@ -614,18 +643,25 @@
     banners = banners.filter(b=>b.active!==false && b.img);
     if(!banners.length){ el.style.display='none'; return; }
 
-    const slides = banners.map((b,i)=>`<a class="mi-topbanner__slide slide--${b.pos||'left'}${i===0?' is-on':''}" href="${b.link||'#'}">
+    /* Campos documentados en DEFAULT_SITE_BANNERS (data.js). En móvil la tarjeta
+       de texto siempre se pinta; sin mobileImg se recorta img (.slide--nomobile). */
+    const slides = banners.map((b,i)=>{
+      const eyebrow = loc(b.eyebrow), title = loc(b.title), sub = loc(b.sub);
+      const cls = ['mi-topbanner__slide', 'slide--'+(b.pos||'left'), 'slide--v'+(b.vpos||'bottom')];
+      if(!b.mobileImg) cls.push('slide--nomobile');
+      if(i===0) cls.push('is-on');
+      return `<a class="${cls.join(' ')}" href="${b.link||'#'}">
       <picture>
         ${b.mobileImg?`<source media="(max-width:767px)" srcset="${b.mobileImg}">`:''}
-        <img src="${b.img}" alt="${b.alt||''}" loading="${i===0?'eager':'lazy'}" fetchpriority="${i===0?'high':'auto'}">
+        <img src="${b.img}" alt="${b.alt||title||''}" loading="${i===0?'eager':'lazy'}" fetchpriority="${i===0?'high':'auto'}">
       </picture>
       <span class="mi-topbanner__cta mi-topbanner__cta--desktop">${t('banner_cta')} ${ICON.arrow}</span>
       <div class="mi-topbanner__content">
-        ${b.eyebrow?`<span class="mi-topbanner__eyebrow">${b.eyebrow}</span>`:''}
-        ${b.title?`<strong class="mi-topbanner__headline">${b.title}</strong>`:''}
-        ${b.sub?`<span class="mi-topbanner__sub">${b.sub}</span>`:''}
+        ${eyebrow?`<span class="mi-topbanner__eyebrow">${eyebrow}</span>`:''}
+        ${title?`<strong class="mi-topbanner__headline">${title}</strong>`:''}
+        ${sub?`<span class="mi-topbanner__sub">${sub}</span>`:''}
         <span class="mi-topbanner__cta">${t('banner_cta')} ${ICON.arrow}</span>
-      </div></a>`).join('');
+      </div></a>`;}).join('');
     const dots = banners.length>1
       ? `<div class="mi-topbanner__dots">${banners.map((b,i)=>`<button class="mi-topbanner__dot${i===0?' is-on':''}" data-slide="${i}" aria-label="${i+1}"></button>`).join('')}</div>`
       : '';
@@ -643,10 +679,27 @@
     setInterval(()=>go(idx+1), 5000);
   }
 
+  /* ---------- Banners destacados de categoría (home, HOME_BANNERS en data.js) ---------- */
+  function renderHomeBanners(){
+    const el = $('#homeBanners'); if(!el || typeof HOME_BANNERS==='undefined') return;
+    el.innerHTML = HOME_BANNERS.filter(b=>b.active!==false && b.img).map(b=>{
+      const title = loc(b.title), sub = loc(b.sub);
+      return `<a class="mi-hbanner mi-hbanner--${b.brand||'mimasa'}" href="${b.link||'#'}">
+        <span class="mi-hbanner__media"><img src="${b.img}" alt="" loading="lazy"></span>
+        <span class="mi-hbanner__body">
+          <b class="mi-hbanner__title">${title}</b>
+          ${sub?`<span class="mi-hbanner__sub">${sub}</span>`:''}
+          <span class="mi-hbanner__cta">${t('hb_cta')} ${ICON.arrow}</span>
+        </span>
+      </a>`;
+    }).join('');
+  }
+
   document.addEventListener('DOMContentLoaded', ()=>{
     applyI18n();
     initPopup();
     renderSiteBanner();
+    renderHomeBanners();
     // home
     renderGrid('#gridFeatured', PRODUCTS.filter(p=>p.price!=null).slice(0,8));
     renderTiles('#tilesMimasaHome', CATS_MIMASA.slice(0,4), 'mimasa', true);

@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/league-spartan/league-spartan-latin.woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/styles.css?v=10">
+<link rel="stylesheet" href="assets/css/styles.css?v=11">
 </head>
 <body>
 
@@ -302,9 +302,11 @@
       <div class="mi-pdp__brandrow"><span id="qvBrand" class="mi-pdp__brand mi-pdp__brand--ifigen">IFIGEN</span><span id="qvCat" class="mi-card__cat" style="margin:0"></span></div>
       <h2 id="qvName" class="mi-h-md" style="margin-bottom:8px"></h2>
       <p id="qvRef" class="mi-pdp__ref"></p>
-      <div class="mi-pdp__pricerow"><span id="qvPrice" class="mi-pdp__price" style="font-size:2rem"></span></div>
+      <div class="mi-pdp__pricerow" id="qvPriceRow"><span id="qvPrice" class="mi-pdp__price" style="font-size:2rem"></span></div>
       <p class="mi-pdp__tax" id="qvTax" data-i18n="qv_tax">Impuestos incluidos · –10% ya aplicado</p>
-      <div class="mi-buyrow">
+      <!-- Solo para productos sin precio: descripción corta (campo short de data.js) -->
+      <p class="mi-modal__short" id="qvShort" hidden></p>
+      <div class="mi-buyrow" id="qvBuy">
         <div class="mi-qty"><button data-qty="-">−</button><input value="1"><button data-qty="+">+</button></div>
         <button class="mi-btn mi-btn--lg mi-btn--cart" style="flex:1" data-add data-i18n="qv_add">Añadir al carrito</button>
       </div>
@@ -355,7 +357,8 @@
   </div>
 </div>
 
-<!-- Popup de bienvenida (carrusel editable en admin.html) -->
+<!-- Popup de bienvenida (imagen editable en admin.html). Un solo CTA: toda la
+     imagen es el enlace; "Seguir navegando" solo cierra. -->
 <div class="mi-popup" id="miPopup" role="dialog" aria-modal="true" aria-label="Novedades">
   <div class="mi-popup__card">
     <button class="mi-popup__close" data-popup-close aria-label="Cerrar">
@@ -367,15 +370,14 @@
     </div>
     <div class="mi-popup__track" id="popupTrack"></div>
     <div class="mi-popup__foot">
-      <a href="#" id="popupCta" class="mi-btn" data-i18n="popup_cta">Ver ahora</a>
-      <button class="mi-link" data-popup-close data-i18n="popup_skip">Seguir navegando</button>
+      <button class="mi-popup__skip" data-popup-close data-i18n="popup_skip">Seguir navegando</button>
     </div>
   </div>
 </div>
 
-<script src="assets/js/i18n.js?v=9"></script>
-<script src="assets/js/data.js?v=9"></script>
-<script src="assets/js/main.js?v=9"></script>
+<script src="assets/js/i18n.js?v=10"></script>
+<script src="assets/js/data.js?v=10"></script>
+<script src="assets/js/main.js?v=10"></script>
 </body>
 </html>
 

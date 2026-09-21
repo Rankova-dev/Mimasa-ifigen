@@ -8,29 +8,16 @@
   </div>
 </section>
 
-<!-- ================= HERO : dos mundos ================= -->
-<section class="mi-hero">
-  <div class="mi-hero__bg"><span class="mi-hero__blob mi-hero__blob--1"></span><span class="mi-hero__blob mi-hero__blob--2"></span></div>
+<!-- ================= Destacados de categoría (sustituye al antiguo hero
+     "Dos formas de cuidarte / Nuestras marcas", que repetía "Dos marcas, un
+     mismo cuidado"). Banners editables desde HOME_BANNERS en data.js. ================= -->
+<section class="mi-section mi-hbanners-wrap">
   <div class="mi-container">
-    <div class="mi-hero__intro mi-reveal">
-      <h1 class="mi-h-xl"><span data-i18n="hero_t1">Dos formas de cuidarte,</span><br><span class="mi-italic" style="color:var(--wine)" data-i18n="hero_t2">una misma esencia</span></h1>
+    <div class="mi-section-head mi-reveal">
+      <span class="mi-eyebrow" data-i18n="hero_eyebrow">Productos ecológicos de elaboración tradicional</span>
+      <h1 class="mi-h-lg" data-i18n="home_h1">Alimentos saludables y complementos alimenticios</h1>
     </div>
-
-    <div class="mi-brands mi-reveal">
-      <span class="mi-brands__eyebrow" data-i18n="brands_eyebrow">Nuestras marcas:</span>
-      <div class="mi-brands__grid">
-        <a class="mi-brand-card mi-brand-card--mimasa" href="mimasa.html">
-          <img class="mi-brand-card__icon" src="assets/img/brand/favicon.png" alt="" loading="lazy">
-          <img class="mi-brand-card__word" src="assets/img/brand/wordmark-mimasa.svg" alt="Mimasa">
-          <span class="mi-brand-card__tag" data-i18n="door_m_title">Alimentos saludables</span>
-        </a>
-        <a class="mi-brand-card mi-brand-card--ifigen" href="ifigen.html">
-          <img class="mi-brand-card__icon" src="assets/img/brand/favicon.png" alt="" loading="lazy">
-          <img class="mi-brand-card__word" src="assets/img/brand/wordmark-ifigen.svg" alt="ifigen">
-          <span class="mi-brand-card__tag" data-i18n="door_i_title">Salud y bienestar</span>
-        </a>
-      </div>
-    </div>
+    <div class="mi-hbanners mi-reveal" id="homeBanners"></div>
   </div>
 </section>
 
@@ -47,7 +34,7 @@
 </section>
 
 <!-- ================= Destacados ================= -->
-<section class="mi-section">
+<section class="mi-section mi-section--rose">
   <div class="mi-container">
     <div class="mi-section-head mi-reveal">
       <h2 class="mi-h-lg" data-i18n="feat_title">Top Promos</h2>

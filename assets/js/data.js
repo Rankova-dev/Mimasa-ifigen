@@ -69,15 +69,44 @@ const PRODUCTS = [
   {brand:"ifigen", cat:"Fitoterapia", name:"PP40 90 cápsulas", ref:"81001", price:92.22, img:IMG+"ifigen/fitoterapia/pp40.jpg"},
   {brand:"ifigen", cat:"Fitoterapia", name:"NAR sobre monodosis 3g", ref:"81000", price:5.00, img:IMG+"ifigen/fitoterapia/nar.jpg"},
 
-  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Suribachi 18cm", ref:"23000", price:15.18, was:16.87, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/suribachi.jpg"},
-  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Surikogi", ref:"23002", price:7.31, was:8.12, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/surikogi.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Suribachi 18cm", ref:"23000", price:15.18, was:16.87, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/suribachi.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Surikogi", ref:"23002", price:7.31, was:8.12, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/surikogi.jpg"},
   {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Colador de té (caña de bambú)", ref:"23005", price:7.91, was:8.78, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/colador-de-te-cana-de-bambu.jpg"},
   {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Esterillas sushi (caña de bambú)", ref:"23006", price:5.70, was:6.33, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/esterillas-sushi-cana-de-bambu.jpg"},
   {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Cepillo para limpiar hortalizas (tawashi)", ref:"23004", price:9.83, was:10.93, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/cepillo-para-limpiar-hortalizas-tawashi.jpg"},
   {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Accesorios de cocina", name:"Libro Macrobiótica (M. Kushi)", ref:"24000", price:16.78, was:18.65, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/libro-macrobiotica-michio-kushi.jpg"},
   {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Cuchillos Japoneses", name:"Cuchillo japonés Sakon-Shiraume Funayuki 165mm", ref:"23012", price:49.14, was:54.60, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/cuchillo-sakon-shiraume-funayuki.jpg"},
   {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Cuchillos Japoneses", name:"Cuchillo japonés Sakon-Shiraume Nakiri 165mm", ref:"23013", price:49.14, was:54.60, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/cuchillo-sakon-shiraume-nakiri.jpg"},
+
+  /* Colección Vajilla Japonesa Shibumi (cat. 99). Nombres, precios y fotos del
+     feed de Google Merchant de la tienda (www/gmerchantcenter…shop1.xml, ids
+     318-324). El feed no trae referencia interna: se deja vacía. */
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Bol miso y té 12x6 cm", ref:"", price:14.12, was:15.69, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/shibumi-bol-miso-te.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Bol udon 20x8 cm", ref:"", price:22.23, was:24.70, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/shibumi-bol-udon.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Bandeja sushi con pie 30x8 cm", ref:"", price:22.23, was:24.70, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/shibumi-bandeja-sushi.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Plato redondo 29 cm", ref:"", price:26.28, was:29.20, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/shibumi-plato-redondo.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Plato cuadrado 22x22 cm", ref:"", price:22.23, was:24.70, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/shibumi-plato-cuadrado.jpg"},
+  {brand:"mimasa", cat:"Utensilios de cocina", subcat:"Colección Vajilla Japonesa Shibumi", name:"Plato sopero 25 cm", ref:"", price:26.28, was:29.20, off:10, img:IMG+"mimasa/utensilios-y-bibliografia/shibumi-plato-sopero.jpg"},
 ];
+
+/* Descripción corta (campo "short" → description_short de PrestaShop). Solo la
+   usan la vista rápida y la ficha cuando el producto no tiene precio público.
+   Texto descriptivo, sin alegaciones de salud. Admite {es,en,fr}. */
+const SHORTS = {
+  "14040": {es:"Hojas de alga nori de origen Japón, listas para sushi y onigiri.", en:"Nori seaweed sheets from Japan, ready for sushi and onigiri.", fr:"Feuilles d'algue nori du Japon, prêtes pour les sushis et onigiris."},
+  "14039": {es:"Alga hijiki de origen Japón. Se remoja antes de cocinar.", en:"Hijiki seaweed from Japan. Soak before cooking.", fr:"Algue hijiki du Japon. À faire tremper avant la cuisson."},
+  "14022": {es:"Miso de arroz de fermentación tradicional, en envase de 300 g.", en:"Traditionally fermented rice miso, 300 g pack.", fr:"Miso de riz de fermentation traditionnelle, pot de 300 g."},
+  "14070": {es:"Crema de sésamo BIO para aliñar, untar o preparar hummus.", en:"Organic sesame paste for dressings, spreads or hummus.", fr:"Crème de sésame BIO pour assaisonner, tartiner ou préparer du houmous."},
+  "14068": {es:"Sésamo tostado BIO con sal marina, para espolvorear sobre tus platos.", en:"Organic toasted sesame with sea salt, to sprinkle over your dishes.", fr:"Sésame grillé BIO au sel marin, à saupoudrer sur vos plats."},
+  "12010": {es:"Almidón de kuzu BIO en bolsa de 100 g, para espesar sopas y salsas.", en:"Organic kuzu starch, 100 g bag, to thicken soups and sauces.", fr:"Amidon de kuzu BIO, sachet de 100 g, pour épaissir soupes et sauces."},
+  "15001": {es:"Té bancha BIO de hojas maduras, suave y bajo en teína.", en:"Organic bancha tea from mature leaves, mild and low in theine.", fr:"Thé bancha BIO de feuilles mûres, doux et pauvre en théine."},
+  "15002": {es:"Té kukicha BIO elaborado con ramitas tostadas del té.", en:"Organic kukicha tea made from roasted tea twigs.", fr:"Thé kukicha BIO à base de brindilles de thé torréfiées."},
+  "12001": {es:"Copos de avena BIO para desayunos, repostería y cremas.", en:"Organic oat flakes for breakfasts, baking and creams.", fr:"Flocons d'avoine BIO pour petits-déjeuners, pâtisserie et crèmes."},
+  "12002": {es:"Mijo BIO en grano, 500 g. Se cocina en unos 20 minutos.", en:"Organic whole millet, 500 g. Cooks in about 20 minutes.", fr:"Millet BIO en grains, 500 g. Cuisson en 20 minutes environ."},
+  "83040": {es:"Omega-3 DHA 80% con BacoMind, en 60 cápsulas.", en:"Omega-3 DHA 80% with BacoMind, 60 capsules.", fr:"Oméga-3 DHA 80 % avec BacoMind, 60 gélules."},
+  "83018": {es:"Omega-3 de la gama Oligen en formato líquido.", en:"Omega-3 from the Oligen range in liquid form.", fr:"Oméga-3 de la gamme Oligen en format liquide."},
+};
+PRODUCTS.forEach(p=>{ if(p.ref && SHORTS[p.ref]) p.short = SHORTS[p.ref]; });
 
 /* Oligoelementos — familia (sin precio público en demo) */
 const OLIGO = ["zinc","cobre","hierro","selenio","cromo","silicio","yodo","manganeso","potasio","fosforo","azufre","cobalto"]
@@ -86,7 +115,10 @@ const OLIGO = ["zinc","cobre","hierro","selenio","cromo","silicio","yodo","manga
 /* Los oligoelementos también forman parte del catálogo navegable
    (sin referencia pública: se consulta en tienda) */
 OLIGO.forEach(o=>PRODUCTS.push({
-  brand:"ifigen", cat:"Oligoelementos", name:o.name, ref:"", price:null, img:o.img
+  brand:"ifigen", cat:"Oligoelementos", name:o.name, ref:"", price:null, img:o.img,
+  short:{es:"Oligoelemento en solución agua-glicerina, de absorción sublingual. Botella de 150 ml.",
+         en:"Trace element in a water-glycerine solution for sublingual absorption. 150 ml bottle.",
+         fr:"Oligo-élément en solution eau-glycérine, à absorption sublinguale. Flacon de 150 ml."}
 }));
 
 
@@ -105,11 +137,57 @@ PRODUCTS.forEach(p=>{
    - popup de bienvenida: una sola imagen, se puede cerrar
    - banner del sitio: siempre visible en portada, no se cierra */
 const DEFAULT_POPUP_SLIDE = {img:"assets/img/banners/popup-packs.svg", alt:"Packs especiales Mimasa Ifigen", link:"categoria.html?ofertas=1", active:true};
+
+/* Slides del banner de portada (#miSiteBanner). Se mapearán 1:1 al módulo de
+   slider de PrestaShop (iqitslider / ps_imageslider: un slide por fila).
+   Campos:
+   - img        Imagen de escritorio (>=768px), panorámica ~2.95:1. Puede llevar
+                el texto de la promo incrustado: en escritorio no se pinta texto HTML.
+   - mobileImg  Opcional. Recorte propio para móvil (<768px), 4:3 y sin texto.
+                Si falta, se usa `img` recortada a 16:9 centrada.
+   - alt        Texto alternativo de la imagen.
+   - link       URL a la que lleva todo el slide (y su botón).
+   - pos        Posición horizontal del botón en escritorio: left | center | right
+                (por defecto left).
+   - vpos       Posición vertical del botón en escritorio: top | middle | bottom
+                (por defecto bottom). Sirve para que no tape el texto de la imagen.
+   - eyebrow    Etiqueta corta (p. ej. "-20%", "Novedad").     ┐ Tarjeta de texto
+   - title      Titular.                                        │ bajo la imagen en
+   - sub        Subtítulo / bajada.                             ┘ móvil (<768px).
+                Admiten texto plano o {es,en,fr}.
+   - active     false oculta el slide sin borrarlo. */
 const DEFAULT_SITE_BANNERS = [
-  {img:"assets/img/banners/banner-soja.jpg", mobileImg:"assets/img/banners/banner-soja-mobile.jpg", alt:"Descuento salsas de soja", link:"categoria.html?brand=mimasa&cat=Salsas%20de%20soja", active:true,
-    eyebrow:"-20%", title:"Salsa de soja Tamari", sub:"Tamari · Tamari Shoyu"},
-  {img:"assets/img/banners/banner-oligen-memory.jpg", mobileImg:"assets/img/banners/banner-oligen-memory-mobile.jpg", alt:"Oligen Memory", link:"producto.html?p=83040", active:true,
-    eyebrow:"Novedad", title:"Memoria para todas las edades", sub:"Omega-3 DHA 80% + BacoMind"},
+  {img:"assets/img/banners/banner-soja.jpg", mobileImg:"assets/img/banners/banner-soja-mobile.jpg", alt:"Descuento salsas de soja", link:"categoria.html?brand=mimasa&cat=Salsas%20de%20soja", pos:"left", vpos:"bottom", active:true,
+    eyebrow:"-20%",
+    title:{es:"Salsa de soja Tamari", en:"Tamari soy sauce", fr:"Sauce soja Tamari"},
+    sub:"Tamari · Tamari Shoyu"},
+  {img:"assets/img/banners/banner-oligen-memory.jpg", mobileImg:"assets/img/banners/banner-oligen-memory-mobile.jpg", alt:"Oligen Memory", link:"producto.html?p=83040", pos:"left", vpos:"bottom", active:true,
+    eyebrow:{es:"Novedad", en:"New", fr:"Nouveauté"},
+    title:{es:"Memoria para todas las edades", en:"Memory for all ages", fr:"La mémoire à tout âge"},
+    sub:"Omega-3 DHA 80% + BacoMind"},
+];
+
+/* Banners destacados de categoría de la home (bajo el slider). Se mapearán a
+   un bloque de banners de PrestaShop (p. ej. iqithtmlandbanners). Campos:
+   - img    Foto de producto sobre fondo blanco (se funde con el color de marca).
+   - title  Título del banner.        ┐ Texto plano
+   - sub    Bajada corta.             ┘ o {es,en,fr}.
+   - link   Destino (categoría, listado o producto).
+   - brand  mimasa | ifigen | packs → color de fondo y del botón.
+   - active false lo oculta. */
+const HOME_BANNERS = [
+  {img:IMG+"mimasa/algas-marinas/bodegon.jpg", brand:"mimasa", active:true,
+    link:"categoria.html?brand=mimasa&cat=Algas%20marinas",
+    title:{es:"Algas marinas", en:"Seaweed", fr:"Algues marines"},
+    sub:{es:"Europeas y japonesas, BIO", en:"European and Japanese, organic", fr:"Européennes et japonaises, BIO"}},
+  {img:IMG+"ifigen/oligen/oligen-60-caps-amb-caps.jpg", brand:"ifigen", active:true,
+    link:"categoria.html?brand=ifigen&cat=Omega-3-Oligen",
+    title:"Omega-3 · Oligen",
+    sub:{es:"DHA 80% TG de alta concentración", en:"High-concentration DHA 80% TG", fr:"DHA 80 % TG haute concentration"}},
+  {img:"assets/img/banners/home-packs.jpg", brand:"packs", active:true,
+    link:"categoria.html?ofertas=1",
+    title:"Packs",
+    sub:{es:"Combina productos y ahorra", en:"Combine products and save", fr:"Combinez les produits et économisez"}},
 ];
 
 /* Identificador estable para URLs de la demo (?p=…) */
