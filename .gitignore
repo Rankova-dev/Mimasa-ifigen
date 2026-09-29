@@ -11,3 +11,6 @@ Thumbs.db
 www/
 www.zip
 *.bundle
+
+# Tema PrestaShop (derivado de warehouse/IQIT, licencia comercial): repo privado aparte
+prestashop/
