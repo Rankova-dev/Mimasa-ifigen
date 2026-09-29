@@ -218,40 +218,41 @@ p{margin:0}
 .mi-burger{display:none}
 
 /* ============================================================
-   HOME — destacados de categoría (HOME_BANNERS en data.js)
-   Sustituye al antiguo hero "Dos formas de cuidarte". Plano: foto
-   de producto fundida (multiply) sobre el tono suave de la marca y
-   barra de texto en color sólido de marca. Sin degradados ni blur.
+   HOME — destacados de categoría (CATEGORY_HILITES en data.js)
+   Sustituye al antiguo hero "Dos formas de cuidarte". Foto de producto
+   tal cual sobre blanco (~70% de la tarjeta) y pie granate compacto
+   (~30%). Sin filtros, blend modes, tintes, degradados ni blur.
    ============================================================ */
 .mi-hbanners-wrap{background:var(--sand);padding-block:clamp(40px,6vw,76px)}
 .mi-hbanners-wrap .mi-section-head{margin-bottom:clamp(22px,3vw,34px)}
 .mi-hbanners-wrap h1{font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1.1;margin:0}
-.mi-hbanners{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.8vw,24px)}
-.mi-hbanner{--hb:var(--mimasa);--hb-soft:var(--mimasa-soft);
-  display:flex;flex-direction:column;border-radius:var(--r-lg);overflow:hidden;background:var(--hb-soft);
+/* --n lo fija main.js con el número de destacados activos */
+.mi-hbanners{display:grid;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:clamp(14px,1.8vw,24px)}
+.mi-hbanners--single{max-width:560px}
+.mi-hbanner{display:flex;flex-direction:column;border-radius:var(--r-lg);overflow:hidden;background:#fff;
   box-shadow:var(--sh-2);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.mi-hbanner--ifigen{--hb:var(--ifigen);--hb-soft:var(--ifigen-soft)}
-.mi-hbanner--packs{--hb:var(--wine-deep);--hb-soft:var(--sand-2)}
 .mi-hbanner:hover{transform:translateY(-6px);box-shadow:var(--sh-3)}
-.mi-hbanner__media{display:block;aspect-ratio:3/2;overflow:hidden}
-.mi-hbanner__media img{width:100%;height:100%;object-fit:contain;padding:10px 14px 0;mix-blend-mode:multiply;
+.mi-hbanner__media{display:block;aspect-ratio:4/3;overflow:hidden;background:#fff}
+.mi-hbanner__media img{width:100%;height:100%;object-fit:contain;padding:12px 14px;
   transition:transform .6s var(--ease)}
-.mi-hbanner:hover .mi-hbanner__media img{transform:scale(1.05)}
-.mi-hbanner__body{display:flex;flex-direction:column;align-items:flex-start;gap:4px;flex:1;
-  padding:18px 22px 22px;background:var(--hb);color:#fff}
-.mi-hbanner__title{font-family:var(--ff-display);font-weight:700;font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.1}
-.mi-hbanner__sub{font-size:.92rem;color:rgba(255,255,255,.88)}
-.mi-hbanner__cta{display:inline-flex;align-items:center;gap:8px;margin-top:12px;min-height:40px;padding:9px 18px;
-  border-radius:var(--r-pill);background:#fff;color:var(--hb);font-weight:700;font-size:.88rem}
-.mi-hbanner__cta svg{width:15px;height:15px;transition:transform .3s var(--ease)}
+.mi-hbanner:hover .mi-hbanner__media img{transform:scale(1.04)}
+.mi-hbanner__body{display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+  padding:12px 20px 14px;background:var(--wine);color:#fff}
+.mi-hbanner__title{font-family:var(--ff-display);font-weight:700;font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.1}
+.mi-hbanner__sub{font-size:.84rem;line-height:1.3;color:rgba(255,255,255,.88)}
+.mi-hbanner__cta{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:6px 14px;
+  border-radius:var(--r-pill);background:#fff;color:var(--wine);font-weight:700;font-size:.8rem;line-height:1.2}
+.mi-hbanner__cta svg{width:13px;height:13px;transition:transform .3s var(--ease)}
 .mi-hbanner:hover .mi-hbanner__cta svg{transform:translateX(3px)}
 /* Móvil: carrusel horizontal con scroll-snap; asoma el siguiente banner */
 @media(max-width:720px){
-  .mi-hbanners{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:80%;
+  .mi-hbanners{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:84%;
     overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
     margin-inline:calc(-1 * clamp(18px,4vw,40px));padding:4px clamp(18px,4vw,40px) 14px;
     scroll-padding-inline:clamp(18px,4vw,40px)}
   .mi-hbanners::-webkit-scrollbar{display:none}
+  .mi-hbanner__media{aspect-ratio:5/4}
+  .mi-hbanner__body{padding:11px 16px 13px}
   .mi-hbanner{scroll-snap-align:start}
   .mi-hbanner:hover{transform:none}
 }
@@ -319,6 +320,16 @@ p{margin:0}
 .mi-card__media{position:relative;border-radius:var(--r);overflow:hidden;background:var(--white);aspect-ratio:1/1;margin-bottom:14px}
 .mi-card__media img{width:100%;height:100%;object-fit:contain;padding:14px;transition:transform .6s var(--ease)}
 .mi-card:hover .mi-card__media img{transform:scale(1.06)}
+/* Segunda imagen (img2 en data.js): crossfade al pasar el ratón, solo con
+   puntero fino. En táctil no se muestra (ni se descarga: display:none +
+   loading=lazy) y se ve siempre la principal. */
+.mi-card__media .mi-card__img2{display:none;position:absolute;inset:0;opacity:0;pointer-events:none}
+@media(hover:hover) and (pointer:fine){
+  .mi-card__media .mi-card__img2{display:block}
+  .mi-card__media--swap img{transition:transform .6s var(--ease),opacity .25s ease}
+  .mi-card:hover .mi-card__media--swap img:not(.mi-card__img2){opacity:0}
+  .mi-card:hover .mi-card__media--swap .mi-card__img2{opacity:1}
+}
 .mi-card__flags{position:absolute;bottom:11px;left:11px;right:11px;display:flex;flex-direction:row;flex-wrap:wrap;align-items:flex-end;align-content:flex-end;gap:5px;z-index:2;pointer-events:none;transition:opacity .25s}
 .mi-card:hover .mi-card__flags{opacity:0}
 .mi-flag{font-size:.62rem;font-weight:800;letter-spacing:.03em;padding:4px 9px;border-radius:var(--r-pill);box-shadow:var(--sh-1);width:fit-content}

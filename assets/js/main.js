@@ -48,10 +48,10 @@
       ? `<button class="mi-card__add" data-add aria-label="Añadir ${p.name}">${ICON.cart}</button>`
       : `<a class="mi-card__add mi-card__add--link" href="${pdpUrl(p)}" aria-label="${t('qv_full')}: ${p.name}">${ICON.arrow}</a>`;
     return `<article class="mi-card" data-id="${p.id}">
-      <div class="mi-card__media">
+      <div class="mi-card__media${p.img2?' mi-card__media--swap':''}">
         <div class="mi-card__flags">${flags.join('')}</div>
         <span class="mi-card__brand mi-card__brand--${p.brand}">${p.brand.toUpperCase()}</span>
-        <a href="${pdpUrl(p)}" aria-label="${p.name}"><img src="${p.img}" alt="${p.name}" loading="lazy"></a>
+        <a href="${pdpUrl(p)}" aria-label="${p.name}"><img src="${p.img}" alt="${p.name}" loading="lazy">${p.img2?`<img class="mi-card__img2" src="${p.img2}" alt="" aria-hidden="true" loading="lazy">`:''}</a>
         <button class="mi-card__quick" data-quick>${ICON.eye} <span>${t('qv_quick')}</span></button>
       </div>
       <p class="mi-card__cat">${p.cat}</p>
@@ -679,12 +679,15 @@
     setInterval(()=>go(idx+1), 5000);
   }
 
-  /* ---------- Banners destacados de categoría (home, HOME_BANNERS en data.js) ---------- */
+  /* ---------- Destacados de categoría (home, CATEGORY_HILITES en data.js) ---------- */
   function renderHomeBanners(){
-    const el = $('#homeBanners'); if(!el || typeof HOME_BANNERS==='undefined') return;
-    el.innerHTML = HOME_BANNERS.filter(b=>b.active!==false && b.img).map(b=>{
+    const el = $('#homeBanners'); if(!el || typeof CATEGORY_HILITES==='undefined') return;
+    const items = CATEGORY_HILITES.filter(b=>b.active!==false && b.img);
+    el.style.setProperty('--n', items.length);
+    el.classList.toggle('mi-hbanners--single', items.length===1);
+    el.innerHTML = items.map(b=>{
       const title = loc(b.title), sub = loc(b.sub);
-      return `<a class="mi-hbanner mi-hbanner--${b.brand||'mimasa'}" href="${b.link||'#'}">
+      return `<a class="mi-hbanner" href="${b.link||'#'}">
         <span class="mi-hbanner__media"><img src="${b.img}" alt="" loading="lazy"></span>
         <span class="mi-hbanner__body">
           <b class="mi-hbanner__title">${title}</b>

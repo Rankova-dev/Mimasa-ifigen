@@ -5,12 +5,15 @@
    ============================================================ */
 const IMG = "assets/img/products/";
 
+/* img2 (opcional): segunda foto del producto. En escritorio sustituye a `img`
+   al pasar el ratón por la tarjeta (crossfade). En PrestaShop será la segunda
+   imagen de la galería del producto. */
 const PRODUCTS = [
   /* ---------------- MIMASA · Alimentos saludables ---------------- */
-  {brand:"mimasa", cat:"Algas marinas", subcat:"Algas europeas", name:"Alga Dulse BIO 50g", ref:"18003", price:5.92, was:6.58, off:10, bio:true, img:IMG+"mimasa/algas-marinas/alga-dulse-bio.jpg"},
-  {brand:"mimasa", cat:"Algas marinas", subcat:"Algas europeas", name:"Kombu BIO 50g", ref:"18002", price:6.37, was:7.08, off:10, bio:true, img:IMG+"mimasa/algas-marinas/kombu-bio.jpg"},
+  {brand:"mimasa", cat:"Algas marinas", subcat:"Algas europeas", name:"Alga Dulse BIO 50g", ref:"18003", price:5.92, was:6.58, off:10, bio:true, img:IMG+"mimasa/algas-marinas/alga-dulse-bio.jpg", img2:IMG+"mimasa/algas-marinas/alga-dulse-bio-amb-alga.jpg"},
+  {brand:"mimasa", cat:"Algas marinas", subcat:"Algas europeas", name:"Kombu BIO 50g", ref:"18002", price:6.37, was:7.08, off:10, bio:true, img:IMG+"mimasa/algas-marinas/kombu-bio.jpg", img2:IMG+"mimasa/algas-marinas/kombu-bio-amb-alga-2.jpg"},
   {brand:"mimasa", cat:"Algas marinas", subcat:"Algas europeas", name:"Wakame BIO 50g", ref:"18005", price:6.72, was:7.47, off:10, bio:true, img:IMG+"mimasa/algas-marinas/wakame-bio-amb-alga.jpg"},
-  {brand:"mimasa", cat:"Algas marinas", subcat:"Algas europeas", name:"Espagueti de Mar BIO 50g", ref:"18004", price:4.65, was:5.17, off:10, bio:true, img:IMG+"mimasa/algas-marinas/espagueti-de-mar-bio.jpg"},
+  {brand:"mimasa", cat:"Algas marinas", subcat:"Algas europeas", name:"Espagueti de Mar BIO 50g", ref:"18004", price:4.65, was:5.17, off:10, bio:true, img:IMG+"mimasa/algas-marinas/espagueti-de-mar-bio.jpg", img2:IMG+"mimasa/algas-marinas/espagueti-de-mar-bio-amb-alga.jpg"},
   {brand:"mimasa", cat:"Algas marinas", subcat:"Algas europeas", name:"Agar Agar en tiras origen UE 20g", ref:"14043", price:4.74, was:5.27, off:10, bio:false, img:IMG+"mimasa/algas-marinas/agar-agar-20-grs.jpg"},
   {brand:"mimasa", cat:"Algas marinas", subcat:"Algas japonesas", name:"Kombu origen Japón 50g", ref:"14037", price:7.57, was:8.41, off:10, bio:false, img:IMG+"mimasa/algas-marinas/kombu-origen-japon-50-grs.jpg"},
   {brand:"mimasa", cat:"Algas marinas", subcat:"Algas japonesas", name:"Alga Nori origen Japón 25g", ref:"14040", price:null, img:IMG+"mimasa/algas-marinas/alga-nori-origen-japon-25-grs.jpg"},
@@ -35,17 +38,17 @@ const PRODUCTS = [
   {brand:"mimasa", cat:"Raíces y otras plantas", name:"Lotus", ref:"14061.M", price:9.23, was:10.25, off:10, bio:false, img:IMG+"mimasa/raices-y-otras-plantas/lotus-100-gr.jpg"},
   {brand:"mimasa", cat:"Raíces y otras plantas", name:"Kuzu BIO 100g", ref:"12010", price:null, bio:true, img:IMG+"mimasa/raices-y-otras-plantas/kuzu-bio-bolsa-100gr.jpg"},
 
-  {brand:"mimasa", cat:"Bebidas", name:"Bancha BIO 100g", ref:"15001", price:null, bio:true, img:IMG+"mimasa/bebidas/bancha-bio-100-grs.jpg"},
-  {brand:"mimasa", cat:"Bebidas", name:"Kukicha BIO 100g", ref:"15002", price:null, bio:true, img:IMG+"mimasa/bebidas/kukicha-bio-100grs.jpg"},
+  {brand:"mimasa", cat:"Bebidas", name:"Bancha BIO 100g", ref:"15001", price:null, bio:true, img:IMG+"mimasa/bebidas/bancha-bio-100-grs.jpg", img2:IMG+"mimasa/bebidas/bancha-bio-100-grs-amb-te.jpg"},
+  {brand:"mimasa", cat:"Bebidas", name:"Kukicha BIO 100g", ref:"15002", price:null, bio:true, img:IMG+"mimasa/bebidas/kukicha-bio-100grs.jpg", img2:IMG+"mimasa/bebidas/kukicha-bio-100grs-amb-te.jpg"},
   {brand:"mimasa", cat:"Cereales", name:"Copos de avena BIO 500g", ref:"12001", price:null, bio:true, img:IMG+"mimasa/cereales-i-proteinas-vegetales/copos-de-avena-bio-500-grs.jpg"},
   {brand:"mimasa", cat:"Cereales", name:"Mijo BIO 500g", ref:"12002", price:null, bio:true, img:IMG+"mimasa/cereales-i-proteinas-vegetales/mijo-bio-500-grs.jpg"},
 
   /* ---------------- IFIGEN · Suplementos ---------------- */
-  {brand:"ifigen", cat:"Omega-3-Oligen", name:"Oligen 60 cápsulas", ref:"83019.M", price:31.33, was:34.82, off:10, img:IMG+"ifigen/oligen/oligen-60-caps.jpg"},
-  {brand:"ifigen", cat:"Omega-3-Oligen", name:"Oligen Control Colesterol 60 cápsulas", ref:"83028", price:29.09, was:32.32, off:10, img:IMG+"ifigen/oligen/oligen-control-colesterol.jpg"},
+  {brand:"ifigen", cat:"Omega-3-Oligen", name:"Oligen 60 cápsulas", ref:"83019.M", price:31.33, was:34.82, off:10, img:IMG+"ifigen/oligen/oligen-60-caps.jpg", img2:IMG+"ifigen/oligen/oligen-60-caps-amb-caps.jpg"},
+  {brand:"ifigen", cat:"Omega-3-Oligen", name:"Oligen Control Colesterol 60 cápsulas", ref:"83028", price:29.09, was:32.32, off:10, img:IMG+"ifigen/oligen/oligen-control-colesterol.jpg", img2:IMG+"ifigen/oligen/oligen-control-colesterol-caps-blister-i-sueltas.jpg"},
   {brand:"ifigen", cat:"Omega-3-Oligen", name:"Oligen Visión 60 cápsulas", ref:"83009", price:35.96, was:39.95, off:10, img:IMG+"ifigen/oligen/oligen-vision-amb-caps.jpg"},
   {brand:"ifigen", cat:"Omega-3-Oligen", name:"Oligen Peques 30ml", ref:"83005", price:18.67, was:20.75, off:10, img:IMG+"ifigen/oligen/oligen-peques.jpg"},
-  {brand:"ifigen", cat:"Omega-3-Oligen", name:"Oligen Memory 60 cápsulas", ref:"83040", price:null, img:IMG+"ifigen/oligen/oligen-memory.jpg"},
+  {brand:"ifigen", cat:"Omega-3-Oligen", name:"Oligen Memory 60 cápsulas", ref:"83040", price:null, img:IMG+"ifigen/oligen/oligen-memory.jpg", img2:IMG+"ifigen/oligen/oligen-memory-amb-caps.jpg"},
   {brand:"ifigen", cat:"Omega-3-Oligen", name:"Oligen Líquido", ref:"83018", price:null, img:IMG+"ifigen/oligen/oligen-liquido.jpg"},
 
   {brand:"ifigen", cat:"Melatonina", name:"Melatonina Plus 30 cápsulas", ref:"83030", price:6.87, was:7.63, off:10, img:IMG+"ifigen/general/melatonina-plus-30-caps.jpg"},
@@ -167,24 +170,26 @@ const DEFAULT_SITE_BANNERS = [
     sub:"Omega-3 DHA 80% + BacoMind"},
 ];
 
-/* Banners destacados de categoría de la home (bajo el slider). Se mapearán a
-   un bloque de banners de PrestaShop (p. ej. iqithtmlandbanners). Campos:
-   - img    Foto de producto sobre fondo blanco (se funde con el color de marca).
-   - title  Título del banner.        ┐ Texto plano
-   - sub    Bajada corta.             ┘ o {es,en,fr}.
-   - link   Destino (categoría, listado o producto).
-   - brand  mimasa | ifigen | packs → color de fondo y del botón.
-   - active false lo oculta. */
-const HOME_BANNERS = [
-  {img:IMG+"mimasa/algas-marinas/bodegon.jpg", brand:"mimasa", active:true,
+/* Destacados de categoría de la home (bajo el slider, #homeBanners). El bloque
+   se pinta entero desde este array: no hay HTML escrito a mano en index.html.
+   En PrestaShop se mapeará a un módulo configurable (un elemento por fila) para
+   que la clienta elija desde el back qué categorías destacar. Campos:
+   - img     Imagen → foto de producto sobre fondo blanco; se muestra tal cual.
+   - title   Título.                    ┐ Texto plano o {es,en,fr}
+   - sub     Subtítulo / bajada corta.  ┘ (en PS: campo traducible).
+   - link    Categoría / enlace de destino (categoría, listado o producto).
+   - active  Activo. false lo oculta sin borrarlo y la rejilla se reajusta
+             a los destacados que queden. */
+const CATEGORY_HILITES = [
+  {img:IMG+"mimasa/algas-marinas/bodegon.jpg", active:true,
     link:"categoria.html?brand=mimasa&cat=Algas%20marinas",
     title:{es:"Algas marinas", en:"Seaweed", fr:"Algues marines"},
     sub:{es:"Europeas y japonesas, BIO", en:"European and Japanese, organic", fr:"Européennes et japonaises, BIO"}},
-  {img:IMG+"ifigen/oligen/oligen-60-caps-amb-caps.jpg", brand:"ifigen", active:true,
+  {img:IMG+"ifigen/oligen/oligen-60-caps-amb-caps.jpg", active:true,
     link:"categoria.html?brand=ifigen&cat=Omega-3-Oligen",
     title:"Omega-3 · Oligen",
     sub:{es:"DHA 80% TG de alta concentración", en:"High-concentration DHA 80% TG", fr:"DHA 80 % TG haute concentration"}},
-  {img:"assets/img/banners/home-packs.jpg", brand:"packs", active:true,
+  {img:"assets/img/banners/home-packs.jpg", active:true,
     link:"categoria.html?ofertas=1",
     title:"Packs",
     sub:{es:"Combina productos y ahorra", en:"Combine products and save", fr:"Combinez les produits et économisez"}},
